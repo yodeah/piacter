@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Piactér
+	</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+
+<!--JSJSJS-->
+
+<link href="css/lightbox.css" rel="stylesheet" />
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/lightbox-2.6.min.js"></script>
+
+<!-- Bootstrap CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link href="css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Plugins -->
+<link href="plugins/animate/animate.css" rel="stylesheet">
+<link href="plugins/flexslider/flexslider.css" rel="stylesheet">
+<link href="plugins/clingify/clingify.css" rel="stylesheet">
+
+<!-- Theme style -->
+<link href="css/theme-style.min.css" rel="stylesheet">
+
+<!--Your custom colour override-->
+<link href="css/colour-red.css" id="colour-scheme" rel="stylesheet">
+
+<!-- Your custom override -->
+<link href="css/swords.css" rel="stylesheet">
+<link href="css/highslide.css" rel="stylesheet">
+
+<!--Scripts --> 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="js/footerfixer.js"></script>
+
+
+<!-- Saját css -->
+<link rel="stylesheet" href="css/sajat.css"></head>
+<body>
+<div id="navigation" class="wrapper">
+    <div class="navbar-static-top"> 
+
+        <!--Hidden Header Region-->
+        <div class="header-hidden">
+            <div class="header-hidden-inner container">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        <h3>About Us</h3>
+                        <p>Making the web a prettier place one template at a time! We make beautiful, quality, responsive Drupal &amp; web templates!</p>
+                        <a href="about.htm" class="btn btn-sm btn-primary">Find out more</a> </div>
+                    <div class="col-sm-4 col-md-4"> 
+                        <!--@todo: replace with company contact details-->
+                        <h3>Contact Us</h3>
+                        <address>
+                            <p><abbr title="Phone"><i class="fa fa-phone"></i></abbr> 019223 8092344</p>
+                            <p><abbr title="Email"><i class="fa fa-envelope"></i></abbr> info@themelize.me</p>
+                            <p><abbr title="Address"><i class="fa fa-home"></i></abbr> Sunshine House, Sunville. SUN12 8LU.</p>
+                        </address>
+                    </div>
+                    <div class="col-sm-4 col-md-4"> 
+                        <!--Colour Switch for demo - @todo: remove in production-->
+                        <div class="colour-switcher">
+                            <h3>Theme Colours</h3>
+                            <a href="#green" class="green active" data-toggle="tooltip" data-placement="bottom" data-original-title="Green (Default)">Green</a> <a href="#red" class="red" data-toggle="tooltip" data-placement="bottom" data-original-title="Red">Red</a> <a href="#blue" class="blue" data-toggle="tooltip" data-placement="bottom" data-original-title="Blue">Blue</a>
+                            <p>Cookies are NOT enabled so colour selection is not persistent.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Header & Branding region-->
+        <div class="header">
+            <div class="header-inner container">
+                <div class="row">
+                    <div class="col-md-8"> 
+                        <!--branding/logo--> 
+                        <a class="navbar-brand" href="index" title="Home">
+                            <h1><span>Piac</span>tér<span>.</span></h1>
+                        </a>
+                        <div class="slogan">blabla bla</div>
+                    </div>
+
+                    <!--header rightside-->
+                    <div class="col-md-4"> 
+                        <!--social media icons-->
+                        <div class="social-media"> 
+                            <!--@todo: replace with company social media details--> 
+                            <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a> </div>
+                    </div>
+                </div>
+                <div id="header-hidden-link"> <a href="#" title="Click me you'll get a surprise" class="show-hide" data-toggle="show-hide" data-target=".header-hidden"><i></i>Open</a> </div>
+            </div>
+        </div>
+
+        <!--Change order for full width navbar
+      <div class="navbar"> 
+        <div class="container" data-toggle="clingify">-->
+        <div class="js-clingify-placeholder" style="height: 61px;"><div class="js-clingify-wrapper"><div class="container" data-toggle="clingify">
+                    <div class="navbar"> 
+                        <!--
+                      mobile collapse menu button
+                      - data-toggle="toggle" = default BS menu
+                      - data-toggle="jpanel-menu" = jPanel Menu
+                        --> 
+                        <a class="navbar-btn" data-toggle="jpanel-menu" data-target=".navbar-collapse"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </a> 
+
+                        <!--user menu-->
+                        <div class="btn-group user-menu pull-right"> <a href="register" class="btn btn-primary signup" data-toggle="modal">Regisztráció</a> <a href="signin" class="btn btn-primary dropdown-toggle login" data-toggle="modal">Belépés</a> </div>
+
+                        <!--everything within this div is collapsed on mobile-->
+                        <div class="navbar-collapse collapse"> 
+
+                            <!--main navigation-->
+                            <ul class="nav navbar-nav">
+                                <li class="home-link"><a href="index"><i class="fa fa-home"></i><span class="hidden">Home</span></a></li>
+                                
+                                <li><a href="#">Regisztr&aacute;ci&oacute;</a></li>
+                                <li><a href="#">register</a></li>
+                                <li><a href="#">Bel&eacute;p&eacute;s</a></li>
+                                <li><a href="#">signin</a></li>
+                                
+                                
+                                <form class="navbar-form navbar-left" role="search" method="get" action="search">
+                                    <div class="form-group">
+                                        <input type="text" name="searchbox" class="form-control" placeholder="Search">
+                                        <input type="hidden" name="page" value="1">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Keresés</button>
+                                </form>
+
+                            </ul>
+                        </div>
+                        <!--/.navbar-collapse --> 
+                    </div>
+                </div></div></div>
+    </div>
+</div>  <!--/navbarvége -->
+ <div class="col-md-3"><div class="post2">
+	<div class="row">
+		<div class="thumbnail">
+			<img src="http://placehold.it/300x200">
+			<div class="caption">
+				<h3>Hirde&eacute;s by <h6> NEANDRW</h6></h3>
+				<p>safdasfasdfasdf
+                         <h6> 2013-11-11 20:03:31</h6></p>
+				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="post2">
+	<div class="row">
+		<div class="thumbnail">
+			<img src="http://placehold.it/300x200">
+			<div class="caption">
+				<h3>ujhirdetes by <h6> NEANDRW</h6></h3>
+				<p>asdcasdcfasdfaterm&eacute;kle&iacute;r&aacute;s...
+                         <h6> 2013-11-08 19:33:38</h6></p>
+				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div><div class="col-md-3"><div class="post2">
+	<div class="row">
+		<div class="thumbnail">
+			<img src="http://placehold.it/300x200">
+			<div class="caption">
+				<h3>hirdet&eacute;s c&iacute;me asdasd by <h6> NEANDRW</h6></h3>
+				<p>term&eacute;kle&iacute;r&aacute;s...datetestttttt
+                         <h6> 2013-11-08 19:28:29</h6></p>
+				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="post2">
+	<div class="row">
+		<div class="thumbnail">
+			<img src="http://placehold.it/300x200">
+			<div class="caption">
+				<h3>hirdet&eacute;s c&iacute;me asdasd by <h6> NEANDRW</h6></h3>
+				<p>term&eacute;kle&iacute;r&aacute;s...datetestttttt
+                         <h6> 2013-11-08 00:00:00</h6></p>
+				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div><div class="col-md-3"><div class="post2">
+	<div class="row">
+		<div class="thumbnail">
+			<img src="http://placehold.it/300x200">
+			<div class="caption">
+				<h3>Jony Ive Leica kamer&aacute;ja by <h6> NEANDRW</h6></h3>
+				<p>Jony Ive, az Apple fődiz&aacute;jnere kamer&aacute;t tervezett a Leic&aacute;nak egy j&oacute;t&eacute;konys&aacute;gi esem&eacute;nyre. Marc Newson diz&aacute;jnerrel egy&uuml;tt 85 napot t&ouml;lt&ouml;ttek a modellek megtervez&eacute;s&eacute;re &eacute;s megalkot&aacute;s&aacute;ra. A f&eacute;nyk&eacute;pezőg&eacute;pet egy november 23-ai j&oacute;t&eacute;konys&aacute;gi esem&eacute;nyen fogj&aacute;k el&aacute;rverezni, a befoly&oacute; &ouml;sszegből a mal&aacute;ria, AIDS &eacute;s tuberkol&oacute;zis elleni harcot t&aacute;mogatj&aacute;k majd. <h6> </h6></p>
+				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="post2">
+	<div class="row">
+		<div class="thumbnail">
+			<img src="http://placehold.it/300x200">
+			<div class="caption">
+				<h3>Battle of Helm by <h6> NEANDRW</h6></h3>
+				<p>150 ezer leg&oacute;kocka, 1700 figura, csod&aacute;latos r&eacute;szletess&eacute;g. A Gyűrűk ura egyik legl&aacute;tv&aacute;nyosabb csat&aacute;j&aacute;t &eacute;p&iacute;tett&eacute;k meg <h6> </h6></p>
+				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div><div class="col-md-3"><div class="post2">
+	<div class="row">
+		<div class="thumbnail">
+			<img src="http://placehold.it/300x200">
+			<div class="caption">
+				<h3>Csillagos foszforeszk&aacute;l&oacute;s &aacute;gynemű by <h6> NEANDRW</h6></h3>
+				<p>A plafonon foszforeszk&aacute;l&oacute; csillagok &eacute;s űrhaj&oacute;k lebegnek, az &aacute;gyban foszforeszk&aacute;l&oacute; bolyg&oacute;k k&ouml;z&ouml;tt alszunk. <h6> </h6></p>
+				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="post2">
+	<div class="row">
+		<div class="thumbnail">
+			<img src="http://placehold.it/300x200">
+			<div class="caption">
+				<h3>Retro &eacute;s hd by <h6> NEANDRW</h6></h3>
+				<p>Ma m&aacute;r nem &eacute;rdemes olyan t&eacute;v&eacute;t venni, amely nem full hd. De nem is nagyon lehet olyan full hd t&eacute;v&eacute;t v&aacute;s&aacute;rolni, amely ne ugyan&uacute;gy n&eacute;zzen ki: lapos, fekete (esetleg feh&eacute;r vagy &aacute;tl&aacute;tsz&oacute;) keret, v&eacute;kony, futurisztikus l&aacute;bakon. Pedig nem mindegyik nappaliba illik ez a szem&eacute;lytelen diz&aacute;jn.
+
+Lehet, hogy erre gondolt a Seiki is, amikor megalkotta a retro diz&aacute;jn hd t&eacute;v&eacute;t. A 22 h&uuml;velykes t&eacute;v&eacute; t&ouml;bb sz&iacute;nben is kaphat&oacute;, k&ouml;zt&uuml;k piros, s&aacute;rga, k&eacute;k, r&oacute;zsasz&iacute;n &eacute;s lila (persze sokkal hangzatosabb nevei vannak a sz&iacute;neknek: Retro Red, Mid-century Yellow, Electric Blue, Doo-wop Purple &eacute;s Cadillac Pink). El&eacute;g dolgot belepakoltak ahhoz, hogy &eacute;lvezhető legyen a t&eacute;v&eacute;z&eacute;s ebben a form&aacute;ban is, val&oacute;di hd t&eacute;v&eacute;hez m&eacute;lt&oacute;an hdmi-csatlakoz&oacute;ja is van. Az &aacute;ra ehhez k&eacute;pes nem is sok, 329 doll&aacute;rt k&eacute;rnek &eacute;rte, persze nem itthon. <h6> </h6></p>
+				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div><div class="col-md-3"><div class="post2">
+	<div class="row">
+		<div class="thumbnail">
+			<img src="http://placehold.it/300x200">
+			<div class="caption">
+				<h3>DNS-s&aacute;l by <h6> NEANDRW</h6></h3>
+				<p>J&ouml;n a hideg, kell a s&aacute;l. Na de milyen? H&aacute;t a DNS-es. B&aacute;r ember legyen a talp&aacute;n, aki a nyak k&ouml;r&eacute; tekert s&aacute;lb&oacute;l kital&aacute;lja, hogy az egy DNS-l&aacute;ncot akar &aacute;br&aacute;zolni. <h6> </h6></p>
+				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div></div></div>
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col">
+                <div class="block contact-block"> 
+                    <!--@todo: replace with company contact details-->
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p><abbr title="Phone"><i class="fa fa-phone"></i></abbr> 019223 8092344</p>
+                        <p><abbr title="Email"><i class="fa fa-envelope"></i></abbr> info@appstrap.me</p>
+                        <p><abbr title="Address"><i class="fa fa-home"></i></abbr> Sunshine House, Sunville. SUN12 8LU.</p>
+                    </address>
+                </div>
+            </div>
+            <div class="col-md-5 col">
+                <div class="block">
+                    <h3>About Us</h3>
+                    <p>Making the web a prettier place one template at a time! We make beautiful, quality, responsive Drupal &amp; web templates!</p>
+                </div>
+            </div>
+            <div class="col-md-4 col">
+                <div class="block newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Stay up to date with our latest news and product releases by signing up to our newsletter.</p>
+                    <!--@todo: replace with mailchimp code-->
+                    <form role="form">
+                        <div class="input-group input-group-sm">
+                            <label class="sr-only" for="email-field">Email</label>
+                            <input type="text" class="form-control placeholder" id="email-field" placeholder="Email">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">Go!</button>
+                            </span> </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="toplink"><a href="#top" class="top-link" title="Back to top">Back To Top <i class="fa fa-chevron-up"></i></a></div>
+            <!--@todo: replace with company copyright details-->
+            <div class="subfooter">
+                <div class="col-md-6">
+                    <p>Site template by <a href="#">AppStrap</a> | Copyright 2012 © AppStrap</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-inline footer-menu">
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

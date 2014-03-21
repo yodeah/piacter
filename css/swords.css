@@ -1,0 +1,101 @@
+footer  {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    min-height: 150px !important;
+}
+
+#container {
+    position: relative;
+    min-height: 100%;
+}
+
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+    background-color: #EEEEEE;
+}
+
+html {
+    background: transparent url("/img/bg.png") repeat 0 0;
+}
+
+body {
+    background: transparent;
+}
+
+.main-content {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+}
+
+.title-divider {
+    background: url(../img/bg_divider.png) left center repeat-x;
+}
+
+.title-divider span {
+    background: #f9f9f9;
+    padding-right: 20px;
+}
+
+div.js-clingify-wrapper > div.container {
+    padding: 0;
+}
+
+div.slogan {
+    border-left-color: #BBB !important;
+}
+
+.media, .card {
+    margin-bottom: 20px;
+}
+
+.top-menu {
+    margin-top: -20px;
+    height: 40px;
+}
+
+.top-menu span {
+    margin-top: 7px;
+    display: inline-block;
+}
+
+.top-menu a:hover {
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.ruling-entry {
+    text-align:justify;
+    padding-bottom: 2px;
+}
+
+.ruling-header {
+    margin-top: 10px;
+    font-size: 15.5px;
+}
+
+.comment-content {
+    width:100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 100%;
+}
+
+.reputation-positive {
+    color: darkgreen;
+    font-weight: 700;
+}
+
+.reputation-neutral {
+    color: darkgrey;
+    font-weight: 700;
+}
+
+.reputation-negative {
+    color: darkred;
+    font-weight: 700;
+}
+
+
+#navigation {
+    z-index: 999;
+}

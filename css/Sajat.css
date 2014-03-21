@@ -1,0 +1,220 @@
+
+body
+{
+    min-height: 100%;
+    background-color: transparent;
+    position: relative;
+}
+
+.container
+{
+    max-width: 960px;
+}
+
+div.wrapperSJ
+{
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pagination
+{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+#content .row{
+    margin:0;
+}
+
+#quantity70{
+    width:67%;
+    margin:0;
+    float: left;
+}
+#quantity30{
+    width:30%;
+    float: right;
+}
+
+.pagination>li>a, .pagination>li>span{
+    float:none;
+}
+
+.jumbotron
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 0px;
+    padding-left: 50px;
+
+}
+
+.well
+{
+    margin-bottom: 0px;
+}
+
+
+/*html {
+background-color:rgb(34,38,60);
+background: url(../lib/szines.png) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}*/
+
+#adupload input,textarea{
+    width: 45%;
+    margin: 0px !important;
+}
+
+.inputtextSJ{
+    display: block;
+    float: right;
+    width: 50%;
+}
+
+#adupload .jumbotron{
+    min-height: 600px;
+}
+
+div#postsajat
+{
+    background-color: silver;
+
+}
+
+div#register
+{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 44%;
+}
+div#post11
+{
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 511px;
+
+}
+
+div#pics11
+{
+    margin-left: auto;
+    margin-right: auto;
+    float: right;
+}
+
+div#text11
+{
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+}
+
+div#sidebar
+{
+    width: 300px;
+
+    border-right: 1px solid #e0e0e0;
+    float: left;
+}
+
+div#mainpage
+{
+    width: 519px;
+
+    border-right: 1px solid #e0e0e0;
+    float: right;
+}
+
+input:focus:invalid
+{
+    background-image: url(/piacter/images/invalid.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+input:required:valid
+{
+    background-image: url(/piacter/images/valid.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+/*#footer
+{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+}*/
+
+div.columnSJ
+{
+    width: 30%;
+    float: left;
+}
+
+div.post2
+{
+    margin: 10px;
+}
+
+#fullpageadSJ{
+    min-height:400px;
+    width: 70%;
+    float:left;
+}
+
+#good2know{
+    width: 29%;
+    float:right;
+    margin-bottom:10px; 
+}
+
+
+#textSJ{
+    float: left;
+    width: 100%;
+    text-align:left;    
+}
+
+
+#headertext{
+    float:left;
+    width:70%;
+}
+
+#headerimg{
+    width:30%;
+    float:left;
+}
+
+#headerimg img{
+    width:200px;
+    overflow: hidden;
+}
+
+#contentisking{
+    width:100%;
+    min-height: 250px;
+}
+
+messageSJ{
+    width:90%;
+    min-height:300px;
+}
+
+#messagefrontSJ{
+    width:90%;
+    height:130px;
+    margin-bottom: 20px;
+}
