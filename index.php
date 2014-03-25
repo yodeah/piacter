@@ -25,6 +25,7 @@ $f3->route('GET /Item', 'IndexController->item');
 $f3->route('GET /Myads', 'AdController->myads');
 $f3->route('GET /Newmessage', 'MessageController->newmessage');
 $f3->route('GET /Messages', 'MessageController->mymessages');
+$f3->route('GET /Message/@messageid', 'MessageController->specificmessage');
 $f3->route('POST /Upload_message', 'MessageController->upload_message');
 
 $f3->route('GET|HEAD|POST /index', function($f3) {
