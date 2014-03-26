@@ -104,7 +104,6 @@ Class AdController {
     }
 
     function specificad($f3) {
-        self::seen($f3->get('PARAMS.adid'));
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         $this->specificadcontent($f3);
@@ -114,10 +113,6 @@ Class AdController {
         echo Template::instance()->render('endofmain.tpl');
     }
 
-    private static function seen($adid){
-        $connection = new PDOConnection;
-        $connection->query("UPDATE items SET seen=1 WHERE id='$adid'");      
-    }
     
     private function specificadcontent($f3) {
         $connection = new PDOConnection;

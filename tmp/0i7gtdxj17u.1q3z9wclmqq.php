@@ -67,7 +67,7 @@
                         <a class="navbar-btn" data-toggle="jpanel-menu" data-target=".navbar-collapse"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </a> 
 
                         <!--user menu-->
-                        <div class="btn-group user-menu pull-right"> <a href="<?php echo $signinstatuslink4; ?>" class="btn btn-primary signup" data-toggle="modal"><?php echo $signinstatus4; ?></a> <a href="<?php echo $signinstatuslink3; ?>" class="btn btn-primary dropdown-toggle login" data-toggle="modal"><?php echo $signinstatus3; ?></a> </div>
+                        <div class="btn-group user-menu pull-right"> <a href="<?php echo $signinstatuslink4; ?>" class="btn btn-primary signup" data-toggle="modal"><?php echo $signinstatus4; ?><b> <?php echo $signinstatus4after; ?></b></a> <a href="<?php echo $signinstatuslink3; ?>" class="btn btn-primary dropdown-toggle login" data-toggle="modal"><?php echo $signinstatus3; ?><b> <?php echo $signinstatus3after; ?></b></a> </div>
 
                         <!--everything within this div is collapsed on mobile-->
                         <div class="navbar-collapse collapse"> 

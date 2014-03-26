@@ -67,7 +67,7 @@
                         <a class="navbar-btn" data-toggle="jpanel-menu" data-target=".navbar-collapse"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </a> 
 
                         <!--user menu-->
-                        <div class="btn-group user-menu pull-right"> <a href="{{ @signinstatuslink4 }}" class="btn btn-primary signup" data-toggle="modal">{{ @signinstatus4 }}</a> <a href="{{ @signinstatuslink3 }}" class="btn btn-primary dropdown-toggle login" data-toggle="modal">{{ @signinstatus3 }}</a> </div>
+                        <div class="btn-group user-menu pull-right"> <a href="{{ @signinstatuslink4 }}" class="btn btn-primary signup" data-toggle="modal">{{ @signinstatus4 }}<b> {{ @signinstatus4after }}</b></a> <a href="{{ @signinstatuslink3 }}" class="btn btn-primary dropdown-toggle login" data-toggle="modal">{{ @signinstatus3 }}<b> {{ @signinstatus3after }}</b></a> </div>
 
                         <!--everything within this div is collapsed on mobile-->
                         <div class="navbar-collapse collapse"> 

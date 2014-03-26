@@ -41,15 +41,17 @@ Class MessageController {
 //header('location:newmessage');
             die();
         }
-        $sql = "INSERT INTO messages (toid,fromid,title,message,sent)
-		VALUES(:toid,:fromid,:title,:message,:sent)";
+        $sql = "INSERT INTO messages (toid,fromid,title,message,sent,seen)
+		VALUES(:toid,:fromid,:title,:message,:sent,:seen)";
         $q = $connection->prepare($sql);
         $q->execute(array(
             ':toid' => $toid,
             ':fromid' => $_SESSION['id'],
             ':title' => $_POST['title'],
             ':message' => $_POST['message'],
-            ':sent' => date("Y-m-d H:i:s")));
+            ':sent' => date("Y-m-d H:i:s"),
+            ':seen' => 0
+            ));
 
         echo 'Üzenete sikeresen továbbítva';
     }
@@ -63,9 +65,14 @@ Class MessageController {
         $result = $connection->query("SELECT * FROM users 
                 INNER JOIN messages ON users.id=messages.toid WHERE users.id = '$sessid'")->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
+            if($row['seen']==0){
+                $title = $row["title"].' (!)';
+            }else{
+                $title = $row["title"];
+            } 
             $message = (strlen($row["message"]) > 100) ? substr($row["message"], 0, 100) . "...  " . "<a href=message/" . $row['id'] . ">tovább</a>" : $row["message"] . "  <a href=message/" . $row['id'] . ">tovább</a>";
             $f3->set('from', $row["username"]);
-            $f3->set('title', $row["title"]);
+            $f3->set('title', $title);
             $f3->set('message', $message);
             echo Template::instance()->render('messagefront.tpl');
         }
@@ -77,6 +84,7 @@ Class MessageController {
         $messageid = $f3->get('PARAMS.messageid');
         $sessid = $_SESSION['id'];
         $connection = new PDOConnection;
+        self::unseenmessage($messageid);
         Isloggedin::loggedin();
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
@@ -86,6 +94,7 @@ Class MessageController {
             echo 'nem létezik ilyen üzenet';
         } elseif ($result[0]['toid'] != $sessid) {
             echo 'ez nem a te üzeneted';
+            $connection->query("UPDATE messages SET seen=1 WHERE toid='$messageid'");
         } else {
             $row = $result[0];
             $f3->set('from', $row["username"]);
@@ -94,6 +103,11 @@ Class MessageController {
             echo Template::instance()->render('messagefront.tpl');
         }
         echo Template::instance()->render('endofmain.tpl');
+    }
+    
+    private static function unseenmessage($messageid){
+                $connection = new PDOConnection;
+                $connection->query("UPDATE messages SET seen=1 WHERE id='$messageid'");
     }
 
 }
