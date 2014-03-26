@@ -1,4 +1,4 @@
-<div class="well active" id="good2know">
+<div class="well active good2know">
     <h2>FONTOS TUDNOD!</h2>
     <h5>Mit tilos és törvényellenes eladásra kínálnom? » </h5>
     <h5>Felhasználási feltételek (szabályzat) »</h5>

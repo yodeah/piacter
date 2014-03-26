@@ -168,13 +168,13 @@ div.post2
     margin: 10px;
 }
 
-#fullpageadSJ{
+.fullpageadSJ{
     min-height:400px;
     width: 70%;
     float:left;
 }
 
-#good2know{
+.good2know{
     width: 29%;
     float:right;
     margin-bottom:10px; 
@@ -217,4 +217,16 @@ messageSJ{
     width:90%;
     height:130px;
     margin-bottom: 20px;
+}
+
+#commentSJ{
+    min-height:100px !important;
+    margin-top: 10px;
+}
+
+#replycommentSJ{
+    min-height:100px !important;
+    margin-top: 10px;
+    width:67%;
+    margin-left:3%;
 }

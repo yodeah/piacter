@@ -56,20 +56,43 @@ Class MessageController {
 
     public function mymessages($f3) {
         $connection = new PDOConnection;
-        $sessid=$_SESSION['id'];
+        $sessid = $_SESSION['id'];
         Isloggedin::loggedin();
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         $result = $connection->query("SELECT * FROM users 
                 INNER JOIN messages ON users.id=messages.toid WHERE users.id = '$sessid'")->fetchAll(PDO::FETCH_ASSOC);
-        foreach($result as $row){
-            $message = (strlen($row["message"])>100)? substr($row["message"],0,150)."..."."<a href=message/". $row['id'].">tovább</a>":$row["message"]."<a href=message/". $row['id'];
+        foreach ($result as $row) {
+            $message = (strlen($row["message"]) > 100) ? substr($row["message"], 0, 100) . "...  " . "<a href=message/" . $row['id'] . ">tovább</a>" : $row["message"] . "  <a href=message/" . $row['id'] . ">tovább</a>";
             $f3->set('from', $row["username"]);
             $f3->set('title', $row["title"]);
             $f3->set('message', $message);
             echo Template::instance()->render('messagefront.tpl');
         }
 
+        echo Template::instance()->render('endofmain.tpl');
+    }
+
+    public function specificmessage($f3) {
+        $messageid = $f3->get('PARAMS.messageid');
+        $sessid = $_SESSION['id'];
+        $connection = new PDOConnection;
+        Isloggedin::loggedin();
+        NAVBARController::buttons($f3);
+        echo Template::instance()->render('main.tpl');
+        $result = $connection->query("SELECT * FROM users 
+                INNER JOIN messages ON users.id=messages.toid WHERE messages.id='$messageid'")->fetchAll(PDO::FETCH_ASSOC);
+        if (count($result) != 1) {
+            echo 'nem létezik ilyen üzenet';
+        } elseif ($result[0]['toid'] != $sessid) {
+            echo 'ez nem a te üzeneted';
+        } else {
+            $row = $result[0];
+            $f3->set('from', $row["username"]);
+            $f3->set('title', $row["title"]);
+            $f3->set('message', $row["message"]);
+            echo Template::instance()->render('messagefront.tpl');
+        }
         echo Template::instance()->render('endofmain.tpl');
     }
 

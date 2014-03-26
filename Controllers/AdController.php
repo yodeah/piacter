@@ -39,6 +39,7 @@ Class AdController {
     }
 
     public function adupload($f3) {
+        Isloggedin::loggedin();
         $this->filename = preg_replace('/\s+/', '-', $_POST['title']) . $_SESSION['id'] . $_FILES["file"]["name"]; //filename kigenerálás (spacek kiszedése)
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
@@ -56,7 +57,7 @@ Class AdController {
         $connection = new PDOConnection;
         $sql = "INSERT INTO items (`owner`,`title`,`descr`,`cond`,`region`,`image`,`date`,`warranty`,`warranty ty`,`price`,`price ty`,`quantity`,`quantity ty`,`availability`)
 		VALUES(:id,:title,:description,:condition,:re,:image,:date,:warranty,:warrantyty,:price,:pricety,:quantity,:quantityty,:availability)";
-        $q = $connection->prepare($sql);//automatán escapel jejejjejejej suck is bokodi.
+        $q = $connection->prepare($sql); 
         $q->execute(array(
             ':id' => $_SESSION['id'],
             ':title' => $f3->get('POST.title'),
@@ -71,7 +72,7 @@ Class AdController {
             ':quantity' => $f3->get('POST.quantity'),
             ':quantityty' => $f3->get('POST.quantity_ty'),
             ':date' => date("Y-m-d H:i:s"),
-            ':availability' =>  AvailabilityCalc::Calc()));
+            ':availability' => AvailabilityCalc::Calc()));
         echo'sikeres feltöltés';
         header('location:myads');
     }
@@ -103,6 +104,7 @@ Class AdController {
         $this->specificadcontent($f3);
         echo Template::instance()->render('good2know.tpl');
         echo Template::instance()->render('similar-ad.tpl');
+        CommentController::comments($f3, $f3->get('PARAMS.adid'));
         echo Template::instance()->render('endofmain.tpl');
     }
 

@@ -27,6 +27,10 @@ $f3->route('GET /Newmessage', 'MessageController->newmessage');
 $f3->route('GET /Messages', 'MessageController->mymessages');
 $f3->route('GET /Message/@messageid', 'MessageController->specificmessage');
 $f3->route('POST /Upload_message', 'MessageController->upload_message');
+$f3->route('POST /Upload_comment', 'CommentController->upload_comment');
+$f3->route('GET /Newcomment', 'CommentController->newcommentcall');
+$f3->route('GET /Replycomment', 'CommentController->replycomment');
+$f3->route('GET /Comment/@commentid','CommentController->specificcomment');
 
 $f3->route('GET|HEAD|POST /index', function($f3) {
     $f3->reroute('/');

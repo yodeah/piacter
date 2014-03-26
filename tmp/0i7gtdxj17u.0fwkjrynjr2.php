@@ -1,4 +1,4 @@
-<div class="well active" id="fullpageadSJ">
+<div class="well active fullpageadSJ">
     <div class="row">
         <div id="headertext"> 
             <h2><?php echo $title; ?></h2>
