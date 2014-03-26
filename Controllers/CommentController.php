@@ -33,7 +33,7 @@ class CommentController {
 
     private static function unseen($id) {
         $connection = new PDOConnection;
-        $connection->query("UPDATE items SET seen='0' WHERE id='$id'");
+        $connection->query("UPDATE items SET seen=0 WHERE id='$id'");
     }
 
     public function newcomment($f3, $error = '', $reply = '', $adid= '') {
