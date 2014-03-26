@@ -86,10 +86,15 @@ Class AdController {
         $result = $connection->query("SELECT * FROM items WHERE owner='$sessionid'");
         if ($result) {
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                $f3->set('id', $row["id"]);
-                $f3->set('title', $row["title"]);
-                $f3->set('descr', $row["descr"]);
-                $f3->set('date', $row["date"]);
+                if($row['seen']==1){
+                    $title = $row['title'];
+                }else{
+                    $title = $row['title'].' (!)';
+                }
+                $f3->set('id', $row['id']);
+                $f3->set('title', $title);
+                $f3->set('descr', $row['descr']);
+                $f3->set('date', $row['date']);
                 echo Template::instance()->render('myad.tpl');
             }
         } else {
@@ -99,6 +104,7 @@ Class AdController {
     }
 
     function specificad($f3) {
+        self::seen($f3->get('PARAMS.adid'));
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         $this->specificadcontent($f3);
@@ -108,6 +114,11 @@ Class AdController {
         echo Template::instance()->render('endofmain.tpl');
     }
 
+    private static function seen($adid){
+        $connection = new PDOConnection;
+        $connection->query("UPDATE items SET seen=1 WHERE id='$adid'");      
+    }
+    
     private function specificadcontent($f3) {
         $connection = new PDOConnection;
         $adid = $f3->get('PARAMS.adid');

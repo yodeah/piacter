@@ -15,6 +15,7 @@ class CommentController {
                 $f3->set('owner', $user[0]['username']);
                 $f3->set('comment', $comment['content']);
                 $f3->set('commentid', $comment['id']);
+                $f3->set('date', $comment['datee']);
                 $f3->set('adid', $adid);
                 if ($comment['reply'] == 0) {
                     echo Template::instance()->render('comment.tpl');
@@ -30,13 +31,23 @@ class CommentController {
         $this->newcomment($f3, '', 0);
     }
 
-    public function newcomment($f3, $error = '', $reply = '') {
+    private static function unseen($id) {
+        $connection = new PDOConnection;
+        $connection->query("UPDATE items SET seen='0' WHERE id='$id'");
+    }
+
+    public function newcomment($f3, $error = '', $reply = '', $adid= '') {
+        if ($f3->get('GET.adid')==NULL){
+            $toad = $adid;
+        }else{
+            $toad = $f3->get('GET.adid');
+        }           
         Isloggedin::loggedin();
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         $f3->set('reply', $reply);
         $f3->set('error', $error);
-        $f3->set('toad', $f3->get('GET.adid'));
+        $f3->set('toad', $toad);
         echo Template::instance()->render('writecomment.tpl');
         echo Template::instance()->render('endofmain.tpl');
     }
@@ -51,9 +62,9 @@ class CommentController {
         if (!count($result) == 1) {
             header('location:index');
         } elseif (strlen($comment) < 5) {
-            $this->newcomment($f3, 'túl rövid a hozzászólás!');
+            $this->newcomment($f3, 'túl rövid a hozzászólás!',$reply,$adid);
         } elseif (strlen($comment) > 500) {
-            $this->newcomment($f3, 'túl hosszú a hozzászólás!');
+            $this->newcomment($f3, 'túl hosszú a hozzászólás!',$reply,$adid);
         } else {
             $sql = "INSERT INTO comments (adid,content,userid,reply,datee) VALUES (:adid,:comment,:userid,:reply,:date)";
             $q = $connection->prepare($sql);
@@ -64,6 +75,7 @@ class CommentController {
                 ':reply' => $reply,
                 ':date' => date("Y-m-d H:i:s")
             ));
+            self::unseen($adid);
             header('location:ad/' . $adid);
         }
     }
@@ -74,32 +86,30 @@ class CommentController {
     }
 
     public function specificComment($f3) {
-                Isloggedin::loggedin();
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         $commentid = $f3->get('PARAMS.commentid');
         $connection = new PDOConnection;
         $result = $connection->query("SELECT * FROM comments WHERE id='$commentid'")->fetchAll(PDO::FETCH_ASSOC);
         if (count($result) == 0) {
-                echo 'Ez a hozzászólás nem található';
+            echo 'Ez a hozzászólás nem található';
         } else {
-                $comment = $result[0];
-                $userid = $comment['userid'];
-                $user = $connection->query("SELECT * FROM users WHERE id='$userid'")->fetchAll(PDO::FETCH_ASSOC);
-                $f3->set('owner', $user[0]['username']);
-                $f3->set('comment', $comment['content']);
-                $f3->set('commentid', $comment['id']);
-                $f3->set('adid', $comment['adid']);
-                                $f3->set('date', $comment['date']);
-                if ($comment['reply'] == 0) {
-                    echo Template::instance()->render('comment.tpl');
-                } else {
-                    $f3->set('reply', $comment['reply']);
-                    echo Template::instance()->render('replycomment.tpl');
-                }
-            
+            $comment = $result[0];
+            $userid = $comment['userid'];
+            $user = $connection->query("SELECT * FROM users WHERE id='$userid'")->fetchAll(PDO::FETCH_ASSOC);
+            $f3->set('owner', $user[0]['username']);
+            $f3->set('comment', $comment['content']);
+            $f3->set('commentid', $comment['id']);
+            $f3->set('adid', $comment['adid']);
+            $f3->set('date', $comment['datee']);
+            if ($comment['reply'] == 0) {
+                echo Template::instance()->render('comment.tpl');
+            } else {
+                $f3->set('reply', $comment['reply']);
+                echo Template::instance()->render('replycomment.tpl');
+            }
         }
-                echo Template::instance()->render('endofmain.tpl');
+        echo Template::instance()->render('endofmain.tpl');
     }
 
 }

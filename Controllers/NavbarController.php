@@ -33,13 +33,28 @@ class NAVBARController {
 
 
 ///BUTTON 4
-        if (isset($_SESSION['username'])) {
-            $f3->set('signinstatus4', 'Hirdetéseim');
+        if (isset($_SESSION['username'])) {            
+            $f3->set('signinstatus4', 'Hirdetéseim'.self::unseenads());
             $f3->set('signinstatuslink4', '/myads');
         } else {
             $f3->set('signinstatus4', 'Regisztráció');
             $f3->set('signinstatuslink4', '/register');
         }
+    }
+    
+    private static function unseenads(){
+            $sessid = $_SESSION['id'];
+            $connection = new PDOConnection;
+            $result = $connection->query("SELECT * FROM items WHERE owner=$sessid")->fetchAll(PDO::FETCH_ASSOC);
+            if(count($result)==0){
+                return'';
+            }else{
+                foreach($result as $ad){
+                    if($ad['seen']==0){
+                        return' (!)';
+                    }
+                }
+            }
     }
 
 }
