@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-md-8"> 
                         <!--branding/logo--> 
-                        <a class="navbar-brand" href="index" title="Home">
+                        <a class="navbar-brand" href="/index" title="Home">
                             <h1><span>Piac</span>tér<span>.</span></h1>
                         </a>
                         <div class="slogan">blabla bla</div>
@@ -74,7 +74,7 @@
 
                             <!--main navigation-->
                             <ul class="nav navbar-nav">
-                                <li class="home-link"><a href="index"><i class="fa fa-home"></i><span class="hidden">Home</span></a></li>
+                                <li class="home-link"><a href="/index"><i class="fa fa-home"></i><span class="hidden">Home</span></a></li>
                                 
                                 <li><a href="{{ @signinstatuslink }}">{{ @signinstatus }}</a></li>
                                 <!--<li><a href="#">{{ @signinstatuslink }}</a></li>
