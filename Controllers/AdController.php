@@ -16,11 +16,14 @@ Class AdController {
         'condition' => array(
             'condition'
         ),
+        'auction' => array(
+            'auctioncb', 'auctionstart', 'auctionstep', 'auctionprice ty',
+        ),
         'quantity' => array(
             'quantity', 'quantity_ty',
         ),
         'quantity' => array(
-            'price', 'price_ty',
+            'fixprice', 'fixprice_ty',
         ),
         'quantity' => array(
             'warranty', 'warranty_ty',
@@ -39,6 +42,7 @@ Class AdController {
     }
 
     public function adupload($f3) {
+        var_dump($_POST);
         Isloggedin::loggedin();
         $this->filename = preg_replace('/\s+/', '-', $_POST['title']) . $_SESSION['id'] . $_FILES["file"]["name"]; //filename kigenerálás (spacek kiszedése)
         NAVBARController::buttons($f3);
@@ -57,7 +61,7 @@ Class AdController {
         $connection = new PDOConnection;
         $sql = "INSERT INTO items (`owner`,`title`,`descr`,`cond`,`region`,`image`,`date`,`warranty`,`warranty ty`,`price`,`price ty`,`quantity`,`quantity ty`,`availability`)
 		VALUES(:id,:title,:description,:condition,:re,:image,:date,:warranty,:warrantyty,:price,:pricety,:quantity,:quantityty,:availability)";
-        $q = $connection->prepare($sql); 
+        $q = $connection->prepare($sql);
         $q->execute(array(
             ':id' => $_SESSION['id'],
             ':title' => $f3->get('POST.title'),
@@ -86,10 +90,10 @@ Class AdController {
         $result = $connection->query("SELECT * FROM items WHERE owner='$sessionid'");
         if ($result) {
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                if($row['seen']==1){
+                if ($row['seen'] == 1) {
                     $title = $row['title'];
-                }else{
-                    $title = $row['title'].' (!)';
+                } else {
+                    $title = $row['title'] . ' (!)';
                 }
                 $f3->set('id', $row['id']);
                 $f3->set('title', $title);
@@ -114,7 +118,6 @@ Class AdController {
         echo Template::instance()->render('endofmain.tpl');
     }
 
-    
     private function specificadcontent($f3) {
         $connection = new PDOConnection;
         $adid = $f3->get('PARAMS.adid');
@@ -144,8 +147,8 @@ Class AdController {
             echo 'ERROR  nem létezik ilyen hirdetés';
         }
     }
-    
-    private static function seenad($adid){
+
+    private static function seenad($adid) {
         $connection = new PDOConnection;
         $connection->query("UPDATE items SET seen=1 WHERE id='$adid'");
     }

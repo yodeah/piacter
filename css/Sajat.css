@@ -30,13 +30,20 @@ div.wrapperSJ
     margin:0;
 }
 
-#quantity70{
+.quantity70{
     width:67%;
     margin:0;
     float: left;
 }
-#quantity30{
+.quantity30{
+    margin-right: 2%;
     width:30%;
+    float: right;
+}
+
+.quantity50{
+    margin-right: 2%;
+    width:48%;
     float: right;
 }
 

@@ -1,10 +1,45 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://gregpike.net/demos/bootstrap-file-input/bootstrap.file-input.js"></script>
+<script>
+    window.addEventListener("load", checkboxcheck, false);
+    function checkboxcheck() {
+        var fixpricecb = document.getElementById('fixpricecb');
+        var auctioncb = document.getElementById('auctioncb');
+        var fixpriceinput = document.getElementById('fixpriceinput');
+        var auctioninput1 = document.getElementById('auctioninput1');
+        var auctioninput2 = document.getElementById('auctioninput2');
 
+        fixpricecb.addEventListener('change', changecb, false);
+        auctioncb.addEventListener('change', changecb, false);
+
+
+        function changecb() {
+
+            if (fixpricecb.checked == false) {
+                fixpriceinput.required = false;
+            } else {
+                fixpriceinput.required = true;
+            }
+
+            if (auctioncb.checked == false) {
+                auctioninput1.required = false;
+                auctioninput2.required = false;
+            } else {
+                auctioninput1.required = true;
+                auctioninput2.required = true;
+            }
+
+
+            if (fixpricecb.checked == false && auctioncb.checked == false) {
+                fixpricecb.checked = true;
+            }
+        }
+    }
+</script>
 
 <form class="form-login form-wrapper form-medium" role="form" action="upload_file" method="POST" enctype="multipart/form-data">
     <h3 class="title-divider"><span>Új hirdetés</span></h3>
-    <h5>Adatok</h5>
+    <h5>Leírás</h5>
     <div class="form-group">
         <label class="sr-only" for="title">Hirdetés címe</label>
         <input required pattern=".{5,100}" required title="5 töl 100 karakter" type="text" class="form-control" name="title" id="title" placeholder="Hirdetés címe">
@@ -14,11 +49,46 @@
         <textarea required pattern=".{5,500}" required title="5 töl 500 karakter" name="description" rows="12" class="form-control placeholder" id="description" placeholder="Hirdetés szövege"></textarea>
     </div>
 
+
+    <h5><input type="checkbox" name="fixpricecb" checked id="fixpricecb">Fix ár</h5><p>Ezt rögtön le tudják ütni a felhasználók és ennyiért elvinni</p>          
+    <div class="form-group">
+        <div class="row">
+            <label class="sr-only" for="title">Irányár</label>
+
+            <input class="quantity70 form-control" id="fixpriceinput" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" name="fixprice" id="price" placeholder="Fix ár">
+            <select name="fixprice ty" class="quantity30 form-control" required >
+                <option value="0">Ft</option>
+                <option value="1">Usd</option>
+                <option value="2">Eur</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <h5><input type="checkbox" name="auctioncb" id="auctioncb">Licit</h5><p>Itt a minimál árról indul a licit és a felhasználóknak a minimunlicittel vagy nagyobb összeggel kell növelni a licitet </p>          
+    <div class="form-group">
+        <div class="row">
+            <label class="sr-only" for="title">Irányár</label>
+            <div class="quantity70">
+                <input class="quantity50 form-control"  id="auctioninput1" pattern=".{1,20}"  title="1 töl 20 karakter" type="number" name="auctionstart" id="price" placeholder="Minimálár">
+                <input class="quantity50 form-control"  id="auctioninput2" pattern=".{1,20}"  title="1 töl 20 karakter" type="number" name="auctionstep" id="price" placeholder="Licitlépcső">
+            </div>
+            <select name="auctionprice ty" class="quantity30 form-control" required >
+                <option value="0">Ft</option>
+                <option value="1">Usd</option>
+                <option value="2">Eur</option>
+            </select>
+        </div>
+    </div>
+
+    <h5>Részletek</h5>
+
     <div class="form-group">
         <div class="row">
             <label class="sr-only" for="title">Mennyiség</label>
-            <input id="quantity70" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" class="form-control" name="quantity" id="quantity" placeholder="Mennyiség">
-            <select name="quantity ty" class="form-control" required id="quantity30">
+            <input class="quantity70 form-control" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" name="quantity" id="quantity" placeholder="Mennyiség">
+            <select name="quantity ty" class="quantity30 form-control" required >
                 <option value="0">Darab</option>
                 <option value="1">Kiló</option>
                 <option value="2">Gramm</option>
@@ -28,32 +98,20 @@
 
     <div class="form-group">
         <div class="row">
-            <label class="sr-only" for="title">Irányár</label>
-            <input id="quantity70" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" class="form-control" name="price" id="price" placeholder="Irányár">
-            <select name="price ty" class="form-control" required id="quantity30">
-                <option value="0">Ft</option>
-                <option value="1">Usd</option>
-                <option value="2">Eur</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="row">
-            <select name="warranty ty" class="form-control" required id="quantity30">
+            <select name="warranty ty" class="quantity30 form-control" required >
                 <option value="0">Év</option>
                 <option value="1">Hónap</option>
                 <option value="2">Hét</option>
             </select>
             <label class="sr-only" for="title">Garancia időtartam</label>
-            <input id="quantity70" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" class="form-control" name="warranty" id="title" placeholder="Garancia időtartalma">
+            <input class="quantity70 form-control" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" name="warranty" id="title" placeholder="Garancia időtartalma">
         </div>
     </div>
     <div class="form-group">
         <div class="row">
             <label class="sr-only" for="title">Lejárat</label>
-            <input id="quantity70" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" class="form-control" name="availability" id="price" placeholder="Érvényesség">
-            <select name="availability ty" class="form-control" required id="quantity30">
+            <input class="quantity70 form-control" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" name="availability" id="price" placeholder="Érvényesség">
+            <select name="availability ty" class="quantity30 form-control" required >
                 <option value="0">Év</option>
                 <option value="1">Hónap</option>
                 <option value="2">Hét</option>
