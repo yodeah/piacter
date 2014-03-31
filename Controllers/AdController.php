@@ -17,13 +17,16 @@ Class AdController {
             'condition'
         ),
         'auction' => array(
-            'auctioncb', 'auctionstart', 'auctionstep', 'auctionprice ty',
+            'auctioncb', 'auctionstart', 'auctionstep', 'auctionprice_ty',
+        ),
+        'checkbutton' => array(
+            'fixpricecb', 'auctioncb',
         ),
         'quantity' => array(
             'quantity', 'quantity_ty',
         ),
-        'quantity' => array(
-            'fixprice', 'fixprice_ty',
+        'fixprice' => array(
+            'fixpricecb', 'fixprice', 'fixprice_ty',
         ),
         'quantity' => array(
             'warranty', 'warranty_ty',
