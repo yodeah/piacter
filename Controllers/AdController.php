@@ -45,7 +45,7 @@ Class AdController {
     }
 
     public function adupload($f3) {
-        var_dump($_POST);
+        //var_dump($_POST);
         Isloggedin::loggedin();
         $this->filename = preg_replace('/\s+/', '-', $_POST['title']) . $_SESSION['id'] . $_FILES["file"]["name"]; //filename kigenerálás (spacek kiszedése)
         NAVBARController::buttons($f3);
@@ -62,10 +62,34 @@ Class AdController {
 
     private function success($f3) {
         $connection = new PDOConnection;
-        $sql = "INSERT INTO items (`owner`,`title`,`descr`,`cond`,`region`,`image`,`date`,`warranty`,`warranty ty`,`price`,`price ty`,`quantity`,`quantity ty`,`availability`)
-		VALUES(:id,:title,:description,:condition,:re,:image,:date,:warranty,:warrantyty,:price,:pricety,:quantity,:quantityty,:availability)";
+        $sql = "INSERT INTO items (`owner`,`title`,`descr`,`cond`,`region`,`image`,`date`,`warranty`,`warranty ty`,`fixprice`,`fixprice ty`,`quantity`,`quantity ty`,`availability`,`auctionstart`,`auctionstep`,`auctionprice ty`)
+		VALUES(:id,:title,:description,:condition,:re,:image,:date,:warranty,:warrantyty,:fixprice,:fixpricety,:quantity,:quantityty,:availability,:auctionstart,:auctionstep,:auctionprice ty)";
         $q = $connection->prepare($sql);
-        $q->execute(array(
+        $q->execute(self::datagen($f3));
+        echo'sikeres feltöltés';
+        header('location:myads');
+    }
+
+    private static function datagen($f3) {
+        if (isset($_POST['fixpricecb'])) {
+            $fixprice = $f3->get('POST.fixprice');
+            $fixpricety = $f3->get('POST.fixprice_ty');
+        } else {
+            $fixprice = NULL;
+            $fixpricety = NULL;
+        }
+
+        if (isset($_POST['auctioncb'])) {
+            $auctionstart = $f3->get('POST.auctionstart');
+            $auctionstep = $f3->get('POST.auctionstep');
+            $auctionpricety = $f3->get('POST.auction_ty');
+        } else {
+            $auctionstart = NULL;
+            $auctionstep = NULL;
+            $auctionpricety = NULL;
+        }
+        
+                return array(
             ':id' => $_SESSION['id'],
             ':title' => $f3->get('POST.title'),
             ':description' => $f3->get('POST.description'),
@@ -74,14 +98,16 @@ Class AdController {
             ':image' => $this->filename,
             ':warranty' => $f3->get('POST.warranty'),
             ':warrantyty' => $f3->get('POST.warranty_ty'),
-            ':price' => $f3->get('POST.price'),
-            ':pricety' => $f3->get('POST.price_ty'),
             ':quantity' => $f3->get('POST.quantity'),
             ':quantityty' => $f3->get('POST.quantity_ty'),
             ':date' => date("Y-m-d H:i:s"),
-            ':availability' => AvailabilityCalc::Calc()));
-        echo'sikeres feltöltés';
-        header('location:myads');
+            ':availability' => AvailabilityCalc::Calc(),
+            ':fixprice' => $fixprice,
+            ':fixpricety' => $fixpricety,
+            ':auctionstart' => $auctionstart,
+            ':auctionstep' => $auctionstep,
+            ':auctionprice ty' => $auctionpricety
+        );
     }
 
     public function myads($f3) {

@@ -9,12 +9,12 @@ class TitleCheck extends Checker {
 
         if (strlen($title) < 5) {
             echo 'túl rövid a cím </br>';
-            return FALSE;
+            return false;
         } elseif (strlen($title) > 100) {
             echo 'túl hosszú a cím </br>';
-            return FALSE;
+            return false;
         } else {
-            return TRUE;
+            return true;
         }
     }
 
