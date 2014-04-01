@@ -31,9 +31,11 @@ class AuctionCheck extends Checker {
             } elseif ($auctionpricety > 3 || $auctionpricety < 0) {
                 echo'rossz típus </br>';
                 return false;
-            }else{
+            } else {
                 return true;
             }
+        } else {
+            return true;
         }
     }
 

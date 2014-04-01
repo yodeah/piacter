@@ -10,7 +10,7 @@ class CheckbuttonCheck extends Checker {
             echo 'nincs rendesen beállítva a hirdetés tipusa';
             return false;
         }else{
-            return false;
+            return true;
         }
  
     }

@@ -45,7 +45,6 @@ Class AdController {
     }
 
     public function adupload($f3) {
-        //var_dump($_POST);
         Isloggedin::loggedin();
         $this->filename = preg_replace('/\s+/', '-', $_POST['title']) . $_SESSION['id'] . $_FILES["file"]["name"]; //filename kigenerálás (spacek kiszedése)
         NAVBARController::buttons($f3);
@@ -53,24 +52,23 @@ Class AdController {
         if (UploadPostVariables::testUploadPostVariables(self::$toCheckConfig)) {
             if (FileCheckUpload::fileupload($this->filename)) {//azért van 2 egymásban if mer a fileupload csak akkor futhat le ha másik biztos true.
                 $this->success($f3);
-            }
-        } else {
-            echo Template::instance()->render('adupload.tpl');
-            echo Template::instance()->render('endofmain.tpl');
+            }                     
         }
+            echo Template::instance()->render('adupload.tpl');
+            echo Template::instance()->render('endofmain.tpl');       
     }
 
     private function success($f3) {
         $connection = new PDOConnection;
         $sql = "INSERT INTO items (`owner`,`title`,`descr`,`cond`,`region`,`image`,`date`,`warranty`,`warranty ty`,`fixprice`,`fixprice ty`,`quantity`,`quantity ty`,`availability`,`auctionstart`,`auctionstep`,`auctionprice ty`)
-		VALUES(:id,:title,:description,:condition,:re,:image,:date,:warranty,:warrantyty,:fixprice,:fixpricety,:quantity,:quantityty,:availability,:auctionstart,:auctionstep,:auctionprice ty)";
+		VALUES(:id,:title,:description,:condition,:re,:image,:date,:warranty,:warrantyty,:fixprice,:fixpricety,:quantity,:quantityty,:availability,:auctionstart,:auctionstep,:auctionpricety)";
         $q = $connection->prepare($sql);
-        $q->execute(self::datagen($f3));
+        $q->execute($this->datagen($f3));
         echo'sikeres feltöltés';
         header('location:myads');
     }
 
-    private static function datagen($f3) {
+    private function datagen($f3) {
         if (isset($_POST['fixpricecb'])) {
             $fixprice = $f3->get('POST.fixprice');
             $fixpricety = $f3->get('POST.fixprice_ty');
@@ -88,8 +86,8 @@ Class AdController {
             $auctionstep = NULL;
             $auctionpricety = NULL;
         }
-        
-                return array(
+
+        return array(
             ':id' => $_SESSION['id'],
             ':title' => $f3->get('POST.title'),
             ':description' => $f3->get('POST.description'),
@@ -106,7 +104,7 @@ Class AdController {
             ':fixpricety' => $fixpricety,
             ':auctionstart' => $auctionstart,
             ':auctionstep' => $auctionstep,
-            ':auctionprice ty' => $auctionpricety
+            ':auctionpricety' => $auctionpricety
         );
     }
 
