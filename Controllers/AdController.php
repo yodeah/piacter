@@ -76,7 +76,7 @@ Class AdController {
             $connection = new PDOConnection;
             $result = $connection->query("SELECT availability, id FROM items WHERE owner='$sessid' ORDER BY date DESC ")->fetchAll(PDO::FETCH_ASSOC);
             $expire = $result[0]['availability'];
-            $adid = 'AD'.$result[0]['id'];
+            $adid = 'AD' . $result[0]['id'];
 
             $connection->query("CREATE EVENT IF NOT EXISTS $adid
 ON SCHEDULE AT '2014-04-01 12:29:48'
@@ -97,7 +97,7 @@ DO
         if (isset($_POST['auctioncb'])) {
             $auctionstart = $f3->get('POST.auctionstart');
             $auctionstep = $f3->get('POST.auctionstep');
-            $auctionpricety = $f3->get('POST.auction_ty');
+            $auctionpricety = $f3->get('POST.auctionprice_ty');
         } else {
             $auctionstart = NULL;
             $auctionstep = NULL;
@@ -162,14 +162,71 @@ DO
         echo Template::instance()->render('endofmain.tpl');
     }
 
-    private function specificadcontent($f3) {
+    private function templateselector($f3) {
+        $connection = new PDOConnection;
+        $adid = $f3->get('PARAMS.adid');
+        $result = $connection->query("SELECT * FROM items WHERE id=$adid")->fetchAll(PDO::FETCH_ASSOC);
+        if (!$result[0]['fixprice'] == NULL && !$result[0]['auctionstart'] == NULL) {
+            $this->auctionfixpricetmp($f3);
+        } elseif ($result[0]['fixprice'] == NULL && !$result[0]['auctionstart'] == NULL) {
+            $this->auctiontmp($f3);
+        } elseif (!$result[0]['fixprice'] == NULL && $result[0]['auctionstart'] == NULL) {
+            $this->fixpricetmp($f3);
+        } else {
+            echo 'HIBÁS HIRDETÉS!';
+        }
+    }
+
+    private function auctionfixpricetmp($f3) {
+        $row = $this->specadquery($f3);
+        echo 'bug1';
+        $minimumprice = $row["auctionstart"] + $row["auctionstep"];
+        $f3->set('price', $row["fixprice"]);
+        echo 'bug1';
+        $f3->set('price_ty', Values::$PRICE[$row["fixprice ty"]]);
+        echo 'bug1';
+        $f3->set('placeholder', $minimumprice);
+        echo 'bug1';
+        $f3->set('auctionprice_ty', Values::$PRICE[$row["auctionprice ty"]]);
+        echo 'bug1';
+        echo Template::instance()->render('auctionfixpricead.tpl');
+    }
+
+    private function auctiontmp($f3) {
+        $row = $this->specadquery($f3);
+        echo 'bug2';
+        $minimumprice = $row["auctionstart"] + $row["auctionstep"];
+        echo 'bug2';
+        $f3->set('placeholder', $minimumprice);
+        echo 'bug2';
+        $f3->set('auctionprice_ty', Values::$PRICE[$row["auctionprice ty"]]);
+        echo 'bug2';
+        echo Template::instance()->render('auctionad.tpl');
+    }
+
+    private function fixpricetmp($f3) {
+        echo 'bug3';
+        $row = $this->specadquery($f3);
+        echo 'bug3';
+        $f3->set('price', $row["fixprice"]);
+        echo 'bug3';
+        $f3->set('price_ty', Values::$PRICE[$row["fixprice ty"]]);
+        echo 'bug3';
+        echo Template::instance()->render('fixpricead.tpl');
+    }
+
+    private function specadquery($f3) {
         $connection = new PDOConnection;
         $adid = $f3->get('PARAMS.adid');
         $result = $connection->query("SELECT items.*, users.username FROM items 
             INNER JOIN users ON items.`owner` = users.id
             WHERE items.id = '$adid'")->fetchAll(PDO::FETCH_ASSOC);
-        if (count($result) > 0) {
-            $row = $result[0];
+        return $row = $result[0];
+    }
+
+    private function specificadcontent($f3) {
+        $row = $this->specadquery($f3);
+        if (count($row) > 0) {
             $f3->set('title', $row["title"]);
             $f3->set('descr', $row["descr"]);
             $f3->set('date', $row["date"]);
@@ -177,16 +234,13 @@ DO
             $f3->set('owner', $row["username"]);
             $f3->set('availability', $row["availability"]);
 
-            $f3->set('price', $row["fixprice"]);
-            $f3->set('price_ty', Values::$PRICE[$row["fixprice ty"]]);
-
             $f3->set('quantity', $row["quantity"]);
             $f3->set('quantity_ty', Values::$QUANTITY[$row["quantity ty"]]);
 
             $f3->set('warranty', $row["warranty"]);
             $f3->set('warranty_ty', Values::$WARRANTY[$row["warranty ty"]]);
 
-            echo Template::instance()->render('fullpagead.tpl');
+            $this->templateselector($f3); //ez fogja a rendelelést befejzni attól függöen hogy milyen tipusú a hirdetés
         } else {
             echo 'ERROR  nem létezik ilyen hirdetés';
         }

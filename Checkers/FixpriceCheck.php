@@ -23,6 +23,8 @@ class FixpriceCheck extends Checker {
             } else {
                 return true;
             }
+        }else{
+            return true;
         }
     }
 
