@@ -52,10 +52,10 @@ Class AdController {
         if (UploadPostVariables::testUploadPostVariables(self::$toCheckConfig)) {
             if (FileCheckUpload::fileupload($this->filename)) {//azért van 2 egymásban if mer a fileupload csak akkor futhat le ha másik biztos true.
                 $this->success($f3);
-            }                     
+            }
         }
-            echo Template::instance()->render('adupload.tpl');
-            echo Template::instance()->render('endofmain.tpl');       
+        echo Template::instance()->render('adupload.tpl');
+        echo Template::instance()->render('endofmain.tpl');
     }
 
     private function success($f3) {
@@ -64,8 +64,25 @@ Class AdController {
 		VALUES(:id,:title,:description,:condition,:re,:image,:date,:warranty,:warrantyty,:fixprice,:fixpricety,:quantity,:quantityty,:availability,:auctionstart,:auctionstep,:auctionpricety)";
         $q = $connection->prepare($sql);
         $q->execute($this->datagen($f3));
+        $this->auctionevent($f3);
         echo'sikeres feltöltés';
         header('location:myads');
+    }
+
+    private function auctionevent($f3) {
+        if (isset($_POST['auctioncb'])) {
+            $eventname = $_POST['title'] . $_SESSION['id'];
+            $sessid = $_SESSION['id'];
+            $connection = new PDOConnection;
+            $result = $connection->query("SELECT availability, id FROM items WHERE owner='$sessid' ORDER BY date DESC ")->fetchAll(PDO::FETCH_ASSOC);
+            $expire = $result[0]['availability'];
+            $adid = 'AD'.$result[0]['id'];
+
+            $connection->query("CREATE EVENT IF NOT EXISTS $adid
+ON SCHEDULE AT '2014-04-01 12:29:48'
+DO
+   UPDATE `items` SET isopen=0 WHERE owner='$sessid' AND availability='$expire';"); ///lezárja az aukciót
+        }
     }
 
     private function datagen($f3) {
@@ -160,8 +177,8 @@ Class AdController {
             $f3->set('owner', $row["username"]);
             $f3->set('availability', $row["availability"]);
 
-            $f3->set('price', $row["price"]);
-            $f3->set('price_ty', Values::$PRICE[$row["price ty"]]);
+            $f3->set('price', $row["fixprice"]);
+            $f3->set('price_ty', Values::$PRICE[$row["fixprice ty"]]);
 
             $f3->set('quantity', $row["quantity"]);
             $f3->set('quantity_ty', Values::$QUANTITY[$row["quantity ty"]]);
