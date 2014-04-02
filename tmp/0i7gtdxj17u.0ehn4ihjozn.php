@@ -3,7 +3,15 @@
         <div id="headertext"> 
             <h2><?php echo $title; ?></h2>
             <h5><?php echo $date; ?></h5>
-            <h6>Ár: <?php echo $price; ?> <?php echo $price_ty; ?></h6>
+            <h6>
+                Ár: <?php echo $price; ?> <?php echo $price_ty; ?>
+                <form action="/asapbuy" method="POST">
+                    <input type="hidden" name="price" value="<?php echo $price; ?>">
+                    <input type="hidden" name="adid" value="<?php echo $adid; ?>">
+                    <button type="submit">Leütés</button>
+                </form>
+            </h6>
+
             <h6>Mennyiség: <?php echo $quantity; ?> <?php echo $quantity_ty; ?></h6>
             <h6>Garancia: <?php echo $warranty; ?> <?php echo $warranty_ty; ?></h6>
         </div>
@@ -18,7 +26,7 @@
             <p><?php echo $descr; ?></p>
         </div>
     </div>
-    
+
     <div class="row">
         <h5>Feladás dátuma: <?php echo $date; ?></h5> 
         <h5>Érvényesség: <?php echo $availability; ?></h5> 

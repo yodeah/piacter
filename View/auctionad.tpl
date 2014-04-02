@@ -10,6 +10,9 @@
                 {{ @auctionprice_ty}}
                 <button type="submit">Új ajánlat</button>
             </form>
+            
+            <h5 {{ @ishidden | raw }}>Jelenlegi nyertes: <a {{ @ishidden | raw }} href="/profile/{{ @winner }}">{{ @winner }}</a></h5>
+
 
             <h6>Mennyiség: {{ @quantity}} {{ @quantity_ty}}</h6>
             <h6>Garancia: {{ @warranty}} {{ @warranty_ty}}</h6>

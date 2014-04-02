@@ -3,12 +3,17 @@
         <div id="headertext"> 
             <h2><?php echo $title; ?></h2>
             <h5><?php echo $date; ?></h5>
-<form action="newbid" method="POST">
-    
-            <input type="text" name="nextbid" placeholder="minimum ajánlható összeg <?php echo $placeholder; ?>">
-            <?php echo $auctionprice_ty; ?>
-            <button type="submit">Új ajánlat</button>
-</form>
+
+            <form action="/newbid" method="POST">
+                <input type="number" name="newbid" placeholder="min <?php echo $placeholder; ?>">
+                                <input type="hidden" name="adid" value="<?php echo $adid; ?>">
+                <?php echo $auctionprice_ty; ?>
+                <button type="submit">Új ajánlat</button>
+            </form>
+            
+            <h5 <?php echo $this->raw($ishidden); ?>>Jelenlegi nyertes: <a <?php echo $this->raw($ishidden); ?> href="/profile/<?php echo $winner; ?>"><?php echo $winner; ?></a></h5>
+
+
             <h6>Mennyiség: <?php echo $quantity; ?> <?php echo $quantity_ty; ?></h6>
             <h6>Garancia: <?php echo $warranty; ?> <?php echo $warranty_ty; ?></h6>
         </div>
@@ -23,7 +28,7 @@
             <p><?php echo $descr; ?></p>
         </div>
     </div>
-    
+
     <div class="row">
         <h5>Feladás dátuma: <?php echo $date; ?></h5> 
         <h5>Érvényesség: <?php echo $availability; ?></h5> 

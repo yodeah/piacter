@@ -7,7 +7,7 @@
                 Ár: {{ @price}} {{ @price_ty}}
                 <form action="/asapbuy" method="POST">
                     <input type="hidden" name="price" value="{{ @price}}">
-                                    <input type="hidden" name="adid" value="{{ @adid }}">
+                    <input type="hidden" name="adid" value="{{ @adid}}">
                     <button type="submit">Leütés</button>
                 </form>
             </h6>
@@ -26,7 +26,7 @@
             <p>{{ @descr}}</p>
         </div>
     </div>
-    
+
     <div class="row">
         <h5>Feladás dátuma: {{ @date}}</h5> 
         <h5>Érvényesség: {{ @availability}}</h5> 
