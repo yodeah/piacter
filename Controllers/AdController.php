@@ -176,42 +176,36 @@ DO
             echo 'HIBÁS HIRDETÉS!';
         }
     }
+    
+    private function minimumprice($row){
+        if($row['highestbid']==NULL){
+                    $minimumprice = $row["auctionstart"] + $row["auctionstep"];
+        }else{
+                    $minimumprice = $row["highestbid"] + $row["auctionstep"];
+        }
+        return $minimumprice;
+    }
 
     private function auctionfixpricetmp($f3) {
         $row = $this->specadquery($f3);
-        echo 'bug1';
-        $minimumprice = $row["auctionstart"] + $row["auctionstep"];
         $f3->set('price', $row["fixprice"]);
-        echo 'bug1';
         $f3->set('price_ty', Values::$PRICE[$row["fixprice ty"]]);
-        echo 'bug1';
-        $f3->set('placeholder', $minimumprice);
-        echo 'bug1';
+        $f3->set('placeholder', $this->minimumprice($row));
         $f3->set('auctionprice_ty', Values::$PRICE[$row["auctionprice ty"]]);
-        echo 'bug1';
         echo Template::instance()->render('auctionfixpricead.tpl');
     }
 
     private function auctiontmp($f3) {
         $row = $this->specadquery($f3);
-        echo 'bug2';
-        $minimumprice = $row["auctionstart"] + $row["auctionstep"];
-        echo 'bug2';
-        $f3->set('placeholder', $minimumprice);
-        echo 'bug2';
+        $f3->set('placeholder', $this->minimumprice($row));
         $f3->set('auctionprice_ty', Values::$PRICE[$row["auctionprice ty"]]);
-        echo 'bug2';
         echo Template::instance()->render('auctionad.tpl');
     }
 
     private function fixpricetmp($f3) {
-        echo 'bug3';
         $row = $this->specadquery($f3);
-        echo 'bug3';
         $f3->set('price', $row["fixprice"]);
-        echo 'bug3';
         $f3->set('price_ty', Values::$PRICE[$row["fixprice ty"]]);
-        echo 'bug3';
         echo Template::instance()->render('fixpricead.tpl');
     }
 
@@ -233,6 +227,7 @@ DO
             $f3->set('image', $row["image"]);
             $f3->set('owner', $row["username"]);
             $f3->set('availability', $row["availability"]);
+            $f3->set('adid', $f3->get('PARAMS.adid'));
 
             $f3->set('quantity', $row["quantity"]);
             $f3->set('quantity_ty', Values::$QUANTITY[$row["quantity ty"]]);
