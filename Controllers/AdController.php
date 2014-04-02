@@ -176,28 +176,41 @@ DO
             echo 'HIBÁS HIRDETÉS!';
         }
     }
-    
-    private function minimumprice($row){
-        if($row['highestbid']==NULL){
-                    $minimumprice = $row["auctionstart"] + $row["auctionstep"];
-        }else{
-                    $minimumprice = $row["highestbid"] + $row["auctionstep"];
+
+    public static function minimumprice($row) {
+        if ($row['highestbid'] == NULL) {
+            $minimumprice = $row["auctionstart"] + $row["auctionstep"];
+        } else {
+            $minimumprice = $row["highestbid"] + $row["auctionstep"];
         }
         return $minimumprice;
+    }
+
+    private function highestbidder($row,$f3) {
+        if ($row['highestbid'] == NULL) {
+            $f3->set('ishidden', 'class="hiddenSJ"');
+            $f3->set('winner', NULL);
+        } else {
+            $lastbidder = $row['lastbidderid'];
+            $connection = new PDOConnection;
+            $result = $connection->query("SELECT * FROM users WHERE id=$lastbidder")->fetchAll(PDO::FETCH_ASSOC);
+            $f3->set('ishidden', NULL);
+            $f3->set('winner', $result[0]['username']);
+        }
     }
 
     private function auctionfixpricetmp($f3) {
         $row = $this->specadquery($f3);
         $f3->set('price', $row["fixprice"]);
         $f3->set('price_ty', Values::$PRICE[$row["fixprice ty"]]);
-        $f3->set('placeholder', $this->minimumprice($row));
+        $f3->set('placeholder', self::minimumprice($row));
         $f3->set('auctionprice_ty', Values::$PRICE[$row["auctionprice ty"]]);
         echo Template::instance()->render('auctionfixpricead.tpl');
     }
 
     private function auctiontmp($f3) {
         $row = $this->specadquery($f3);
-        $f3->set('placeholder', $this->minimumprice($row));
+        $f3->set('placeholder', self::minimumprice($row));
         $f3->set('auctionprice_ty', Values::$PRICE[$row["auctionprice ty"]]);
         echo Template::instance()->render('auctionad.tpl');
     }
@@ -234,7 +247,8 @@ DO
 
             $f3->set('warranty', $row["warranty"]);
             $f3->set('warranty_ty', Values::$WARRANTY[$row["warranty ty"]]);
-
+            
+            $this->highestbidder($row, $f3);
             $this->templateselector($f3); //ez fogja a rendelelést befejzni attól függöen hogy milyen tipusú a hirdetés
         } else {
             echo 'ERROR  nem létezik ilyen hirdetés';

@@ -14,11 +14,12 @@
             </h6>
 
             <form action="/newbid" method="POST">
-                <input type="text" name="newbid" placeholder="min {{ @placeholder}}">
+                <input type="number" name="newbid" placeholder="min {{ @placeholder}}">
                 <input type="hidden" name="adid" value="{{ @adid }}">
                 {{ @auctionprice_ty}}
                 <button type="submit">Új ajánlat</button>
             </form>
+            <h5 {{ @ishidden }}>Jelenlegi nyertes: <a {{ @ishidden }} href="/profile/{{ @winner }}">{{ @winner }}</a></h5>
 
             <h6>Mennyiség: {{ @quantity}} {{ @quantity_ty}}</h6>
             <h6>Garancia: {{ @warranty}} {{ @warranty_ty}}</h6>

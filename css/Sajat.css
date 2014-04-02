@@ -237,3 +237,7 @@ messageSJ{
     width:67%;
     margin-left:3%;
 }
+
+.hiddenSJ{
+    display:none;
+}

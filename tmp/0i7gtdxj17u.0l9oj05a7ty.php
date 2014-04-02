@@ -8,15 +8,18 @@
                 Ár: <?php echo $price; ?> <?php echo $price_ty; ?>
                 <form action="/asapbuy" method="POST">
                     <input type="hidden" name="price" value="<?php echo $price; ?>">
+                                    <input type="hidden" name="adid" value="<?php echo $adid; ?>">
                     <button type="submit">Leütés</button>
                 </form>
             </h6>
 
             <form action="/newbid" method="POST">
-                <input type="text" name="newbid" placeholder="min <?php echo $placeholder; ?>">
+                <input type="number" name="newbid" placeholder="min <?php echo $placeholder; ?>">
+                <input type="hidden" name="adid" value="<?php echo $adid; ?>">
                 <?php echo $auctionprice_ty; ?>
                 <button type="submit">Új ajánlat</button>
             </form>
+            <h5 <?php echo $ishidden; ?>>Jelenlegi nyertes: <a <?php echo $ishidden; ?> href="/profile/<?php echo $winner; ?>"><?php echo $winner; ?></a></h5>
 
             <h6>Mennyiség: <?php echo $quantity; ?> <?php echo $quantity_ty; ?></h6>
             <h6>Garancia: <?php echo $warranty; ?> <?php echo $warranty_ty; ?></h6>

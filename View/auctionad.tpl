@@ -5,7 +5,7 @@
             <h5>{{ @date}}</h5>
 
             <form action="/newbid" method="POST">
-                <input type="text" name="newbid" placeholder="min {{ @placeholder}}">
+                <input type="number" name="newbid" placeholder="min {{ @placeholder}}">
                                 <input type="hidden" name="adid" value="{{ @adid }}">
                 {{ @auctionprice_ty}}
                 <button type="submit">Új ajánlat</button>
