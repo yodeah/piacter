@@ -50,16 +50,37 @@ class IndexController {
         }
     }
 
-    function specificUser($f3) {
+    private function isopendatacheck($result,$user1,$user2){
+        foreach($result as $value) {
+            if($value['highestbid']==$user1 || $value['highestbid']==$user2 || $value['boughtfixed']==$user1 || $value['boughtfixed']==$user2){
+                return true;
+            }
+         }
+    }
+
+    private function isopen($data,$user1,$user2){///ezt nem csak az emailhoz lehet használni.
+         $connection = new PDOConnection;
+         $result = $connection->query("SELECT * FROM items WHERE isopen=0, owner=$user1 ,owner=$user2")->fetchAll(PDO::FETCH_ASSOC);
+         if(!isset($_SESSION['id'])){
+             return 'Ezek az adatok csak bejelentkezett felhasználók számára elérhetőek';
+         }elseif(!$this->isopendatacheck($result,$user1,$user2)){
+             return 'Ezek az adatok csak akkor elérhetőek ha már kereskedtetek';
+         }else{
+             return $data;
+         }
+    }
+    
+    public function specificUser($f3) {
         $connection = new PDOConnection;
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         $username = $f3->get('PARAMS.username');
+        ////KELL FELTÉTEL HOGY MENÉZHETI E A PRIVÁT ADATAIT ATTÓL FÜGGŐEN HOGY KEREKEDTEK-E MÁR
         $result = $connection->query("SELECT * FROM users WHERE username = '$username'")->fetchAll(PDO::FETCH_ASSOC);
         if (count($result) > 0) {
             $row = $result[0];
             $f3->set('name', $row['username']);
-            $f3->set('email', $row['email']);
+            $f3->set('email', $this->isopen($row['email'], $_SESSION['id'], $username));
             $f3->set('regdate', $row['regdate']);
             $f3->set('lastlogin', $row['lastlogin']);
 
@@ -77,7 +98,7 @@ class IndexController {
     }
 
     function profile($f3) {
-        if (isset($_SESSION['id'])) {
+        Isloggedin::loggedin();
             $sessid = $_SESSION['id'];
             $connection = new PDOConnection;
             NAVBARController::buttons($f3);
@@ -96,9 +117,6 @@ class IndexController {
             echo Template::instance()->render('profile.tpl');
             echo Template::instance()->render('good2know.tpl');
             echo Template::instance()->render('endofmain.tpl');
-        } else {
-            header('location:/index');
-        }
     }
 
 }

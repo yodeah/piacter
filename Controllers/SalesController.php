@@ -17,7 +17,6 @@ class SalesController {
         }else{
             $newtitle = $result['title'].' (LEZÁRT AUKCIÓ, ELADVA)';
             $connection->query("UPDATE items SET isopen=0, boughtfixed=$sessid, title='$newtitle' WHERE id=$adid");
-            $connection->query("INSERT INTO openpeople (`userid`,`tradedwith`) VALUES ('$sessid','$owner')"); 
                                     header('location:ad/' . $adid);
 
         }
