@@ -1,4 +1,5 @@
 <?php
+
 //BOKODI <3
 class IndexController {
 
@@ -50,26 +51,27 @@ class IndexController {
         }
     }
 
-    private function isopendatacheck($result,$user1,$user2){
-        foreach($result as $value) {
-            if($value['highestbid']==$user1 || $value['highestbid']==$user2 || $value['boughtfixed']==$user1 || $value['boughtfixed']==$user2){
+    private function isopendatacheck($result, $user1, $user2) {
+        foreach ($result as $value) {
+            if ($value['highestbid'] == $user1 || $value['highestbid'] == $user2 || $value['boughtfixed'] == $user1 || $value['boughtfixed'] == $user2) {
                 return true;
             }
-         }
+        }
     }
 
-    private function isopen($data,$user1,$user2){///ezt nem csak az emailhoz lehet használni.
-         $connection = new PDOConnection;
-         $result = $connection->query("SELECT * FROM items WHERE isopen=0, owner=$user1 ,owner=$user2")->fetchAll(PDO::FETCH_ASSOC);
-         if(!isset($_SESSION['id'])){
-             return 'Ezek az adatok csak bejelentkezett felhasználók számára elérhetőek';
-         }elseif(!$this->isopendatacheck($result,$user1,$user2)){
-             return 'Ezek az adatok csak akkor elérhetőek ha már kereskedtetek';
-         }else{
-             return $data;
-         }
+    private function isopen($data, $user1, $user2) {///ezt nem csak az emailhoz lehet használni.
+        $connection = new PDOConnection;
+        $result = $connection->query("SELECT * FROM items WHERE isopen= 0 AND owner = '$user1' OR owner = '$user2'")->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($result);
+        if (!isset($_SESSION['id'])) {
+            return 'Ezek az adatok csak bejelentkezett felhasználók számára elérhetőek';
+        } elseif (!$this->isopendatacheck($result, $user1, $user2)) {
+            return 'Ezek az adatok csak akkor elérhetőek ha már kereskedtetek';
+        } else {
+            return $data;
+        }
     }
-    
+
     public function specificUser($f3) {
         $connection = new PDOConnection;
         NAVBARController::buttons($f3);
@@ -90,7 +92,7 @@ class IndexController {
                 $f3->set('intro', 'nincs beállítva bemutatkozás.');
             }
             echo Template::instance()->render('userprofile.tpl');
-            echo Template::instance()->render('good2know.tpl');
+            // echo Template::instance()->render('good2know.tpl');
         } else {
             echo 'ERROR  nem létezik ilyen felhasználó!';
         }
@@ -99,24 +101,24 @@ class IndexController {
 
     function profile($f3) {
         Isloggedin::loggedin();
-            $sessid = $_SESSION['id'];
-            $connection = new PDOConnection;
-            NAVBARController::buttons($f3);
-            echo Template::instance()->render('main.tpl');
-            $row = $connection->query("SELECT * FROM users WHERE id='$sessid'")->fetch(PDO::FETCH_ASSOC);
-            $f3->set('name', $row['username']);
-            $f3->set('email', $row['email']);
-            $f3->set('regdate', $row['regdate']);
-            $f3->set('lastlogin', $row['lastlogin']);
+        $sessid = $_SESSION['id'];
+        $connection = new PDOConnection;
+        NAVBARController::buttons($f3);
+        echo Template::instance()->render('main.tpl');
+        $row = $connection->query("SELECT * FROM users WHERE id='$sessid'")->fetch(PDO::FETCH_ASSOC);
+        $f3->set('name', $row['username']);
+        $f3->set('email', $row['email']);
+        $f3->set('regdate', $row['regdate']);
+        $f3->set('lastlogin', $row['lastlogin']);
 
-            if (isset($row['intro'])) {
-                $f3->set('intro', $row['intro']);
-            } else {
-                $f3->set('intro', 'nincs beállítva bemutatkozás.');
-            }
-            echo Template::instance()->render('profile.tpl');
-            echo Template::instance()->render('good2know.tpl');
-            echo Template::instance()->render('endofmain.tpl');
+        if (isset($row['intro'])) {
+            $f3->set('intro', $row['intro']);
+        } else {
+            $f3->set('intro', 'nincs beállítva bemutatkozás.');
+        }
+        echo Template::instance()->render('profile.tpl');
+        echo Template::instance()->render('good2know.tpl');
+        echo Template::instance()->render('endofmain.tpl');
     }
 
 }

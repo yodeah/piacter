@@ -19,14 +19,14 @@
                 <?php echo $auctionprice_ty; ?>
                 <button type="submit">Új ajánlat</button>
             </form>
-            <h5 <?php echo $ishidden; ?>>Jelenlegi nyertes: <a <?php echo $ishidden; ?> href="/profile/<?php echo $winner; ?>"><?php echo $winner; ?></a></h5>
+            <h5 <?php echo $this->raw($ishidden); ?>>Jelenlegi nyertes: <a <?php echo $this->raw($ishidden); ?> href="/profile/<?php echo $winner; ?>"><?php echo $winner; ?></a></h5>
 
             <h6>Mennyiség: <?php echo $quantity; ?> <?php echo $quantity_ty; ?></h6>
             <h6>Garancia: <?php echo $warranty; ?> <?php echo $warranty_ty; ?></h6>
         </div>
 
         <div id="headerimg">
-            <img src="/upload/<?php echo $image; ?>" />
+            <img <?php echo $this->raw($ishiddenimg); ?> src="/upload/<?php echo $image; ?>" />
         </div>
     </div>
 

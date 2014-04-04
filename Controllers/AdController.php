@@ -2,7 +2,7 @@
 
 Class AdController {
 
-    private $filename;  ///kigenerált filname  
+    private $filename = NULL;  ///kigenerált filname  
     private static $toCheckConfig = array(
         'description' => array(
             'description'
@@ -44,9 +44,17 @@ Class AdController {
         echo Template::instance()->render('endofmain.tpl');
     }
 
+    private function filenamegen(){
+        if(file_exists($_FILES['file']['tmp_name'])){
+                   $this->filename = preg_replace('/\s+/', '-', $_POST['title']) . $_SESSION['id'] . $_FILES["file"]["name"]; //filename kigenerálás (spacek kiszedése) 
+        }else{
+            $this->filename = NULL;
+        }
+    }
+    
     public function adupload($f3) {
         Isloggedin::loggedin();
-        $this->filename = preg_replace('/\s+/', '-', $_POST['title']) . $_SESSION['id'] . $_FILES["file"]["name"]; //filename kigenerálás (spacek kiszedése)
+        $this->filenamegen();
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         if (UploadPostVariables::testUploadPostVariables(self::$toCheckConfig)) {
@@ -186,7 +194,7 @@ DO
         return $minimumprice;
     }
 
-    private function highestbidder($row,$f3) {
+    private function highestbidder($row, $f3) {
         if ($row['highestbid'] == NULL) {
             $f3->set('ishidden', 'class="hiddenSJ"');
             $f3->set('winner', NULL);
@@ -231,23 +239,32 @@ DO
         return $row = $result[0];
     }
 
+    private function image($f3, $row) {
+        if (isset($row["image"])) {
+            $f3->set('image', $row["image"]);
+            $f3->set('ishiddenimg', '');
+        } else {
+            $f3->set('image', '');
+            $f3->set('ishiddenimg', 'class="hiddenSJ"');
+        }
+    }
+
     private function specificadcontent($f3) {
         $row = $this->specadquery($f3);
         if (count($row) > 0) {
             $f3->set('title', $row["title"]);
             $f3->set('descr', $row["descr"]);
             $f3->set('date', $row["date"]);
-            $f3->set('image', $row["image"]);
             $f3->set('owner', $row["username"]);
             $f3->set('availability', $row["availability"]);
             $f3->set('adid', $f3->get('PARAMS.adid'));
-
             $f3->set('quantity', $row["quantity"]);
             $f3->set('quantity_ty', Values::$QUANTITY[$row["quantity ty"]]);
 
             $f3->set('warranty', $row["warranty"]);
             $f3->set('warranty_ty', Values::$WARRANTY[$row["warranty ty"]]);
-            
+
+            $this->image($f3, $row);
             $this->highestbidder($row, $f3);
             $this->templateselector($f3); //ez fogja a rendelelést befejzni attól függöen hogy milyen tipusú a hirdetés
         } else {
