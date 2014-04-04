@@ -62,7 +62,6 @@ class IndexController {
     private function isopen($data, $user1, $user2) {///ezt nem csak az emailhoz lehet használni.
         $connection = new PDOConnection;
         $result = $connection->query("SELECT * FROM items WHERE isopen= 0 AND owner = '$user1' OR owner = '$user2'")->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($result);
         if (!isset($_SESSION['id'])) {
             return 'Ezek az adatok csak bejelentkezett felhasználók számára elérhetőek';
         } elseif (!$this->isopendatacheck($result, $user1, $user2)) {
@@ -79,10 +78,11 @@ class IndexController {
         $username = $f3->get('PARAMS.username');
         ////KELL FELTÉTEL HOGY MENÉZHETI E A PRIVÁT ADATAIT ATTÓL FÜGGŐEN HOGY KEREKEDTEK-E MÁR
         $result = $connection->query("SELECT * FROM users WHERE username = '$username'")->fetchAll(PDO::FETCH_ASSOC);
+        $userid=$result[0]['id'];
         if (count($result) > 0) {
             $row = $result[0];
             $f3->set('name', $row['username']);
-            $f3->set('email', $this->isopen($row['email'], $_SESSION['id'], $username));
+            $f3->set('email', $this->isopen($row['email'], $_SESSION['id'], $userid));
             $f3->set('regdate', $row['regdate']);
             $f3->set('lastlogin', $row['lastlogin']);
 
