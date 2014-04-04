@@ -26,7 +26,7 @@
         </div>
 
         <div id="headerimg">
-            <img {{ @ishiddenimg | raw }} src="/upload/{{ @image}}" />
+            <img src="/upload/{{ @image}}" />
         </div>
     </div>
 

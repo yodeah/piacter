@@ -242,10 +242,8 @@ DO
     private function image($f3, $row) {
         if (isset($row["image"])) {
             $f3->set('image', $row["image"]);
-            $f3->set('ishiddenimg', '');
         } else {
-            $f3->set('image', '');
-            $f3->set('ishiddenimg', 'class="hiddenSJ"');
+            $f3->set('image', 'noimg.png');
         }
     }
 

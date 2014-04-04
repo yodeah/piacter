@@ -7,6 +7,7 @@ $f3->set('UI','View/');
 $f3->set('DEBUG',3);
 //$f3->set('ESCAPE',FALSE);
 error_reporting(E_ALL);
+//set_time_limit(2);
 
 $f3->route('GET /', 'IndexController->display');
 $f3->route('GET /Register', 'RegisterController->display');
