@@ -44,14 +44,14 @@ Class AdController {
         echo Template::instance()->render('endofmain.tpl');
     }
 
-    private function filenamegen(){
-        if(file_exists($_FILES['file']['tmp_name'])){
-                   $this->filename = preg_replace('/\s+/', '-', $_POST['title']) . $_SESSION['id'] . $_FILES["file"]["name"]; //filename kigenerálás (spacek kiszedése) 
-        }else{
+    private function filenamegen() {
+        if (file_exists($_FILES['file']['tmp_name'])) {
+            $this->filename = preg_replace('/\s+/', '-', $_POST['title']) . $_SESSION['id'] . $_FILES["file"]["name"]; //filename kigenerálás (spacek kiszedése) 
+        } else {
             $this->filename = NULL;
         }
     }
-    
+
     public function adupload($f3) {
         Isloggedin::loggedin();
         $this->filenamegen();
@@ -78,19 +78,17 @@ Class AdController {
     }
 
     private function auctionevent($f3) {
-        if (isset($_POST['auctioncb'])) {
-            $eventname = $_POST['title'] . $_SESSION['id'];
-            $sessid = $_SESSION['id'];
-            $connection = new PDOConnection;
-            $result = $connection->query("SELECT availability, id FROM items WHERE owner='$sessid' ORDER BY date DESC ")->fetchAll(PDO::FETCH_ASSOC);
-            $expire = $result[0]['availability'];
-            $adid = 'AD' . $result[0]['id'];
+        $eventname = $_POST['title'] . $_SESSION['id'];
+        $sessid = $_SESSION['id'];
+        $connection = new PDOConnection;
+        $result = $connection->query("SELECT availability, id FROM items WHERE owner='$sessid' ORDER BY date DESC ")->fetchAll(PDO::FETCH_ASSOC);
+        $expire = $result[0]['availability'];
+        $adid = 'AD' . $result[0]['id'];
 
-            $connection->query("CREATE EVENT IF NOT EXISTS $adid
-ON SCHEDULE AT '2014-04-01 12:29:48'
-DO
-   UPDATE `items` SET isopen=0 WHERE owner='$sessid' AND availability='$expire';"); ///lezárja az aukciót
-        }
+        $connection->query("CREATE EVENT IF NOT EXISTS $adid
+                            ON SCHEDULE AT '$expire'
+                            DO
+                            UPDATE `items` SET isopen=0 WHERE owner='$sessid' AND availability='$expire';"); ///lezárja az aukciót     
     }
 
     private function datagen($f3) {
