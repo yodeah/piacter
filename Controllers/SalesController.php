@@ -16,7 +16,7 @@ class SalesController {
             return;
         }else{
             $newtitle = $result['title'].' (LEZÁRT AUKCIÓ, ELADVA)';
-            $connection->query("UPDATE items SET isopen=0, boughtfixed=$sessid, title='$newtitle' WHERE id=$adid");
+            $connection->query("UPDATE items SET isopen=0, sentmessage=1,boughtfixed=$sessid, title='$newtitle' WHERE id=$adid");
             $this->sendmessagesell($owner, $adid);
             $this->sendmessagebuy($_SESSION['id'], $adid);
             header('location:ad/' . $adid);
