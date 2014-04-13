@@ -6,7 +6,7 @@
 </head>
 <body>
 <include href="navbar.tpl" />
-<div class="wrapperSJ" id="content">
+<div class="container" id="content">
     <div class="row">
         <!-- END OD MAIN TPL -->
 
