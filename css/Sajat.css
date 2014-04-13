@@ -241,3 +241,7 @@ messageSJ{
 .hiddenSJ{
     display:none;
 }
+
+.bannerSJ { position: relative; overflow: auto; }
+.bannerSJ li { list-style: none; }
+.bannerSJ ul li { float: left; }

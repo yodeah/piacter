@@ -6,6 +6,7 @@ class IndexController {
     function display($f3) {
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
+        echo Template::instance()->render('slider.tpl');
         $this->indexContent($f3, 2);
         echo Template::instance()->render('endofmain.tpl');
     }
