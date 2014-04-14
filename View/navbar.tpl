@@ -39,7 +39,7 @@
                         <a class="navbar-brand" href="/index" title="Home">
                             <h1><span>Piac</span>tér<span>.</span></h1>
                         </a>
-                        <div class="slogan">blabla bla</div>
+                        <div class="slogan">Magyarország legnagyobb aukciósháza.</div>
                     </div>
 
                     <!--header rightside-->
