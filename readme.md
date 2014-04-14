@@ -12,4 +12,4 @@ Feltöltött hirdetés
 
 Hirdetésfeltöltés
 
-![ScreenShot](https://github.com/yodeah/piacter/blob/master/zDokument%C3%A1ci%C3%B3/hirdet%C3%A9sfelt%C3%B6lt%C3%A9s.png)
+![ScreenShot](https://raw.githubusercontent.com/yodeah/piacter/master/zDokument%C3%A1ci%C3%B3/hirdet%C3%A9sfelt%C3%B6lt%C3%A9s.png)
