@@ -1,4 +1,5 @@
 <?php
+
 class SigninController {
 
     function display($f3) {
@@ -13,7 +14,9 @@ class SigninController {
     }
 
     function logout() {
-        session_destroy();
+        if (isset($_SESSION['id'])) {
+            session_destroy();
+        }
         header('Location: index');
     }
 

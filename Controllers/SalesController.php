@@ -17,8 +17,9 @@ class SalesController {
         }else{
             $newtitle = $result['title'].' (LEZÁRT AUKCIÓ, ELADVA)';
             $connection->query("UPDATE items SET isopen=0, sentmessage=1,boughtfixed=$sessid, title='$newtitle' WHERE id=$adid");
-            $this->sendmessagesell($owner, $adid);
-            $this->sendmessagebuy($_SESSION['id'], $adid);
+            $this->sendmessage($owner, $adid,'Sikeres sikeresen eladtad az '.$adid.'számú aukciódat!','Sikeres eladás!  Értékeld az adásvételt(itt)!');
+            $this->sendmessage($_SESSION['id'], $adid,'Sikeres vásárlás, megnézheted az eladó privátadatait, a profilján! Értékeld az adásvételt(itt)!','Sikeres vásárlás!');
+            RateController::newrate($owner,$_SESSION['id'],$adid);
             header('location:ad/' . $adid);
 
         }
@@ -51,22 +52,8 @@ class SalesController {
         }
     }
     
-    private function sendmessagesell($user,$auctionid){
-        $connection = new PDOConnection;
-        $sql = "INSERT INTO messages (toid,fromid,title,message,sent,seen)
-		VALUES(:toid,:fromid,:title,:message,:sent,:seen)";
-        $q = $connection->prepare($sql);
-        $q->execute(array(
-            ':toid' => $user,
-            ':fromid' => 1,
-            ':title' => 'Sikeres eladás!',
-            ':message' => 'Sikeres sikeresen eladtad az '.$auctionid.'számú aukciódat!',
-            ':sent' => date("Y-m-d H:i:s"),
-            ':seen' => 0
-            ));
-    }
     
-        private function sendmessagebuy($user,$auctionid){
+        private function sendmessage($user,$auctionid,$message,$messagetitle){
         $connection = new PDOConnection;
         $sql = "INSERT INTO messages (toid,fromid,title,message,sent,seen)
 		VALUES(:toid,:fromid,:title,:message,:sent,:seen)";
@@ -74,8 +61,8 @@ class SalesController {
         $q->execute(array(
             ':toid' => $user,
             ':fromid' => 1,
-            ':title' => 'Sikeres vásárlás!',
-            ':message' => 'Sikeres vásárlás, megnézheted az eladó privátadat, a profilján!',
+            ':title' => $messagetitle,
+            ':message' => $message,
             ':sent' => date("Y-m-d H:i:s"),
             ':seen' => 0
             ));
