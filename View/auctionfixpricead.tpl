@@ -38,7 +38,7 @@
 
     <div class="row">
         <h5>Feladás dátuma: {{ @date}}</h5> 
-        <h5>Érvényesség: {{ @availability}}</h5> 
+        <h4>Érvényesség: {{ @availability}}</h4> 
         <h5>Hirdető: <a href="/profile/{{ @owner}}">{{ @owner}}</a></h5>
     </div>
 </div>

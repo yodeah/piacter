@@ -8,20 +8,19 @@ class SalesController {
         $adid = $f3->get('POST.adid');
         $result = $connection->query("SELECT * FROM items WHERE id='$adid'")->fetchAll(PDO::FETCH_ASSOC);
         $result = $result[0];
-        $sessid=$_SESSION['id'];
+        $sessid = $_SESSION['id'];
         $owner = $result['owner'];
         if ($result['isopen'] == 0) {
             //echo 'lezárt hirdetés?';
             header('location:ad/' . $adid);
             return;
-        }else{
-            $newtitle = $result['title'].' (LEZÁRT AUKCIÓ, ELADVA)';
+        } else {
+            $newtitle = $result['title'] . ' (LEZÁRT AUKCIÓ, ELADVA)';
             $connection->query("UPDATE items SET isopen=0, sentmessage=1,boughtfixed=$sessid, title='$newtitle' WHERE id=$adid");
-            $this->sendmessage($owner, $adid,'Sikeres sikeresen eladtad az '.$adid.'számú aukciódat!','Sikeres eladás!  Értékeld az adásvételt(itt)!');
-            $this->sendmessage($_SESSION['id'], $adid,'Sikeres vásárlás, megnézheted az eladó privátadatait, a profilján! Értékeld az adásvételt(itt)!','Sikeres vásárlás!');
-            RateController::newrate($owner,$_SESSION['id'],$adid);
+            self::sendmessage($owner, $adid, 'Sikeres sikeresen eladtad az ' . $adid . 'számú aukciódat!', 'Sikeres eladás!  Értékeld az adásvételt(itt)!');
+            self::sendmessage($_SESSION['id'], $adid, 'Sikeres vásárlás, megnézheted az eladó privátadatait, a profilján! Értékeld az adásvételt(itt)!', 'Sikeres vásárlás!');
+            RateController::newrate($owner, $_SESSION['id'], $adid);
             header('location:ad/' . $adid);
-
         }
     }
 
@@ -51,9 +50,8 @@ class SalesController {
             header('location:ad/' . $adid);
         }
     }
-    
-    
-        private function sendmessage($user,$auctionid,$message,$messagetitle){
+
+    public static function sendmessage($user, $auctionid, $message, $messagetitle) {
         $connection = new PDOConnection;
         $sql = "INSERT INTO messages (toid,fromid,title,message,sent,seen)
 		VALUES(:toid,:fromid,:title,:message,:sent,:seen)";
@@ -65,10 +63,10 @@ class SalesController {
             ':message' => $message,
             ':sent' => date("Y-m-d H:i:s"),
             ':seen' => 0
-            ));
+        ));
     }
-    
-        private function success($f3) {
+
+    private function success($f3) {
         $connection = new PDOConnection;
         $touser = $f3->get('POST.touser');
         $result = $connection->query("SELECT * FROM users WHERE username='$touser'")->fetchAll(PDO::FETCH_ASSOC);
@@ -89,7 +87,7 @@ class SalesController {
             ':message' => $_POST['message'],
             ':sent' => date("Y-m-d H:i:s"),
             ':seen' => 0
-            ));
+        ));
 
         echo 'Üzenete sikeresen továbbítva';
     }
