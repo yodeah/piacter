@@ -7,7 +7,7 @@ class IndexController {
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         echo Template::instance()->render('slider.tpl');
-        $this->indexContent($f3, 2);
+        $this->indexContent($f3, 4);
         echo Template::instance()->render('endofmain.tpl');
     }
 
@@ -28,7 +28,8 @@ class IndexController {
                 echo'<div class="col-md-3">';
             }
             $f3->set('title', $row["title"]);
-            $f3->set('text', $row["text"]);
+            $message = (strlen($row["text"]) > 100) ? substr($row["text"], 0, 100) . "...  "  : $row["text"];
+            $f3->set('text', $message);
             $f3->set('img', $row["img"]);
             $f3->set('user', $row["user"]);
             $f3->set('date', $row["date"]);

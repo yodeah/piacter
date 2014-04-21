@@ -137,7 +137,7 @@ Class AdController {
         NAVBARController::buttons($f3);
         $connection = new PDOConnection;
         echo Template::instance()->render('main.tpl');
-        $result = $connection->query("SELECT * FROM items WHERE owner='$sessionid'");
+        $result = $connection->query("SELECT * FROM items WHERE owner='$sessionid' ORDER BY date DESC");
         if ($result) {
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 if ($row['seen'] == 1) {
