@@ -161,6 +161,7 @@ Class AdController {
         self::seenad($f3->get('PARAMS.adid'));
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
+        RateController::raterbuttons($f3->get('PARAMS.adid'), $f3);
         $this->specificadcontent($f3);
         echo Template::instance()->render('good2know.tpl');
         echo Template::instance()->render('similar-ad.tpl');

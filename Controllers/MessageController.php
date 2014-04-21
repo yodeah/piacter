@@ -63,7 +63,7 @@ Class MessageController {
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         $result = $connection->query("SELECT * FROM users 
-                INNER JOIN messages ON users.id=messages.toid WHERE users.id = '$sessid'")->fetchAll(PDO::FETCH_ASSOC);
+                INNER JOIN messages ON users.id=messages.toid WHERE users.id = '$sessid' ORDER BY sent DESC;")->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             if($row['seen']==0){
                 $title = $row["title"].' (!)';

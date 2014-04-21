@@ -36,6 +36,8 @@ $f3->route('POST /Asapbuy','SalesController->asapbuy');
 $f3->route('POST /Newbid','SalesController->newbid');
 $f3->route('GET /Cron1','CronController->cron1');
 $f3->route('GET /Rate/@rateid','RateController->ratesite');
+$f3->route('GET /Succesfullrate','RateController->ratesuccess');
+$f3->route('POST /Ratecheck','RateController->ratecheck');
 
 $f3->route('GET|HEAD|POST /index', function($f3) {
     $f3->reroute('/');

@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    <h5>Részletek</h5>
+    <h5>Mennyiség</h5>
 
     <div class="form-group">
         <div class="row">
@@ -95,6 +95,7 @@
             </select>
         </div>
     </div>
+        <h5>Garancia időtartama</h5>
 
     <div class="form-group">
         <div class="row">
@@ -107,6 +108,7 @@
             <input class="quantity70 form-control" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" name="warranty" id="title" placeholder="Garancia időtartalma">
         </div>
     </div>
+                <h5>Hirdetés időtartama</h5>
     <div class="form-group">
         <div class="row">
             <label class="sr-only" for="title">Lejárat</label>

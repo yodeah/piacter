@@ -245,3 +245,7 @@ messageSJ{
 .bannerSJ { position: relative; overflow: auto; }
 .bannerSJ li { list-style: none; }
 .bannerSJ ul li { float: left; }
+
+.rateradio{
+    margin-left: 25px !important;
+}

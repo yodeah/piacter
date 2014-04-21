@@ -79,14 +79,14 @@ class IndexController {
         $username = $f3->get('PARAMS.username');
         ////KELL FELTÉTEL HOGY MENÉZHETI E A PRIVÁT ADATAIT ATTÓL FÜGGŐEN HOGY KEREKEDTEK-E MÁR
         $result = $connection->query("SELECT * FROM users WHERE username = '$username'")->fetchAll(PDO::FETCH_ASSOC);
-        $userid=$result[0]['id'];
+        $userid = $result[0]['id'];
         if (count($result) > 0) {
             $row = $result[0];
             $f3->set('name', $row['username']);
             $f3->set('email', $this->isopen($row['email'], $_SESSION['id'], $userid));
             $f3->set('regdate', $row['regdate']);
             $f3->set('lastlogin', $row['lastlogin']);
-
+            UserController::calculaterates($f3, $userid);
             if (isset($row['intro'])) {
                 $f3->set('intro', $row['intro']);
             } else {
@@ -111,14 +111,13 @@ class IndexController {
         $f3->set('email', $row['email']);
         $f3->set('regdate', $row['regdate']);
         $f3->set('lastlogin', $row['lastlogin']);
-
+        UserController::calculaterates($f3, $_SESSION['id']);
         if (isset($row['intro'])) {
             $f3->set('intro', $row['intro']);
         } else {
             $f3->set('intro', 'nincs beállítva bemutatkozás.');
         }
         echo Template::instance()->render('profile.tpl');
-        echo Template::instance()->render('good2know.tpl');
         echo Template::instance()->render('endofmain.tpl');
     }
 
