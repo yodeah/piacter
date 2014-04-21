@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50611
 File Encoding         : 65001
 
-Date: 2014-04-15 10:28:58
+Date: 2014-04-21 23:51:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `comments` (
   `reply` int(11) DEFAULT NULL,
   `datee` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comments
@@ -62,6 +62,10 @@ INSERT INTO `comments` VALUES ('27', '79', 'comment ujratest', '76', '0', '2014-
 INSERT INTO `comments` VALUES ('28', '79', 'huuhhhha', '72', '27', '2014-04-04 11:20:25');
 INSERT INTO `comments` VALUES ('29', '89', 'Up! kerÃ©kszett kÃ¼lÃ¶n eladÃ³?', '76', '0', '2014-04-14 10:58:25');
 INSERT INTO `comments` VALUES ('31', '89', 'nem kÃ¶szi!', '76', '29', '2014-04-14 11:02:31');
+INSERT INTO `comments` VALUES ('32', '92', 'TESZTKOMMENT', '76', '0', '2014-04-21 20:45:39');
+INSERT INTO `comments` VALUES ('33', '92', 'vÃ¡lasz', '72', '32', '2014-04-21 20:46:20');
+INSERT INTO `comments` VALUES ('34', '92', 'hahÃ³', '76', '33', '2014-04-21 21:07:39');
+INSERT INTO `comments` VALUES ('35', '93', 'blabla', '76', '0', '2014-04-21 21:13:56');
 
 -- ----------------------------
 -- Table structure for `eventtest`
@@ -107,22 +111,17 @@ CREATE TABLE `items` (
   `boughtfixed` tinyint(4) DEFAULT NULL,
   `sentmessage` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of items
 -- ----------------------------
-INSERT INTO `items` VALUES ('79', '72', 'asdfasdf (LEZÃRT AUKCIÃ“, ELADVA)', 'sdfasdfasdfasdf', '', '0', null, '2014-04-04 10:35:47', '2', '0', '222', '0', '2', '0', '2016-04-04 10:35:47', '1', null, null, null, null, null, '0', '76', '0');
-INSERT INTO `items` VALUES ('80', '76', 'aukciÃ³', 'aukciÃ³aukciÃ³aukciÃ³aukciÃ³', '', '0', null, '2014-04-04 12:02:48', '1', '0', null, null, '1', '0', '2015-04-04 12:02:48', '1', '100', '1000', '0', null, null, '1', null, '0');
-INSERT INTO `items` VALUES ('81', '76', 'tttttt', 'tttttttttt', '', '0', null, '2014-04-04 12:05:14', '100', '0', null, null, '1', '0', '2015-04-04 12:05:14', '1', '100', '1010', '0', null, null, '1', null, '0');
-INSERT INTO `items` VALUES ('82', '76', 'Ãšj hirdetÃ©s', 'Ãšj hirdetÃ©sÃšj hirdetÃ©sÃšj hirdetÃ©s', '', '0', null, '2014-04-04 12:06:11', '1', '0', null, null, '1', '0', '2015-04-04 12:06:11', '1', '100', '1000', '0', null, null, '1', null, '0');
-INSERT INTO `items` VALUES ('83', '76', 'j hirdetÃ©s  LeÃ­rÃ¡s', 'j hirdetÃ©s\r\n\r\nLeÃ­rÃ¡sj hirdetÃ©s\r\n\r\nLeÃ­rÃ¡s', '', '0', null, '2014-04-04 12:07:42', '1', '0', null, null, '1', '0', '2015-04-04 12:07:42', '1', '100', '1000', '0', null, null, '0', null, '0');
-INSERT INTO `items` VALUES ('84', '76', 'sadfasdfa', 'sdfasdfasdfasdfasdf', '', '0', null, '2014-04-04 12:09:15', '1', '0', null, null, '1', '0', '2015-04-04 12:09:15', '1', '10', '1000', '0', null, null, '1', null, '0');
-INSERT INTO `items` VALUES ('85', '76', 'sadfasdfa', 'sdfasdfasdfasdfasdf', '', '0', null, '2014-04-04 12:11:08', '1', '0', null, null, '1', '0', '2015-04-04 12:11:08', '1', '10', '1000', '0', null, null, '1', null, '0');
-INSERT INTO `items` VALUES ('86', '76', 'sadfasdfa', 'sdfasdfasdfasdfasdf', '', '0', null, '2014-04-04 12:11:27', '1', '0', null, null, '1', '0', '2015-04-04 12:11:27', '1', '10', '1000', '0', null, null, '1', null, '0');
-INSERT INTO `items` VALUES ('87', '76', 'sadfasdfa', 'sdfasdfasdfasdfasdf', '', '0', null, '2014-04-04 12:12:11', '1', '0', null, null, '1', '0', '2015-04-04 12:12:11', '1', '10', '1000', '0', null, null, '1', null, '0');
-INSERT INTO `items` VALUES ('88', '76', 'fixxxA    (LEZÃRT AUKCIÃ“, ELADVA)', 'fixxxAfixxxAfixxxA', '', '0', null, '2014-04-04 12:14:36', '1', '0', '10000', '0', '1', '0', '2015-04-04 12:14:36', '1', null, null, null, null, null, '0', '72', '0');
-INSERT INTO `items` VALUES ('89', '76', 'Cinelli Willin', '2010-es Full carbon vÃ¡z, Cinelli stucni kormÃ¡ny, nyeregcsÅ‘. Shimano 105-Ã¶s szett, Mavic kerekek, Schwalbe ultremo kÃ¼lsÅ‘k. Selle Italia SLR carbon nyereg.\r\n\r\nKihasznÃ¡latlansÃ¡g miatt szeretnÃ©m eladni.\r\nTovÃ¡bbi paramÃ©terek	\r\nMÃ¡rka / gyÃ¡rtÃ³: Italia\r\nTÃ­pus / modell: Cinelli\r\nGyÃ¡rtÃ¡si Ã©v: 2010\r\nTÃ¶meg (gramm): 7500\r\nVÃ¡zmÃ©ret: 58\r\n\r\n', '', '9', 'Cinelli-Willin76Cinelli_Willin_orszaguti_kerekpar_elado_3837909923.jpg', '2014-04-14 10:57:11', '1', '0', '32767', '0', '6', '1', '2015-04-14 10:57:12', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('89', '76', 'Cinelli Willin  (LEZÃRT AUKCIÃ“, ELADVA)', '2010-es Full carbon vÃ¡z, Cinelli stucni kormÃ¡ny, nyeregcsÅ‘. Shimano 105-Ã¶s szett, Mavic kerekek, Schwalbe ultremo kÃ¼lsÅ‘k. Selle Italia SLR carbon nyereg.\r\n\r\nKihasznÃ¡latlansÃ¡g miatt szeretnÃ©m eladni.\r\nTovÃ¡bbi paramÃ©terek	\r\nMÃ¡rka / gyÃ¡rtÃ³: Italia\r\nTÃ­pus / modell: Cinelli\r\nGyÃ¡rtÃ¡si Ã©v: 2010\r\nTÃ¶meg (gramm): 7500\r\nVÃ¡zmÃ©ret: 58\r\n\r\n', '', '9', 'Cinelli-Willin76Cinelli_Willin_orszaguti_kerekpar_elado_3837909923.jpg', '2014-04-14 10:57:11', '1', '0', '32767', '0', '6', '1', '2015-04-14 10:57:12', '1', null, null, null, null, null, '0', '76', '1');
+INSERT INTO `items` VALUES ('90', '76', 'TESZTRATE', 'TESZTRATETESZTRATETESZTRATETESZTRATETESZTRATETESZTRATE', '', '0', 'TESZTRATE76ISTVÃN.jpg', '2014-04-19 18:33:55', '1', '0', '32767', '0', '1', '0', '2034-04-19 18:33:55', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('91', '76', 'keptest (LEZÃRT AUKCIÃ“, ELADVA)', 'keptestkeptest', '', '0', 'keptest763.3.jpg', '2014-04-19 18:35:21', '1', '0', '2000', '0', '1', '0', '2015-04-19 18:35:21', '1', null, null, null, null, null, '0', '72', '1');
+INSERT INTO `items` VALUES ('92', '76', 'NAGYTESZT (LEZÃRT AUKCIÃ“, ELADVA)', 'szÃ¶veg', '', '0', 'NAGYTESZT76z.jpg', '2014-04-21 20:45:22', '1', '0', '1000', '0', '1', '0', '2015-04-21 20:45:22', '1', null, null, null, null, null, '0', '72', '1');
+INSERT INTO `items` VALUES ('93', '76', 'Uj czucc (LEZÃRT AUKCIÃ“, ELADVA)', 'valamiblabala', '', '9', 'Uj-czucc76z.jpg', '2014-04-21 21:10:14', '10', '1', '32767', '1', '1', '2', '2014-05-01 21:10:14', '1', '300', '110', '0', '72', '500', '0', '72', '1');
+INSERT INTO `items` VALUES ('94', '76', 'szar nev (LEZÁRT AUKCIÓ, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA)', 'CRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTEST', '', '0', null, '2014-04-21 22:18:52', '1', '0', '1000', '0', '1', '0', '2014-04-22 22:18:52', '1', '10000', '100', '0', '72', '32767', '0', null, '0');
 
 -- ----------------------------
 -- Table structure for `linkdb`
@@ -2154,7 +2153,7 @@ CREATE TABLE `messages` (
   `sent` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `seen` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of messages
@@ -2172,8 +2171,27 @@ INSERT INTO `messages` VALUES ('10', '72', '72', 'sdfsdfsd', 'fsdfsdfsdfsdfsdfsf
 INSERT INTO `messages` VALUES ('11', '0', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s', 'Sikeresen megnyerted/vetted a <a href=\"/ad/88\"><h3>aukciÃ³</h3></a> t', '2014-04-04 12:36:41', '0');
 INSERT INTO `messages` VALUES ('12', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s', 'Sikeresen megnyerted/vetted a <a href=\"/ad/88\"><h3>aukciÃ³</h3></a> t', '2014-04-04 12:40:31', '1');
 INSERT INTO `messages` VALUES ('13', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', '2014-04-04 12:42:04', '1');
-INSERT INTO `messages` VALUES ('14', '76', '1', 'Sikeres eladÃ¡s!', 'Sikeres sikeresen eladtad az 88szÃ¡mÃº aukciÃ³dat!', '2014-04-04 12:46:01', '0');
+INSERT INTO `messages` VALUES ('14', '76', '1', 'Sikeres eladÃ¡s!', 'Sikeres sikeresen eladtad az 88szÃ¡mÃº aukciÃ³dat!', '2014-04-19 17:44:47', '1');
 INSERT INTO `messages` VALUES ('15', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadat, a profiljÃ¡n!', '2014-04-04 12:46:01', '0');
+INSERT INTO `messages` VALUES ('16', '76', '1', 'Sikeres eladÃ¡s!', 'Sikeres sikeresen eladtad az 89szÃ¡mÃº aukciÃ³dat!', '2014-04-15 12:32:13', '0');
+INSERT INTO `messages` VALUES ('17', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadat, a profiljÃ¡n!', '2014-04-15 12:35:14', '1');
+INSERT INTO `messages` VALUES ('18', '76', '1', 'Sikeres eladÃ¡s!', 'Sikeres sikeresen eladtad az 89szÃ¡mÃº aukciÃ³dat!', '2014-04-15 12:34:59', '0');
+INSERT INTO `messages` VALUES ('19', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadat, a profiljÃ¡n!', '2014-04-15 12:34:59', '0');
+INSERT INTO `messages` VALUES ('20', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 91szÃ¡mÃº aukciÃ³dat!', '2014-04-19 18:41:01', '0');
+INSERT INTO `messages` VALUES ('21', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-19 18:44:07', '1');
+INSERT INTO `messages` VALUES ('22', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 89szÃ¡mÃº aukciÃ³dat!', '2014-04-21 20:44:44', '0');
+INSERT INTO `messages` VALUES ('23', '76', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-21 20:44:45', '0');
+INSERT INTO `messages` VALUES ('24', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 92szÃ¡mÃº aukciÃ³dat!', '2014-04-21 21:07:12', '1');
+INSERT INTO `messages` VALUES ('25', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-21 20:46:41', '0');
+INSERT INTO `messages` VALUES ('26', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 93szÃ¡mÃº aukciÃ³dat!', '2014-04-21 21:16:36', '1');
+INSERT INTO `messages` VALUES ('27', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-21 21:15:20', '0');
+INSERT INTO `messages` VALUES ('28', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-21 23:44:35', '0');
+INSERT INTO `messages` VALUES ('29', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-21 23:46:00', '0');
+INSERT INTO `messages` VALUES ('30', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-21 23:46:16', '0');
+INSERT INTO `messages` VALUES ('31', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-21 23:47:03', '0');
+INSERT INTO `messages` VALUES ('32', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-21 23:47:03', '0');
+INSERT INTO `messages` VALUES ('33', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-21 23:47:38', '0');
+INSERT INTO `messages` VALUES ('34', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-21 23:47:38', '0');
 
 -- ----------------------------
 -- Table structure for `messages2`
@@ -2242,6 +2260,42 @@ INSERT INTO `posts` VALUES ('38', 'termÃ©kleÃ­rÃ¡s...datetestttttt\r\n    
 INSERT INTO `posts` VALUES ('39', 'termÃ©kleÃ­rÃ¡s...datetestttttt\r\n                        ', 'foszfleped.jpg', '2013-11-08 19:28:29', 'hirdetÃ©s cÃ­me asdasd', 'NEANDRW');
 
 -- ----------------------------
+-- Table structure for `unrated`
+-- ----------------------------
+DROP TABLE IF EXISTS `unrated`;
+CREATE TABLE `unrated` (
+  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `ownerid` tinyint(4) DEFAULT NULL,
+  `customerid` tinyint(4) DEFAULT NULL,
+  `itemid` tinyint(4) DEFAULT NULL,
+  `ownersrate` tinyint(4) DEFAULT '0' COMMENT '0 ha 0 ember ratert 1 ha eggy és utána delete',
+  `customersrate` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of unrated
+-- ----------------------------
+INSERT INTO `unrated` VALUES ('1', '76', '72', '89', '1', '3');
+INSERT INTO `unrated` VALUES ('2', '76', '72', '91', '4', '2');
+INSERT INTO `unrated` VALUES ('4', '76', '72', '92', '5', '5');
+INSERT INTO `unrated` VALUES ('5', '76', '72', '93', '0', '5');
+INSERT INTO `unrated` VALUES ('6', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('7', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('8', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('9', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('10', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('11', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('12', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('13', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('14', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('15', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('16', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('17', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('18', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('19', '76', '72', '94', '0', null);
+
+-- ----------------------------
 -- Table structure for `users`
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
@@ -2267,11 +2321,11 @@ INSERT INTO `users` VALUES ('68', 'grapefruit', '651b72f400464afe086a5e5ef60b812
 INSERT INTO `users` VALUES ('69', 'ogreorange', '85cec79d5bd161e47981947f08b51fe1', 'ogreorange@orange.hu', null, null);
 INSERT INTO `users` VALUES ('70', 'swagjolo', '945be150bcff052ba06cff6aa8b87d32', 'swagjolo@swagg.li', null, null);
 INSERT INTO `users` VALUES ('71', 'nagyistvas', '1e81e4e58b873d8e4e60c8a1ccceffc7', 'nagyistvas@stewie.com', null, null);
-INSERT INTO `users` VALUES ('72', 'darthbane', '8941d2e7ee4569aea3f3e2658a251e50', 'darthbane@darthbane.hu', null, '2014-04-04 12:35:53');
+INSERT INTO `users` VALUES ('72', 'darthbane', '8941d2e7ee4569aea3f3e2658a251e50', 'darthbane@darthbane.hu', null, '2014-04-21 22:19:12');
 INSERT INTO `users` VALUES ('73', 'newuser1', 'bddff65e4a2aafd9f432e097e25f9bdd', 'newuser1@newuser.com', '2014-03-18 10:56:48', '2014-03-20 22:27:32');
 INSERT INTO `users` VALUES ('74', 'test2222', 'fda11200c7593928c946fac203619c69', 'test2222@gmail.com', '2014-03-18 12:15:20', '2014-03-18 13:02:05');
 INSERT INTO `users` VALUES ('75', 'Apa3456', '9c7801a346a71781fe7c5df7dfb30233', 'apa@gmail.com', '2014-03-23 16:24:04', '2014-03-23 16:25:50');
-INSERT INTO `users` VALUES ('76', 'Andrew', '606f6b980d216b5948b0194601a7c3a6', 'andras2@citromail.hu', '2014-03-26 09:26:13', '2014-04-14 10:34:46');
+INSERT INTO `users` VALUES ('76', 'Andrew', '606f6b980d216b5948b0194601a7c3a6', 'andras2@citromail.hu', '2014-03-26 09:26:13', '2014-04-21 21:16:27');
 
 -- ----------------------------
 -- Event structure for `AD70`
@@ -2306,6 +2360,51 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD89`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD89` ON SCHEDULE AT '2015-04-14 10:57:12' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-14 10:57:12'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD90`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD90`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD90` ON SCHEDULE AT '2034-04-19 18:33:55' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2034-04-19 18:33:55'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD91`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD91`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD91` ON SCHEDULE AT '2015-04-19 18:35:21' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-19 18:35:21'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD92`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD92`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD92` ON SCHEDULE AT '2015-04-21 20:45:22' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-21 20:45:22'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD93`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD93`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD93` ON SCHEDULE AT '2014-05-01 21:10:14' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2014-05-01 21:10:14'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD94`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD94`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD94` ON SCHEDULE AT '2014-04-22 22:18:52' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2014-04-22 22:18:52'
 ;;
 DELIMITER ;
 
