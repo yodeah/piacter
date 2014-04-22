@@ -164,7 +164,7 @@ Class AdController {
         RateController::raterbuttons($f3->get('PARAMS.adid'), $f3);
         $this->specificadcontent($f3);
         echo Template::instance()->render('good2know.tpl');
-        echo Template::instance()->render('similar-ad.tpl');
+        //echo Template::instance()->render('similar-ad.tpl');
         CommentController::comments($f3, $f3->get('PARAMS.adid'));
         echo Template::instance()->render('endofmain.tpl');
     }
