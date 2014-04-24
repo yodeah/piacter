@@ -50,7 +50,7 @@
                             <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a> </div>
                     </div>
                 </div>
-                <div id="header-hidden-link"> <a href="#" title="Click me you'll get a surprise" class="show-hide" data-toggle="show-hide" data-target=".header-hidden"><i></i>Open</a> </div>
+                <!--<div id="header-hidden-link"> <a href="#" title="Click me you'll get a surprise" class="show-hide" data-toggle="show-hide" data-target=".header-hidden"><i></i>Open</a> </div>-->
             </div>
         </div>
 

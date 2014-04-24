@@ -3,7 +3,7 @@
 <!--JSJSJS-->
 <link href="/css/lightbox.css" rel="stylesheet" />
 <script src="/js/jquery-1.11.0.js"></script>
-<script src="/js/lightbox-2.6.min.js"></script>
+<script src="/js/lightbox.js"></script>
 
 <!-- Bootstrap CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet">

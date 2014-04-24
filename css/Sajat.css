@@ -249,3 +249,20 @@ messageSJ{
 .rateradio{
     margin-left: 25px !important;
 }
+
+.imgthumbnail {
+margin-right: auto;
+margin-left: auto;
+border: 0;
+display: block;
+height: auto;
+max-width: 100%;
+vertical-align: middle;
+}
+
+.blackh3{
+  color: #333;
+}
+.blackh3:hover{
+  color: #333;
+}
