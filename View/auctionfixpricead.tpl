@@ -8,7 +8,7 @@
                 Ár: {{ @price}} {{ @price_ty}}
                 <form action="/asapbuy" method="POST">
                     <input type="hidden" name="price" value="{{ @price}}">
-                                    <input type="hidden" name="adid" value="{{ @adid }}">
+                    <input type="hidden" name="adid" value="{{ @adid }}">
                     <button type="submit">Leütés</button>
                 </form>
             </h6>
@@ -23,10 +23,12 @@
 
             <h6>Mennyiség: {{ @quantity}} {{ @quantity_ty}}</h6>
             <h6>Garancia: {{ @warranty}} {{ @warranty_ty}}</h6>
+            <h6>Állapot: {{ @state }}</h6>
         </div>
 
         <div id="headerimg">
-            <img src="/upload/{{ @image}}" />
+            <a href="/upload/{{ @image }}" data-lightbox="{{ @title }}" data-title="{{ @title }}">
+                <img class="imgthumbnail" src="/upload/{{ @image }}" ></a>
         </div>
     </div>
 
@@ -37,7 +39,8 @@
     </div>
 
     <div class="row">
-        <h5>Feladás dátuma: {{ @date}}</h5> 
+        <h4>Árú helye: {{ @region}}</h4> 
+        <p><small>Feladás dátuma: {{ @date}}</small></p> 
         <h4>Érvényesség: {{ @availability}}</h4> 
         <h5>Hirdető: <a href="/profile/{{ @owner}}">{{ @owner}}</a></h5>
     </div>

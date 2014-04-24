@@ -242,7 +242,7 @@ Class AdController {
         if (isset($row["image"])) {
             $f3->set('image', $row["image"]);
         } else {
-            $f3->set('image', 'noimg.png');
+            $f3->set('image', 'NOIMAGE.svg');
         }
     }
 
@@ -257,6 +257,8 @@ Class AdController {
             $f3->set('adid', $f3->get('PARAMS.adid'));
             $f3->set('quantity', $row["quantity"]);
             $f3->set('quantity_ty', Values::$QUANTITY[$row["quantity ty"]]);
+            $f3->set('region', Values::$REGIONS[$row["region"]]);
+            $f3->set('state', Values::$CONDITION[$row["cond"]]);
 
             $f3->set('warranty', $row["warranty"]);
             $f3->set('warranty_ty', Values::$WARRANTY[$row["warranty ty"]]);

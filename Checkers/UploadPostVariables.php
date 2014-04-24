@@ -12,10 +12,10 @@ class UploadPostVariables{
             if (!$checker->check($value)) {
                 $error = false;
                 
-                            echo $error.'van error<br>';
+                            //echo $error.'van error<br>';
             }
             
-            echo $error.'nincs error<br>';
+           // echo $error.'nincs error<br>';
         }
         return $error;
     }
