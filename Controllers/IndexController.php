@@ -18,21 +18,22 @@ class IndexController {
         $pagination = new PaginationController($_GET['searchbox'], $_GET['page'], $f3);
         echo Template::instance()->render('endofmain.tpl');
     }
-    
-        private function indexContent($f3, $itemx4) {/// MENNYI SOR TARTALOM LEGYEN A FŐOLDALON
+
+    private function indexContent($f3, $itemx4) {/// MENNYI SOR TARTALOM LEGYEN A FŐOLDALON
         $connection = new PDOConnection;
         $sor = 1; //sorok vizsgálásához hogy hova rakja az oszlopokat 
         $result = $connection->query("SELECT * FROM items ORDER BY date DESC LIMIT 0," . (4 * $itemx4))->fetchAll(PDO::FETCH_ASSOC) or $connection->error();
         //print_r($result); die();       
-        foreach($result as $row) {
+        foreach ($result as $row) {
             if ($sor % $itemx4 == 1) {
                 echo'<div class="col-md-3">';
             }
             $f3->set('title', $row["title"]);
-            $message = (strlen($row["descr"]) > 100) ? substr($row["descr"], 0, 100) . "...  "  : $row["descr"];
+            $message = (strlen($row["descr"]) > 100) ? substr($row["descr"], 0, 100) . "...  " : $row["descr"];
             $f3->set('text', $message);
             $f3->set('id', $row['id']);
-            $f3->set('img', $row["image"]);
+            $this->image($f3, $row);
+            //$f3->set('img', $row["image"]);
             $f3->set('user', $this->idtousername($row["owner"]));
             $f3->set('date', $row["date"]);
             echo Template::instance()->render('post2.tpl');
@@ -42,8 +43,16 @@ class IndexController {
             $sor++;
         }
     }
-    
-    private function idtousername($userid){
+
+    private function image($f3, $row) {
+        if (isset($row["image"])) {
+            $f3->set('img', $row["image"]);
+        } else {
+            $f3->set('img', 'NOIMAGE.svg');
+        }
+    }
+
+    private function idtousername($userid) {
         $connection = new PDOConnection;
         $username = $connection->query("SELECT username FROM users WHERE id=$userid")->fetchAll(PDO::FETCH_ASSOC);
         return $username[0]['username'];

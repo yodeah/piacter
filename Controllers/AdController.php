@@ -88,7 +88,7 @@ Class AdController {
         $connection->query("CREATE EVENT IF NOT EXISTS $adid
                             ON SCHEDULE AT '$expire'
                             DO
-                            UPDATE `items` SET isopen=0 WHERE owner='$sessid' AND availability='$expire';"); 
+                            UPDATE `items` SET isopen=0 WHERE owner='$sessid' AND availability='$expire';");
     }
 
     private function datagen($f3) {
@@ -147,7 +147,8 @@ Class AdController {
                 }
                 $f3->set('id', $row['id']);
                 $f3->set('title', $title);
-                $f3->set('descr', $row['descr']);
+                $descr = (strlen($row["descr"]) > 100) ? substr($row["descr"], 0, 100) . "...  " : $row["descr"];
+                $f3->set('descr', $descr);
                 $f3->set('date', $row['date']);
                 echo Template::instance()->render('myad.tpl');
             }
