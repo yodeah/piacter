@@ -78,17 +78,17 @@ Class AdController {
     }
 
     private function auctionevent($f3) {
-        $eventname = $_POST['title'] . $_SESSION['id'];
         $sessid = $_SESSION['id'];
         $connection = new PDOConnection;
-        $result = $connection->query("SELECT availability, id FROM items WHERE owner='$sessid' ORDER BY date DESC ")->fetchAll(PDO::FETCH_ASSOC);
+        $result = $connection->query("SELECT availability, id FROM items WHERE owner='$sessid' ORDER BY date DESC ")
+                ->fetchAll(PDO::FETCH_ASSOC);
         $expire = $result[0]['availability'];
         $adid = 'AD' . $result[0]['id'];
 
         $connection->query("CREATE EVENT IF NOT EXISTS $adid
                             ON SCHEDULE AT '$expire'
                             DO
-                            UPDATE `items` SET isopen=0 WHERE owner='$sessid' AND availability='$expire';"); ///lezárja az aukciót     
+                            UPDATE `items` SET isopen=0 WHERE owner='$sessid' AND availability='$expire';"); 
     }
 
     private function datagen($f3) {
