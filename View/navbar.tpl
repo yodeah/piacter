@@ -51,6 +51,7 @@
                     </div>
                 </div>
                 <!--<div id="header-hidden-link"> <a href="#" title="Click me you'll get a surprise" class="show-hide" data-toggle="show-hide" data-target=".header-hidden"><i></i>Open</a> </div>-->
+                <a href="/logout" id="logoutbutton" class="{{ @ishidden }}">Kijelentkezés</a>   
             </div>
         </div>
 

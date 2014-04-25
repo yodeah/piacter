@@ -239,7 +239,7 @@ messageSJ{
 }
 
 .hiddenSJ{
-    display:none;
+    display:none !important;
 }
 
 .bannerSJ { position: relative; overflow: auto; }
@@ -251,18 +251,39 @@ messageSJ{
 }
 
 .imgthumbnail {
-margin-right: auto;
-margin-left: auto;
-border: 0;
-display: block;
-height: auto;
-max-width: 100%;
-vertical-align: middle;
+    margin-right: auto;
+    margin-left: auto;
+    border: 0;
+    display: block;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
 }
 
 .blackh3{
-  color: #333;
+    color: #333;
 }
 .blackh3:hover{
-  color: #333;
+    color: #333;
+}
+
+#logoutbutton{
+    position: absolute;
+    right: 15px;
+    top: -18px;
+    padding-top: 0px;
+    display: block;
+    height: 23px;
+    width:150px;
+    background: #be3e1d;
+    color: white;
+    text-align: center;
+    border-bottom: 3px solid #1b1b1b;;
+    -webkit-box-shadow: 1px 1px 10px rgba(27,27,27,0.4);
+    box-shadow: 1px 1px 10px rgba(27,27,27,0.4);
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }

@@ -1,7 +1,15 @@
 <?php
+
 class NAVBARController {
 
     public static function buttons($f3) {
+///LOGOUT GOMB 
+        if (isset($_SESSION['username'])) {
+            $f3->set('ishidden', '');
+        } else {
+            $f3->set('ishidden', 'hiddenSJ');
+        }
+
 ///BUTTON 1
         if (isset($_SESSION['username'])) {
             $f3->set('signinstatus', 'Hirdetésfeladás');
@@ -25,17 +33,17 @@ class NAVBARController {
 ///BUTTON 3
         if (isset($_SESSION['username'])) {
             $f3->set('signinstatus3', 'Üzenetek');
-                        $f3->set('signinstatus3after', self::unseenmessages());
+            $f3->set('signinstatus3after', self::unseenmessages());
             $f3->set('signinstatuslink3', '/messages');
         } else {
             $f3->set('signinstatus3', 'Belépés');
-                                    $f3->set('signinstatus3after', '');
+            $f3->set('signinstatus3after', '');
             $f3->set('signinstatuslink3', '/signin');
         }
 
 
 ///BUTTON 4
-        if (isset($_SESSION['username'])) {            
+        if (isset($_SESSION['username'])) {
             $f3->set('signinstatus4', 'Hirdetéseim');
             $f3->set('signinstatus4after', self::unseenads());
             $f3->set('signinstatuslink4', '/myads');
@@ -45,27 +53,27 @@ class NAVBARController {
             $f3->set('signinstatuslink4', '/register');
         }
     }
-    
-    private static function unseenads(){
-            $sessid = $_SESSION['id'];
-            $connection = new PDOConnection;
-            $result = $connection->query("SELECT * FROM items WHERE owner=$sessid AND seen=0")->fetchAll(PDO::FETCH_ASSOC);
-            if(count($result)==0){
-                return NULL;
-            }else{
-                return'('.count($result).')';
-            }
-    }
-    
-    private static function unseenmessages(){
+
+    private static function unseenads() {
         $sessid = $_SESSION['id'];
-            $connection = new PDOConnection;
-            $result = $connection->query("SELECT * FROM messages WHERE toid=$sessid AND seen=0")->fetchAll(PDO::FETCH_ASSOC);
-            if(count($result)==0){
-                return NULL;
-            }else{
-                return'('.count($result).')';
-            }
+        $connection = new PDOConnection;
+        $result = $connection->query("SELECT * FROM items WHERE owner=$sessid AND seen=0")->fetchAll(PDO::FETCH_ASSOC);
+        if (count($result) == 0) {
+            return NULL;
+        } else {
+            return'(' . count($result) . ')';
+        }
+    }
+
+    private static function unseenmessages() {
+        $sessid = $_SESSION['id'];
+        $connection = new PDOConnection;
+        $result = $connection->query("SELECT * FROM messages WHERE toid=$sessid AND seen=0")->fetchAll(PDO::FETCH_ASSOC);
+        if (count($result) == 0) {
+            return NULL;
+        } else {
+            return'(' . count($result) . ')';
+        }
     }
 
 }
