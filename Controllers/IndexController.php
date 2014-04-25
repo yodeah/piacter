@@ -1,13 +1,12 @@
 <?php
 
-//BOKODI <3
 class IndexController {
 
     function display($f3) {
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         echo Template::instance()->render('slider.tpl');
-        $this->indexContent($f3, 2);
+        $this->indexContent($f3, 4);
         echo Template::instance()->render('endofmain.tpl');
     }
 
@@ -22,13 +21,14 @@ class IndexController {
     private function indexContent($f3, $itemx4) {/// MENNYI SOR TARTALOM LEGYEN A FŐOLDALON
         $connection = new PDOConnection;
         $sor = 1; //sorok vizsgálásához hogy hova rakja az oszlopokat 
-        $result = $connection->query("SELECT * FROM items ORDER BY date DESC LIMIT 0," . (4 * $itemx4))->fetchAll(PDO::FETCH_ASSOC) or $connection->error();
+        $result = $connection->query("SELECT * FROM items WHERE isopen=1 ORDER BY date DESC LIMIT 0," . (4 * $itemx4))->fetchAll(PDO::FETCH_ASSOC) or $connection->error();
         //print_r($result); die();       
         foreach ($result as $row) {
             if ($sor % $itemx4 == 1) {
                 echo'<div class="col-md-3">';
             }
-            $f3->set('title', $row["title"]);
+            $title = (strlen($row["title"]) > 20) ? substr($row["title"], 0, 20) . "...  " : $row["title"];
+            $f3->set('title', $title);
             $message = (strlen($row["descr"]) > 100) ? substr($row["descr"], 0, 100) . "...  " : $row["descr"];
             $f3->set('text', $message);
             $f3->set('id', $row['id']);
@@ -98,10 +98,15 @@ class IndexController {
         ////KELL FELTÉTEL HOGY MENÉZHETI E A PRIVÁT ADATAIT ATTÓL FÜGGŐEN HOGY KEREKEDTEK-E MÁR
         $result = $connection->query("SELECT * FROM users WHERE username = '$username'")->fetchAll(PDO::FETCH_ASSOC);
         $userid = $result[0]['id'];
+        if (isset($_SESSION['id'])) {
+            $user1 = $_SESSION['id'];
+        } else {
+            $user1 = NULL;
+        }
         if (count($result) > 0) {
             $row = $result[0];
             $f3->set('name', $row['username']);
-            $f3->set('email', $this->isopen($row['email'], $_SESSION['id'], $userid));
+            $f3->set('email', $this->isopen($row['email'], $user1, $userid));
             $f3->set('regdate', $row['regdate']);
             $f3->set('lastlogin', $row['lastlogin']);
             UserController::calculaterates($f3, $userid);
