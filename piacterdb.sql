@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50611
+Source Server         : home
+Source Server Version : 50615
 Source Host           : localhost:3306
 Source Database       : piacterdb
 
 Target Server Type    : MYSQL
-Target Server Version : 50611
+Target Server Version : 50615
 File Encoding         : 65001
 
-Date: 2014-04-21 23:51:51
+Date: 2014-04-26 12:48:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `comments` (
   `reply` int(11) DEFAULT NULL,
   `datee` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comments
@@ -66,20 +66,10 @@ INSERT INTO `comments` VALUES ('32', '92', 'TESZTKOMMENT', '76', '0', '2014-04-2
 INSERT INTO `comments` VALUES ('33', '92', 'vÃ¡lasz', '72', '32', '2014-04-21 20:46:20');
 INSERT INTO `comments` VALUES ('34', '92', 'hahÃ³', '76', '33', '2014-04-21 21:07:39');
 INSERT INTO `comments` VALUES ('35', '93', 'blabla', '76', '0', '2014-04-21 21:13:56');
-
--- ----------------------------
--- Table structure for `eventtest`
--- ----------------------------
-DROP TABLE IF EXISTS `eventtest`;
-CREATE TABLE `eventtest` (
-  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
-  `event` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of eventtest
--- ----------------------------
+INSERT INTO `comments` VALUES ('36', '91', 'nagyon megÃ©rte kÃ¶szi!', '76', '0', '2014-04-24 20:44:26');
+INSERT INTO `comments` VALUES ('37', '91', 'szivesen', '76', '36', '2014-04-24 20:44:32');
+INSERT INTO `comments` VALUES ('38', '101', 'ko mment', '76', '0', '2014-04-25 07:58:59');
+INSERT INTO `comments` VALUES ('39', '101', 'vÃ¡lasz\r\n', '76', '38', '2014-04-25 07:59:06');
 
 -- ----------------------------
 -- Table structure for `items`
@@ -96,14 +86,14 @@ CREATE TABLE `items` (
   `date` datetime DEFAULT NULL,
   `quantity` smallint(6) DEFAULT NULL,
   `quantity ty` smallint(6) DEFAULT NULL,
-  `fixprice` smallint(6) DEFAULT NULL,
+  `fixprice` mediumint(6) DEFAULT NULL,
   `fixprice ty` smallint(6) DEFAULT NULL,
   `warranty` smallint(6) DEFAULT NULL,
   `warranty ty` smallint(6) DEFAULT NULL,
   `availability` datetime DEFAULT NULL,
   `seen` tinyint(1) DEFAULT '1',
-  `auctionstart` smallint(6) DEFAULT NULL,
-  `auctionstep` smallint(6) DEFAULT NULL,
+  `auctionstart` mediumint(6) DEFAULT NULL,
+  `auctionstep` mediumint(6) DEFAULT NULL,
   `auctionprice ty` smallint(6) DEFAULT NULL,
   `lastbidderid` smallint(6) DEFAULT NULL,
   `highestbid` smallint(6) DEFAULT NULL,
@@ -111,17 +101,27 @@ CREATE TABLE `items` (
   `boughtfixed` tinyint(4) DEFAULT NULL,
   `sentmessage` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of items
 -- ----------------------------
-INSERT INTO `items` VALUES ('89', '76', 'Cinelli Willin  (LEZÃRT AUKCIÃ“, ELADVA)', '2010-es Full carbon vÃ¡z, Cinelli stucni kormÃ¡ny, nyeregcsÅ‘. Shimano 105-Ã¶s szett, Mavic kerekek, Schwalbe ultremo kÃ¼lsÅ‘k. Selle Italia SLR carbon nyereg.\r\n\r\nKihasznÃ¡latlansÃ¡g miatt szeretnÃ©m eladni.\r\nTovÃ¡bbi paramÃ©terek	\r\nMÃ¡rka / gyÃ¡rtÃ³: Italia\r\nTÃ­pus / modell: Cinelli\r\nGyÃ¡rtÃ¡si Ã©v: 2010\r\nTÃ¶meg (gramm): 7500\r\nVÃ¡zmÃ©ret: 58\r\n\r\n', '', '9', 'Cinelli-Willin76Cinelli_Willin_orszaguti_kerekpar_elado_3837909923.jpg', '2014-04-14 10:57:11', '1', '0', '32767', '0', '6', '1', '2015-04-14 10:57:12', '1', null, null, null, null, null, '0', '76', '1');
-INSERT INTO `items` VALUES ('90', '76', 'TESZTRATE', 'TESZTRATETESZTRATETESZTRATETESZTRATETESZTRATETESZTRATE', '', '0', 'TESZTRATE76ISTVÃN.jpg', '2014-04-19 18:33:55', '1', '0', '32767', '0', '1', '0', '2034-04-19 18:33:55', '1', null, null, null, null, null, '1', null, '0');
-INSERT INTO `items` VALUES ('91', '76', 'keptest (LEZÃRT AUKCIÃ“, ELADVA)', 'keptestkeptest', '', '0', 'keptest763.3.jpg', '2014-04-19 18:35:21', '1', '0', '2000', '0', '1', '0', '2015-04-19 18:35:21', '1', null, null, null, null, null, '0', '72', '1');
-INSERT INTO `items` VALUES ('92', '76', 'NAGYTESZT (LEZÃRT AUKCIÃ“, ELADVA)', 'szÃ¶veg', '', '0', 'NAGYTESZT76z.jpg', '2014-04-21 20:45:22', '1', '0', '1000', '0', '1', '0', '2015-04-21 20:45:22', '1', null, null, null, null, null, '0', '72', '1');
-INSERT INTO `items` VALUES ('93', '76', 'Uj czucc (LEZÃRT AUKCIÃ“, ELADVA)', 'valamiblabala', '', '9', 'Uj-czucc76z.jpg', '2014-04-21 21:10:14', '10', '1', '32767', '1', '1', '2', '2014-05-01 21:10:14', '1', '300', '110', '0', '72', '500', '0', '72', '1');
-INSERT INTO `items` VALUES ('94', '76', 'szar nev (LEZÁRT AUKCIÓ, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA) (LEZÃRT AUKCIÃ“, ELADVA)', 'CRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTESTCRONJOBTEST', '', '0', null, '2014-04-21 22:18:52', '1', '0', '1000', '0', '1', '0', '2014-04-22 22:18:52', '1', '10000', '100', '0', '72', '32767', '0', null, '0');
+INSERT INTO `items` VALUES ('89', '76', 'Cinelli Willin', '2010-es Full carbon vÃ¡z, Cinelli stucni kormÃ¡ny, nyeregcsÅ‘. Shimano 105-Ã¶s szett, Mavic kerekek, Schwalbe ultremo kÃ¼lsÅ‘k. Selle Italia SLR carbon nyereg.\r\n\r\nKihasznÃ¡latlansÃ¡g miatt szeretnÃ©m eladni.\r\nTovÃ¡bbi paramÃ©terek	\r\nMÃ¡rka / gyÃ¡rtÃ³: Italia\r\nTÃ­pus / modell: Cinelli\r\nGyÃ¡rtÃ¡si Ã©v: 2010\r\nTÃ¶meg (gramm): 7500\r\nVÃ¡zmÃ©ret: 58\r\n\r\n', '', '9', 'Cinelli-Willin76Cinelli_Willin_orszaguti_kerekpar_elado_3837909923.jpg', '2014-04-14 10:57:11', '1', '0', '4000000', '0', '6', '1', '2015-04-14 10:57:12', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('100', '76', 'Mini kamera', 'KulcstartÃ³ kamera mini rejtett kÃ©m kamera AZONNAL\r\n\r\nKulcstartÃ³ba rejtett mini kÃ©m kamera.\r\n\r\n\r\n\r\nFunkciÃ³i:\r\n\r\nVideo felvÃ©tel: 720x480\r\n\r\nFÃ©nykÃ©p: 1280x1024\r\n\r\nHangfelvÃ©tel\r\n\r\nMÃ©retei: 5 x 3 x 1 cm\r\n\r\nBeÃ©pÃ­tett akkumulÃ¡tor, kb 1,5 Ã³ra Ã¼zemidÅ‘vel', '', '17', 'Mini-kamera76spy.jpg', '2014-04-25 00:15:26', '1', '0', '3000', '0', '1', '0', '2015-04-25 00:15:26', '1', '2000', '100', '0', null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('101', '76', 'Nikon - Yongnuo YN-565ex i-TTL', 'Yongnuo YN-565ex rendszer vaku...\r\n\r\nBudapesti Ã¡tvÃ©tel is megoldhatÃ³... :-)\r\n\r\nNikon gÃ©pekhez !!!\r\n\r\n\r\n\r\ni-TTL rendszerÅ±, \r\nLCD kijelzÅ‘vel, \r\nZoom vaku, \r\n- Minden irÃ¡nyba forgÃ³ fej,\r\n- BeÃ©pÃ­tett diffÃºzor.', '', '0', 'Nikon---Yongnuo-YN-565ex-i-TTL76nikon.jpg', '2014-04-25 00:23:27', '1', '0', '70000', '0', '1', '0', '2015-04-25 00:23:27', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('102', '76', 'Toshiba Camileo P10 Full HD kamera', 'oshiba Camileo P10 Full HD kamera\r\n\r\n\r\nEladÃ³  Toshiba Camileo P10 Full hd kamera alig hasznÃ¡ltam talÃ¡n 3-szor\r\n\r\nezÃ©rt az akku gyenge de hÃ¡lÃ³zatrÃ³l tÃ¶kÃ©letes vagyitt vaterrÃ¡n 3000ft egy Ãºj akkumulÃ¡tor.\r\n\r\n\r\nDoboz papÃ­rok kÃ¡belek tok minden megvan.', '', '14', 'Toshiba-Camileo-P10-Full-HD-kamera76e807_3_300.jpg', '2014-04-25 00:26:17', '1', '0', '40000', '0', '2', '0', '2015-04-25 00:26:17', '1', '30000', '2000', '0', '76', '32767', '1', null, '0');
+INSERT INTO `items` VALUES ('103', '76', 'Samsung Galaxy Tab P1000', 'EladÃ³ kb. 4 Ã©ve T-MobilnÃ¡l vÃ¡sÃ¡rolt Samsung Galaxy Tab P1000 16 GB belsÅ‘ memÃ³riÃ¡val , gyÃ¡ri hÃ¡lÃ³zati tÃ¶ltÅ‘vel, fejhallgatÃ³val , gyÃ¡ri autÃ³s aktÃ­v dokkolÃ³val Ã©s szivargyÃºjtÃ³ tÃ¶ltÅ‘vel. (Az autÃ³s tÃ¶ltÅ‘ kÃ¡bele kontakt hibÃ¡s, de olcsÃ³n megoldhatÃ³ a cserÃ©je)\r\n\r\nVÃ©gig tokban tartott, karcmentes kijelzÅ‘vel. Android 2.3.6-os rendszer van rajta.\r\n\r\nElsÅ‘  tulajdonosa vagyok a kÃ©szÃ¼lÃ©knek.', '', '18', 'Samsung-Galaxy-Tab-P100076d607_1_300.jpg', '2014-04-25 08:22:53', '1', '0', '40000', '0', '1', '0', '2015-04-25 08:22:53', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('104', '76', 'Samsung ATIV Tab 7 XE700T1C-G01HU 128GB 3G+', '\r\nGyÃ¡rtÃ³	Samsung\r\nProcesszor	IntelÂ® Coreâ„¢ i5-3337U (Dual-Core, 1.8 - 2.7 GHz)\r\nChipkÃ©szlet	Mobile IntelÂ® HM76 Express Chipset\r\nKijelzÅ‘	11,6\" (Multi-touch, 1920x1080, S Pen aktÃ­v toll)\r\nVideÃ³kÃ¡rtya	IntelÂ® HD Graphics 4000\r\nHangkÃ¡rtya	BeÃ©pÃ­tett sztereÃ³ hangszÃ³rÃ³k', '', '0', 'Samsung-ATIV-Tab-7-XE700T1C-G01HU-128GB-3G+764166888387.jpg', '2014-04-25 08:24:04', '1', '0', '120000', '0', '1', '0', '2015-04-25 08:24:04', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('105', '76', 'Samsung Galaxy Note Pro 12.2 P900 32GB WiFi Tablet ', 'GyÃ¡rtÃ³	Samsung\r\nProcesszor	Samsung Exynos 5 Octa 5420 (Octa-Core, 1.9 GHz / 1.3 GHz)\r\nKijelzÅ‘	12,2\" (Multi-touch, 2560x1600, fÃ©nyes, LED)\r\nVideÃ³kÃ¡rtya	ARMÂ® Maliâ„¢-T628 GPU\r\nHangkÃ¡rtya	BeÃ©pÃ­tett sztereÃ³ hangszÃ³rÃ³k\r\nAkkumulÃ¡tor	9500 mAh (Lithium-ion)', '', '14', 'Samsung-Galaxy-Note-Pro-12.2-P900-32GB-WiFi-Tablet-764137193837.jpg', '2014-04-25 08:25:05', '1', '0', '200000', '0', '1', '0', '2015-04-25 08:25:05', '1', '150000', '1000', '0', null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('106', '76', 'Samsung N8000 Galaxy Note 10.1 WiFi + 3G', 'Samsung GT-P5100 Galaxy Tab 2 10.1 3G + WIFI 16GB\r\n\r\n\"0\" perces Samsung GT-P5100 Galaxy Tab 2 10.1 3G + WIFI(16GB)(SÃ¶tÃ©tszÃ¼rke) 12 hÃ³nap GSM bolti garanciÃ¡val, kÃ¡rtyafÃ¼ggetlenÃ¼l, magyar nyelvÅ± android menÃ¼vel, fÃ³liÃ¡s kijelzÅ‘vel Ã©s hÃ¡tlappal, gyÃ¡ri hÃ¡lÃ³zati tÃ¶ltÅ‘jÃ©vel, usb kÃ¡bellel, stereo headsettel, papÃ­rjaival, dobozÃ¡ban eladÃ³,BoltbÃ³l. ÃtvehtetÅ‘ szemÃ©lyesen Bp-en vagy utÃ¡nvÃ©ttel is.', '', '0', 'Samsung-N8000-Galaxy-Note-10.1-WiFi-+-3G76aa07_1_300.jpg', '2014-04-25 08:51:44', '1', '0', '100000', '0', '1', '0', '2015-04-25 08:51:44', '1', '70000', '10000', '0', null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('107', '76', 'Samsung N8000 Galaxy Note 10.1 WiFi + 3G', 'Note,  az Ãºj irÃ¡ny A Galaxy note 10,1 Ãºj tÃ¡vlatokat nyit meg elÅ‘tted, hogy bÃ¡rhol szabadon alkothass a digitÃ¡lis eszkÃ¶zÃ¶kkel a nagymÃ©retÅ± mÃ©gis kÃ¶nnyen hordozhatÃ³ kijelzÅ‘n. Fedezd fel az intelligens S Penben rejlÅ‘ lehetÅ‘sÃ©geket Ã©s hozz lÃ©tre Ãºj tartalmakat grafika, Ã­rÃ¡s Ã©s fÃ©nykÃ©pek felhasznÃ¡lÃ¡sÃ¡val a webalapÃº multimÃ©diÃ¡val Ã©s Ã©lvezd az egyedi digitÃ¡lis kiadvÃ¡nyok elÅ‘nyeit. A nagy teljesÃ­tmÃ©nyÅ± processzorral Ã©s a strapabÃ­rÃ³ akkumulÃ¡torral ez a legtÃ¶kÃ©letesebb, tÃ¶bb alkalmazÃ¡st egyszerre is futtatÃ³, kreatÃ­v mobil eszkÃ¶z. Alkoss szabadon Ã©s kÃ¶nnyedÃ©n - S Jegyzet Hozd lÃ©tre a sajÃ¡t dokumentumaidat az elÅ‘re telepÃ­tett, profin megtervezett sablonok segÃ­tsÃ©gÃ©vel. VÃ¡lassz a folyÃ³irat, naplÃ³, recept Ã©s egyÃ©b stÃ­lusÃº sablonok kÃ¶zÃ¼l. Illeszd be az Ã¶sszeÃ¡llÃ­tott szÃ¶veget, kÃ©pet Ã©s grafikÃ¡t az egyedi tartalmÃº, professzionÃ¡lis minÅ‘sÃ©gÅ± multimÃ©dia dokumentumba. A legjobb tÃ¡rs az alkotÃ¡sban - Adobe Photoshop Touch Hozz ki mÃ©gtÃ¶bbet a fotÃ³kbÃ³l, rajzokbÃ³l Ã©s a Google keresÃ©ssel talÃ¡lt kÃ©pekbÅ‘l  a Photoshop Touch segÃ­tsÃ©gÃ©vel. A kreatÃ­v eszkÃ¶zÃ¶kkel kÃ©peket egyesÃ­thetsz Ã©s profi effekteket alkalmazhatsz. ', '', '0', 'Samsung-N8000-Galaxy-Note-10.1-WiFi-+-3G76e907_1_300.jpg', '2014-04-25 08:54:25', '1', '0', '90000', '0', '1', '0', '2015-04-25 08:54:25', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('108', '76', 'HTC ONE M7', 'HTC ONE M7 nagyon szÃ©p Ã¡llapotban\r\n\r\nHTC One M7 \r\n\r\nSzolgÃ¡ltatÃ³:T-Mobile \r\n\r\nÃllapot: nagyon szÃ©p, ÃºjszerÅ± \r\n\r\nTartozÃ©kok: doboz,tÃ¶ltÅ‘,adatkÃ¡bel, fliptok\r\n\r\nGarancia: 1 hÃ³nap (1 hÃ©t teljes kÃ¶rÅ± + 3 hÃ©t szoftveres)  \r\n\r\nSzemÃ©lyes Ã¡tvÃ©tel: Budapesten, XIII. kerÃ¼letben\r\n\r\nKiszÃ¡llÃ­tÃ¡s: Budapest hatÃ¡rain belÃ¼l 1 munkanap alatt 1,000 Ft. Budapest hatÃ¡rain kÃ­vÃ¼l Royal Sprint futÃ¡rszolgÃ¡lattal 2,000 Ft. A csomagot kiÃ©rkezÃ©skor a helyszÃ­nen lehet fizetni. POSTÃT MOBILKÃ‰SZÃœLÃ‰K ESETÃ‰N NEM VÃLLALOK!', '', '19', 'HTC-ONE-M776c907_1_big.jpg', '2014-04-25 09:15:56', '1', '0', '60000', '0', '1', '0', '2015-04-25 09:15:56', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('109', '76', 'HTC Desire S HTC S510e ', 'Ãšj HTC Incredible S\r\n\r\nEladÃ³ EGY HTC Incredible S okostelefon  Qualcomm MSM8255 Snapdragon processzorral,1 hÃ©t csere vagy pÃ©nzvisszafizetÃ©si garanciÃ¡val!\r\n\r\nGYÃRILAG MAGYAR MENÃœ!!!\r\n\r\nA telefon kÃ¼lfÃ¶ldrÅ‘l Ã©rkezik, ÃGY a szÃ¡llÃ­tÃ¡si idÅ‘ 20-30 munkanap !\r\n\r\nSzÃ¡rmazÃ¡si hely: Taiwan\r\n\r\nRÃ©szletfizetÃ©s van, LÃ¡sd:SzÃ¡llÃ­tÃ¡si Ã©s garanciÃ¡lis feltÃ©telek!\r\n\r\nAZ ÃR BRUTTÃ“ ÃR, VÃM-ot, ÃFA-t,stb, tartalmazza!\r\n\r\nMÅ±szaki adatok:\r\n\r\nÃltalÃ¡nos 2G HÃ¡lÃ³zat GSM 850/900/1800/1900 3G hÃ¡lÃ³zat HSDPA 900/2100 HSDPA 900/1700/2100\r\n\r\nMegjelent 2011, februÃ¡r\r\n\r\nTest MÃ©retek 120 x 64 x 11.4 mm\r\n\r\nSÃºly 135.5 g -\r\n\r\nÃ‰rintÃ©svezÃ©rlÃ©ssel KijelzÅ‘: Type S-LCD kapacitÃ­v Ã©rintÅ‘kÃ©pernyÅ‘, 16 milliÃ³ szÃ­n\r\n\r\nMÃ©ret: 480 x 800 pixel, 4.0 inches (~ 233 ppi pixel sÅ±rÅ±sÃ©g)\r\n\r\nMultitouch: Igen - HTC Sense UI\r\n\r\nHang: Ã‰bresztÅ‘, RezgÃ©s, MP3, WAV csengÅ‘hangok\r\n\r\nHangszÃ³rÃ³: Igen\r\n\r\n3,5 mm-es jack: Igen\r\n\r\nMemÃ³riakÃ¡rtya slot: microSD, 32GB-ig,\r\n\r\nROM BelsÅ‘: 1,1 GB', '', '10', 'HTC-Desire-S-HTC-S510e-764907_1_big.jpg', '2014-04-25 09:17:30', '1', '0', '90000', '0', '1', '0', '2015-04-25 09:17:30', '1', '70000', '1000', '0', null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('110', '76', 'HTC Desire S HTC S510e (LEZÃRT AUKCIÃ“, ELADVA)', 'Ãšj HTC Desire S HTC S510e Ãºj\r\n\r\nEladÃ³ EGY HTC DESIRE S510e okostelefon  Qualcomm MSM8255 Snapdragon, 1,0 GHz,processzorral,1 hÃ©t csere vagy pÃ©nzvisszafizetÃ©si garanciÃ¡val!\r\n\r\nGYÃRILAG MAGYAR MENÃœ!!!\r\n\r\nA telefon kÃ¼lfÃ¶ldrÅ‘l Ã©rkezik, ÃGY a szÃ¡llÃ­tÃ¡si idÅ‘ 20-30 munkanap !\r\n\r\nSzÃ¡rmazÃ¡si hely: Taiwan\r\n\r\nRÃ©szletfizetÃ©s van, LÃ¡sd:SzÃ¡llÃ­tÃ¡si Ã©s garanciÃ¡lis feltÃ©telek!\r\n\r\nAZ ÃR BRUTTÃ“ ÃR, VÃM-ot, ÃFA-t,stb, tartalmazza!\r\n\r\nMÅ±szaki adatok:\r\n\r\nÃltalÃ¡nos 2G HÃ¡lÃ³zat GSM 850/900/1800/1900 3G hÃ¡lÃ³zat HSDPA 900/2100 HSDPA 900/1700/2100\r\n\r\nMegjelent 2011, mÃ¡rcius', '', '0', 'HTC-Desire-S-HTC-S510e764907_1_300.jpg', '2014-04-25 09:18:27', '1', '0', '30000', '0', '1', '0', '2015-04-25 09:18:27', '1', null, null, null, null, null, '0', '76', '1');
+INSERT INTO `items` VALUES ('111', '76', 'HTC Touch HD mini T5555', 'HTC Touch HD mini T5555\r\n\r\nEladÃ³ EGY HTC  Touch HD mini T5555 okostelefon  Qualcomm MSM7227 600 MHz,processzorral,1 hÃ³nap csere vagy pÃ©nzvisszafizetÃ©si garanciÃ¡val!\r\n\r\nCsak Angol nyelv!\r\n\r\nA telefon kÃ¼lfÃ¶ldrÅ‘l Ã©rkezik, ÃGY a szÃ¡llÃ­tÃ¡si idÅ‘ 20-30 munkanap!\r\n\r\nSzÃ¡rmazÃ¡si hely: Taiwan\r\n\r\nRÃ©szletfizetÃ©s van, LÃ¡sd:SzÃ¡llÃ­tÃ¡si Ã©s garanciÃ¡lis feltÃ©telek!\r\n\r\nAZ ÃR BRUTTÃ“ ÃR, VÃM-ot, ÃFA-t,stb, tartalmazza!\r\n\r\nINGYEN POSTA!', '', '9', 'HTC-Touch-HD-mini-T5555768207_1_big.jpg', '2014-04-25 09:19:30', '1', '0', '50000', '0', '1', '0', '2015-04-25 09:19:30', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('112', '76', 'HP Envy 17-j010el', 'HP Envy 17-j010el ÃšJ High-End 17,3\" FullHD laptop\r\n\r\n- Intel Core i7-4700MQ QuadCore CPU (4x 2,4 / 3,4 GHz Turbo, 6MB cache)\r\n- 16GB RAM\r\n- 2TB HDD (2db 1TB-os meghajtÃ³)\r\n- nVidia GeForce GT 740M VGA 2GB dedikÃ¡lt RAM-mal\r\n- bluetooth\r\n- vilÃ¡gÃ­tÃ³ billentyÅ±zet\r\n- ujjlenyomat-olvasÃ³\r\n\r\n\r\nMagnÃ©zium-AlumÃ­nium burkolat. ElegÃ¡ns felsÅ‘ kategÃ³riÃ¡s gÃ©p, Ã©lÅ‘ben nagyon jÃ³l nÃ©z ki.\r\n', '', '13', 'HP-Envy-17-j010el76c707_2_300.jpg', '2014-04-25 09:20:50', '1', '0', '300000', '0', '1', '0', '2015-04-25 09:20:50', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('113', '76', 'Sony Vaio Tap 11 (laptop + tablet)', 'KihasznÃ¡latlansÃ¡g miatt eladÃ³ egy Sony Vaio Tap 11 SVT1121B2E tÃ­pusÃº hibrid gÃ©p (tablet + laptop egyben).\r\n2013 decemberÃ©ben vÃ¡sÃ¡rolt, kifogÃ¡stalan ÃºjszerÅ± Ã¡llapotban, dobozÃ¡ban, minden gyÃ¡ri tartozÃ©kÃ¡val.\r\nMÃ©g 2015 decemberÃ©ig Ã©rvÃ©nyes Sony garanciÃ¡val.\r\nAjÃ¡ndÃ©kba adok hozzÃ¡:\r\n- 64GB-os microSD kÃ¡rtyÃ¡t;\r\n- microHDMI-HDMI Ã¡talakÃ­tÃ³t, HDMI kÃ¡belt;\r\n- tÃ¡ska (Hama).\r\nÃšj Ã¡ra: 255e Ft-tÃ³l.\r\nCsere, beszÃ¡mÃ­tÃ¡s: csak IPad Air, IPad Mini Retina, vagy MacBook-ra Ã©rdekel.', '', '2', 'Sony-Vaio-Tap-11-(laptop-+-tablet)766607_1_300.jpg', '2014-04-25 09:21:36', '1', '0', '170000', '0', '1', '0', '2015-04-25 09:21:36', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('114', '76', 'i5 LENOVO LAPTOP (LEZÃRT AUKCIÃ“, ELADVA)', 'LENOVO T-410 i5 LAPTOP KivÃ¡lÃ³ esztÃ©tikai, Ã©s hibÃ¡tlan mÅ±szaki Ã¡llapotban. OrszÃ¡gosan ingyenes hÃ¡zhoz szÃ¡llÃ­tÃ¡s, utÃ¡nvÃ©tes futÃ¡rszolgÃ¡lattal akÃ¡r 1 munkanapon belÃ¼l. 6 hÃ³nap teljeskÃ¶rÅ± garancia. A termÃ©krÅ‘l minden esteben bruttÃ³ magyar szÃ¡mlÃ¡t adunk.\r\n \r\nAJÃNDÃ‰K KINGSTON 8 GB MICRO PENDRIVE + OPTIKAI EGÃ‰R !!!\r\n \r\nKonfigurÃ¡ciÃ³: Processzor: Intel Core i5 520M / 2.40 GHz 3M Cache\r\nMemÃ³ria: 4 GB DDR3\r\nMerevlemez: 160 GB SATA\r\nKijelzÅ‘: 14,1 LED Blacklight - 1280 x 800 (WXGA)\r\nVGA: Mobile Intel QM57 Express\r\nOptikai meghajtÃ³: DVD-RW Chipset:\r\nMobile Intel GM45 Express\r\nAkku: 9 cellÃ¡s Lithium Ion 4x USB 2.0, eSATA, WLAN, LAN,VGA, TÃ¶bb formÃ¡tumÃº kÃ¡rtyaolvasÃ³, billentyÅ±zet vilÃ¡gÃ­tÃ¡s.\r\nÃllapot: SzÃ©p Ã¡llapotÃº, hasznÃ¡lt\r\nAkkumulÃ¡tor kapacitÃ¡s: JÃ³, Kb. 1-1,5 Ã³rÃ¡s, hÃ¡lÃ³zati tÃ¶ltÅ‘\r\nGarancia: 6 hÃ³nap', '', '16', 'i5-LENOVO-LAPTOP764138127397.jpg', '2014-04-25 09:23:13', '1', '0', '90000', '0', '1', '0', '2015-04-25 09:23:13', '1', null, null, null, null, null, '1', null, '0');
 
 -- ----------------------------
 -- Table structure for `linkdb`
@@ -2153,7 +2153,7 @@ CREATE TABLE `messages` (
   `sent` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `seen` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of messages
@@ -2188,40 +2188,18 @@ INSERT INTO `messages` VALUES ('27', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'S
 INSERT INTO `messages` VALUES ('28', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-21 23:44:35', '0');
 INSERT INTO `messages` VALUES ('29', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-21 23:46:00', '0');
 INSERT INTO `messages` VALUES ('30', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-21 23:46:16', '0');
-INSERT INTO `messages` VALUES ('31', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-21 23:47:03', '0');
+INSERT INTO `messages` VALUES ('31', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-24 20:43:48', '1');
 INSERT INTO `messages` VALUES ('32', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-21 23:47:03', '0');
-INSERT INTO `messages` VALUES ('33', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-21 23:47:38', '0');
+INSERT INTO `messages` VALUES ('33', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 94szÃ¡mÃº aukciÃ³dat!', '2014-04-24 20:43:45', '1');
 INSERT INTO `messages` VALUES ('34', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-21 23:47:38', '0');
-
--- ----------------------------
--- Table structure for `messages2`
--- ----------------------------
-DROP TABLE IF EXISTS `messages2`;
-CREATE TABLE `messages2` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `message` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of messages2
--- ----------------------------
-
--- ----------------------------
--- Table structure for `openpeople`
--- ----------------------------
-DROP TABLE IF EXISTS `openpeople`;
-CREATE TABLE `openpeople` (
-  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
-  `userid` tinyint(4) DEFAULT NULL,
-  `tradedwith` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of openpeople
--- ----------------------------
+INSERT INTO `messages` VALUES ('35', '72', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 95szÃ¡mÃº aukciÃ³dat!', '2014-04-22 18:34:37', '0');
+INSERT INTO `messages` VALUES ('36', '72', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-22 18:34:37', '0');
+INSERT INTO `messages` VALUES ('37', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 101szÃ¡mÃº aukciÃ³dat!', '2014-04-25 07:59:27', '1');
+INSERT INTO `messages` VALUES ('38', '76', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-25 07:58:38', '0');
+INSERT INTO `messages` VALUES ('39', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 114szÃ¡mÃº aukciÃ³dat!', '2014-04-25 09:26:49', '0');
+INSERT INTO `messages` VALUES ('40', '76', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-25 09:26:49', '0');
+INSERT INTO `messages` VALUES ('41', '76', '1', 'Sikeres eladÃ¡s!  Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', 'Sikeres sikeresen eladtad az 110szÃ¡mÃº aukciÃ³dat!', '2014-04-25 10:00:21', '1');
+INSERT INTO `messages` VALUES ('42', '76', '1', 'Sikeres vÃ¡sÃ¡rlÃ¡s!', 'Sikeres vÃ¡sÃ¡rlÃ¡s, megnÃ©zheted az eladÃ³ privÃ¡tadatait, a profiljÃ¡n! Ã‰rtÃ©keld az adÃ¡svÃ©telt(itt)!', '2014-04-25 10:00:28', '1');
 
 -- ----------------------------
 -- Table structure for `posts`
@@ -2271,7 +2249,7 @@ CREATE TABLE `unrated` (
   `ownersrate` tinyint(4) DEFAULT '0' COMMENT '0 ha 0 ember ratert 1 ha eggy és utána delete',
   `customersrate` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of unrated
@@ -2279,7 +2257,7 @@ CREATE TABLE `unrated` (
 INSERT INTO `unrated` VALUES ('1', '76', '72', '89', '1', '3');
 INSERT INTO `unrated` VALUES ('2', '76', '72', '91', '4', '2');
 INSERT INTO `unrated` VALUES ('4', '76', '72', '92', '5', '5');
-INSERT INTO `unrated` VALUES ('5', '76', '72', '93', '0', '5');
+INSERT INTO `unrated` VALUES ('5', '76', '72', '93', '5', '5');
 INSERT INTO `unrated` VALUES ('6', '76', '72', '94', '0', null);
 INSERT INTO `unrated` VALUES ('7', '76', '72', '94', '0', null);
 INSERT INTO `unrated` VALUES ('8', '76', '72', '94', '0', null);
@@ -2294,6 +2272,9 @@ INSERT INTO `unrated` VALUES ('16', '76', '72', '94', '0', null);
 INSERT INTO `unrated` VALUES ('17', '76', '72', '94', '0', null);
 INSERT INTO `unrated` VALUES ('18', '76', '72', '94', '0', null);
 INSERT INTO `unrated` VALUES ('19', '76', '72', '94', '0', null);
+INSERT INTO `unrated` VALUES ('20', '72', '72', '95', '0', null);
+INSERT INTO `unrated` VALUES ('21', '76', '76', '101', '0', null);
+INSERT INTO `unrated` VALUES ('22', '76', '76', '110', '5', null);
 
 -- ----------------------------
 -- Table structure for `users`
@@ -2307,7 +2288,7 @@ CREATE TABLE `users` (
   `regdate` datetime DEFAULT NULL,
   `lastlogin` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of users
@@ -2320,12 +2301,148 @@ INSERT INTO `users` VALUES ('67', 'sorsorsorsor', 'da4e8577962111db0bd38e651462b
 INSERT INTO `users` VALUES ('68', 'grapefruit', '651b72f400464afe086a5e5ef60b812e', 'grapefruit@grape.hu', null, null);
 INSERT INTO `users` VALUES ('69', 'ogreorange', '85cec79d5bd161e47981947f08b51fe1', 'ogreorange@orange.hu', null, null);
 INSERT INTO `users` VALUES ('70', 'swagjolo', '945be150bcff052ba06cff6aa8b87d32', 'swagjolo@swagg.li', null, null);
-INSERT INTO `users` VALUES ('71', 'nagyistvas', '1e81e4e58b873d8e4e60c8a1ccceffc7', 'nagyistvas@stewie.com', null, null);
-INSERT INTO `users` VALUES ('72', 'darthbane', '8941d2e7ee4569aea3f3e2658a251e50', 'darthbane@darthbane.hu', null, '2014-04-21 22:19:12');
+INSERT INTO `users` VALUES ('71', 'nagyistvan', '1e81e4e58b873d8e4e60c8a1ccceffc7', 'nagyistvas@stewie.com', null, null);
+INSERT INTO `users` VALUES ('72', 'darthbane', '8941d2e7ee4569aea3f3e2658a251e50', 'darthbane@darthbane.hu', null, '2014-04-22 18:34:06');
 INSERT INTO `users` VALUES ('73', 'newuser1', 'bddff65e4a2aafd9f432e097e25f9bdd', 'newuser1@newuser.com', '2014-03-18 10:56:48', '2014-03-20 22:27:32');
 INSERT INTO `users` VALUES ('74', 'test2222', 'fda11200c7593928c946fac203619c69', 'test2222@gmail.com', '2014-03-18 12:15:20', '2014-03-18 13:02:05');
-INSERT INTO `users` VALUES ('75', 'Apa3456', '9c7801a346a71781fe7c5df7dfb30233', 'apa@gmail.com', '2014-03-23 16:24:04', '2014-03-23 16:25:50');
-INSERT INTO `users` VALUES ('76', 'Andrew', '606f6b980d216b5948b0194601a7c3a6', 'andras2@citromail.hu', '2014-03-26 09:26:13', '2014-04-21 21:16:27');
+INSERT INTO `users` VALUES ('75', 'test', '9c7801a346a71781fe7c5df7dfb30233', 'test@gmail.com', '2014-03-23 16:24:04', '2014-03-23 16:25:50');
+INSERT INTO `users` VALUES ('76', 'Andrew', '606f6b980d216b5948b0194601a7c3a6', 'andras2@citromail.hu', '2014-03-26 09:26:13', '2014-04-25 21:12:52');
+INSERT INTO `users` VALUES ('77', 'yodeah', '4e05ccfd4c2574b5f894194dbffb1e9d', 'yodeah@gmail.com', '2014-04-25 09:31:12', '2014-04-25 09:31:27');
+
+-- ----------------------------
+-- Event structure for `AD100`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD100`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD100` ON SCHEDULE AT '2015-04-25 00:15:26' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 00:15:26'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD101`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD101`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD101` ON SCHEDULE AT '2015-04-25 00:23:27' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 00:23:27'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD102`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD102`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD102` ON SCHEDULE AT '2015-04-25 00:26:17' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 00:26:17'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD103`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD103`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD103` ON SCHEDULE AT '2015-04-25 08:22:53' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 08:22:53'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD104`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD104`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD104` ON SCHEDULE AT '2015-04-25 08:24:04' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 08:24:04'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD105`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD105`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD105` ON SCHEDULE AT '2015-04-25 08:25:05' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 08:25:05'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD106`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD106`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD106` ON SCHEDULE AT '2015-04-25 08:51:44' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 08:51:44'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD107`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD107`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD107` ON SCHEDULE AT '2015-04-25 08:54:25' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 08:54:25'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD108`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD108`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD108` ON SCHEDULE AT '2015-04-25 09:15:56' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:15:56'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD109`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD109`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD109` ON SCHEDULE AT '2015-04-25 09:17:30' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:17:30'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD110`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD110`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD110` ON SCHEDULE AT '2015-04-25 09:18:27' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:18:27'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD111`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD111`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD111` ON SCHEDULE AT '2015-04-25 09:19:30' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:19:30'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD112`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD112`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD112` ON SCHEDULE AT '2015-04-25 09:20:50' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:20:50'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD113`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD113`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD113` ON SCHEDULE AT '2015-04-25 09:21:36' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:21:36'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD114`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD114`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD114` ON SCHEDULE AT '2015-04-25 09:23:13' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:23:13'
+;;
+DELIMITER ;
 
 -- ----------------------------
 -- Event structure for `AD70`
@@ -2333,6 +2450,7 @@ INSERT INTO `users` VALUES ('76', 'Andrew', '606f6b980d216b5948b0194601a7c3a6', 
 DROP EVENT IF EXISTS `AD70`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD70` ON SCHEDULE AT '2017-04-01 12:27:48' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2017-04-01 12:27:48'
+;
 ;;
 DELIMITER ;
 
@@ -2342,6 +2460,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD87`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD87` ON SCHEDULE AT '2015-04-04 12:12:11' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-04 12:12:11'
+;
 ;;
 DELIMITER ;
 
@@ -2351,6 +2470,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD88`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD88` ON SCHEDULE AT '2015-04-04 12:14:36' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-04 12:14:36'
+;
 ;;
 DELIMITER ;
 
@@ -2360,6 +2480,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD89`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD89` ON SCHEDULE AT '2015-04-14 10:57:12' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-14 10:57:12'
+;
 ;;
 DELIMITER ;
 
@@ -2369,6 +2490,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD90`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD90` ON SCHEDULE AT '2034-04-19 18:33:55' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2034-04-19 18:33:55'
+;
 ;;
 DELIMITER ;
 
@@ -2378,6 +2500,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD91`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD91` ON SCHEDULE AT '2015-04-19 18:35:21' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-19 18:35:21'
+;
 ;;
 DELIMITER ;
 
@@ -2387,6 +2510,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD92`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD92` ON SCHEDULE AT '2015-04-21 20:45:22' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-21 20:45:22'
+;
 ;;
 DELIMITER ;
 
@@ -2396,15 +2520,53 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD93`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD93` ON SCHEDULE AT '2014-05-01 21:10:14' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2014-05-01 21:10:14'
+;
 ;;
 DELIMITER ;
 
 -- ----------------------------
--- Event structure for `AD94`
+-- Event structure for `AD95`
 -- ----------------------------
-DROP EVENT IF EXISTS `AD94`;
+DROP EVENT IF EXISTS `AD95`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` EVENT `AD94` ON SCHEDULE AT '2014-04-22 22:18:52' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2014-04-22 22:18:52'
+CREATE DEFINER=`root`@`localhost` EVENT `AD95` ON SCHEDULE AT '2025-04-22 18:34:29' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='72' AND availability='2025-04-22 18:34:29'
+;
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD96`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD96`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD96` ON SCHEDULE AT '2015-04-24 23:51:59' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-24 23:51:59'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD97`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD97`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD97` ON SCHEDULE AT '2025-04-24 23:53:18' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2025-04-24 23:53:18'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD98`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD98`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD98` ON SCHEDULE AT '2015-04-24 23:53:55' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-24 23:53:55'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD99`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD99`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD99` ON SCHEDULE AT '2015-04-24 23:56:23' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-24 23:56:23'
 ;;
 DELIMITER ;
 
@@ -2415,15 +2577,6 @@ DROP EVENT IF EXISTS `test_event_02`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `test_event_02` ON SCHEDULE AT '2014-03-30 22:16:24' ON COMPLETION PRESERVE DISABLE DO INSERT INTO messages2(message,created_at)
    VALUES('Test MySQL Event 2',NOW())
-;;
-DELIMITER ;
-
--- ----------------------------
--- Event structure for `test_event_03`
--- ----------------------------
-DROP EVENT IF EXISTS `test_event_03`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` EVENT `test_event_03` ON SCHEDULE EVERY 1 SECOND STARTS '2014-04-01 10:28:40' ENDS '2014-04-01 11:28:40' ON COMPLETION NOT PRESERVE ENABLE DO INSERT INTO messages2(message,created_at)
-   VALUES('Test MySQL Event 2',NOW())
+;
 ;;
 DELIMITER ;
