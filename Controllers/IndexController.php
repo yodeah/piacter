@@ -5,7 +5,7 @@ class IndexController {
     function display($f3) {
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
-        echo Template::instance()->render('slider.tpl');
+        //echo Template::instance()->render('slider.tpl');
         $this->indexContent($f3, 4);
         echo Template::instance()->render('endofmain.tpl');
     }
@@ -62,8 +62,11 @@ class IndexController {
         $page = (($_GET['page'] * 50) - 50);
         $connection = new PDOConnection;
         $result = $connection->query("SELECT * FROM linkdb
-		WHERE title LIKE '%" . $_GET['searchbox'] . "%' LIMIT " . $page . ",50 ");
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+		WHERE title LIKE '%" . $_GET['searchbox'] . "%' LIMIT " . $page . ",50 ")->fetchAll(PDO::FETCH_ASSOC);
+        if(count($result)==0){
+            echo 'a teszt adatbázisban csak laptopok vannak, keress valami olyanra ami egy laptop hirdetés címében lehet!';
+        }
+        foreach ($result as $row) {
             $f3->set('title', $row["title"]);
             $f3->set('link', $row["link"]);
             echo Template::instance()->render('greenbox.tpl');

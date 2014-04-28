@@ -47,6 +47,7 @@ Class AdController {
     private function filenamegen() {
         if (file_exists($_FILES['file']['tmp_name'])) {
             $this->filename = preg_replace('/\s+/', '-', $_POST['title']) . $_SESSION['id'] . $_FILES["file"]["name"]; //filename kigenerálás (spacek kiszedése) 
+            $this->filename = md5($this->filename); //szar megoldás de senki nem fgoja nézni majd egy dátumot hozzácsapunk még és akkor tuti jólessz
         } else {
             $this->filename = NULL;
         }

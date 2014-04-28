@@ -20,7 +20,7 @@
     <h3 class="title-divider"><span>Speciális keresés</span></h3>
     <h5>Írja be a kulcsszót</h5>
     <div class="form-group">
-        <input required pattern=".{5,100}" required title="5 töl 100 karakter" type="text" class="form-control" name="keyword" id="keyword" placeholder="Kulcsszó">
+        <input required pattern=".{3,100}" required title="3 töl 100 karakter" type="text" class="form-control" name="keyword" id="keyword" placeholder="Kulcsszó">
     </div>
 
     <h5><input type="checkbox" name="searchintitle" checked id="searchintitle">Keresés címben</h5>          
@@ -30,7 +30,7 @@
 
     <h5>Állapot</h5>
     <select name="condition" class="form-control" required>
-        <option value="0">Bármilyen</option>
+        <option value="2">Bármilyen</option>
         <option value="0">Használt</option>
         <option value="1">Új</option>
     </select>
@@ -59,5 +59,5 @@
         <option value="18" id="re-20">Veszprém megye</option>
         <option value="19" id="re-21">Zala megye</option>
     </select><br/><br/>
-    <button class="btn btn-primary" type="submit">Hirdetés feltöltése</button>
+    <button class="btn btn-primary" type="submit">Keresés</button>
 </form>

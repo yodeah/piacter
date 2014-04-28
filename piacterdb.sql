@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : home
-Source Server Version : 50615
+Source Server         : localhost
+Source Server Version : 50611
 Source Host           : localhost:3306
 Source Database       : piacterdb
 
 Target Server Type    : MYSQL
-Target Server Version : 50615
+Target Server Version : 50611
 File Encoding         : 65001
 
-Date: 2014-04-26 12:48:25
+Date: 2014-04-28 23:52:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -101,7 +101,7 @@ CREATE TABLE `items` (
   `boughtfixed` tinyint(4) DEFAULT NULL,
   `sentmessage` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of items
@@ -117,11 +117,11 @@ INSERT INTO `items` VALUES ('106', '76', 'Samsung N8000 Galaxy Note 10.1 WiFi + 
 INSERT INTO `items` VALUES ('107', '76', 'Samsung N8000 Galaxy Note 10.1 WiFi + 3G', 'Note,  az Ãºj irÃ¡ny A Galaxy note 10,1 Ãºj tÃ¡vlatokat nyit meg elÅ‘tted, hogy bÃ¡rhol szabadon alkothass a digitÃ¡lis eszkÃ¶zÃ¶kkel a nagymÃ©retÅ± mÃ©gis kÃ¶nnyen hordozhatÃ³ kijelzÅ‘n. Fedezd fel az intelligens S Penben rejlÅ‘ lehetÅ‘sÃ©geket Ã©s hozz lÃ©tre Ãºj tartalmakat grafika, Ã­rÃ¡s Ã©s fÃ©nykÃ©pek felhasznÃ¡lÃ¡sÃ¡val a webalapÃº multimÃ©diÃ¡val Ã©s Ã©lvezd az egyedi digitÃ¡lis kiadvÃ¡nyok elÅ‘nyeit. A nagy teljesÃ­tmÃ©nyÅ± processzorral Ã©s a strapabÃ­rÃ³ akkumulÃ¡torral ez a legtÃ¶kÃ©letesebb, tÃ¶bb alkalmazÃ¡st egyszerre is futtatÃ³, kreatÃ­v mobil eszkÃ¶z. Alkoss szabadon Ã©s kÃ¶nnyedÃ©n - S Jegyzet Hozd lÃ©tre a sajÃ¡t dokumentumaidat az elÅ‘re telepÃ­tett, profin megtervezett sablonok segÃ­tsÃ©gÃ©vel. VÃ¡lassz a folyÃ³irat, naplÃ³, recept Ã©s egyÃ©b stÃ­lusÃº sablonok kÃ¶zÃ¼l. Illeszd be az Ã¶sszeÃ¡llÃ­tott szÃ¶veget, kÃ©pet Ã©s grafikÃ¡t az egyedi tartalmÃº, professzionÃ¡lis minÅ‘sÃ©gÅ± multimÃ©dia dokumentumba. A legjobb tÃ¡rs az alkotÃ¡sban - Adobe Photoshop Touch Hozz ki mÃ©gtÃ¶bbet a fotÃ³kbÃ³l, rajzokbÃ³l Ã©s a Google keresÃ©ssel talÃ¡lt kÃ©pekbÅ‘l  a Photoshop Touch segÃ­tsÃ©gÃ©vel. A kreatÃ­v eszkÃ¶zÃ¶kkel kÃ©peket egyesÃ­thetsz Ã©s profi effekteket alkalmazhatsz. ', '', '0', 'Samsung-N8000-Galaxy-Note-10.1-WiFi-+-3G76e907_1_300.jpg', '2014-04-25 08:54:25', '1', '0', '90000', '0', '1', '0', '2015-04-25 08:54:25', '1', null, null, null, null, null, '1', null, '0');
 INSERT INTO `items` VALUES ('108', '76', 'HTC ONE M7', 'HTC ONE M7 nagyon szÃ©p Ã¡llapotban\r\n\r\nHTC One M7 \r\n\r\nSzolgÃ¡ltatÃ³:T-Mobile \r\n\r\nÃllapot: nagyon szÃ©p, ÃºjszerÅ± \r\n\r\nTartozÃ©kok: doboz,tÃ¶ltÅ‘,adatkÃ¡bel, fliptok\r\n\r\nGarancia: 1 hÃ³nap (1 hÃ©t teljes kÃ¶rÅ± + 3 hÃ©t szoftveres)  \r\n\r\nSzemÃ©lyes Ã¡tvÃ©tel: Budapesten, XIII. kerÃ¼letben\r\n\r\nKiszÃ¡llÃ­tÃ¡s: Budapest hatÃ¡rain belÃ¼l 1 munkanap alatt 1,000 Ft. Budapest hatÃ¡rain kÃ­vÃ¼l Royal Sprint futÃ¡rszolgÃ¡lattal 2,000 Ft. A csomagot kiÃ©rkezÃ©skor a helyszÃ­nen lehet fizetni. POSTÃT MOBILKÃ‰SZÃœLÃ‰K ESETÃ‰N NEM VÃLLALOK!', '', '19', 'HTC-ONE-M776c907_1_big.jpg', '2014-04-25 09:15:56', '1', '0', '60000', '0', '1', '0', '2015-04-25 09:15:56', '1', null, null, null, null, null, '1', null, '0');
 INSERT INTO `items` VALUES ('109', '76', 'HTC Desire S HTC S510e ', 'Ãšj HTC Incredible S\r\n\r\nEladÃ³ EGY HTC Incredible S okostelefon  Qualcomm MSM8255 Snapdragon processzorral,1 hÃ©t csere vagy pÃ©nzvisszafizetÃ©si garanciÃ¡val!\r\n\r\nGYÃRILAG MAGYAR MENÃœ!!!\r\n\r\nA telefon kÃ¼lfÃ¶ldrÅ‘l Ã©rkezik, ÃGY a szÃ¡llÃ­tÃ¡si idÅ‘ 20-30 munkanap !\r\n\r\nSzÃ¡rmazÃ¡si hely: Taiwan\r\n\r\nRÃ©szletfizetÃ©s van, LÃ¡sd:SzÃ¡llÃ­tÃ¡si Ã©s garanciÃ¡lis feltÃ©telek!\r\n\r\nAZ ÃR BRUTTÃ“ ÃR, VÃM-ot, ÃFA-t,stb, tartalmazza!\r\n\r\nMÅ±szaki adatok:\r\n\r\nÃltalÃ¡nos 2G HÃ¡lÃ³zat GSM 850/900/1800/1900 3G hÃ¡lÃ³zat HSDPA 900/2100 HSDPA 900/1700/2100\r\n\r\nMegjelent 2011, februÃ¡r\r\n\r\nTest MÃ©retek 120 x 64 x 11.4 mm\r\n\r\nSÃºly 135.5 g -\r\n\r\nÃ‰rintÃ©svezÃ©rlÃ©ssel KijelzÅ‘: Type S-LCD kapacitÃ­v Ã©rintÅ‘kÃ©pernyÅ‘, 16 milliÃ³ szÃ­n\r\n\r\nMÃ©ret: 480 x 800 pixel, 4.0 inches (~ 233 ppi pixel sÅ±rÅ±sÃ©g)\r\n\r\nMultitouch: Igen - HTC Sense UI\r\n\r\nHang: Ã‰bresztÅ‘, RezgÃ©s, MP3, WAV csengÅ‘hangok\r\n\r\nHangszÃ³rÃ³: Igen\r\n\r\n3,5 mm-es jack: Igen\r\n\r\nMemÃ³riakÃ¡rtya slot: microSD, 32GB-ig,\r\n\r\nROM BelsÅ‘: 1,1 GB', '', '10', 'HTC-Desire-S-HTC-S510e-764907_1_big.jpg', '2014-04-25 09:17:30', '1', '0', '90000', '0', '1', '0', '2015-04-25 09:17:30', '1', '70000', '1000', '0', null, null, '1', null, '0');
-INSERT INTO `items` VALUES ('110', '76', 'HTC Desire S HTC S510e (LEZÃRT AUKCIÃ“, ELADVA)', 'Ãšj HTC Desire S HTC S510e Ãºj\r\n\r\nEladÃ³ EGY HTC DESIRE S510e okostelefon  Qualcomm MSM8255 Snapdragon, 1,0 GHz,processzorral,1 hÃ©t csere vagy pÃ©nzvisszafizetÃ©si garanciÃ¡val!\r\n\r\nGYÃRILAG MAGYAR MENÃœ!!!\r\n\r\nA telefon kÃ¼lfÃ¶ldrÅ‘l Ã©rkezik, ÃGY a szÃ¡llÃ­tÃ¡si idÅ‘ 20-30 munkanap !\r\n\r\nSzÃ¡rmazÃ¡si hely: Taiwan\r\n\r\nRÃ©szletfizetÃ©s van, LÃ¡sd:SzÃ¡llÃ­tÃ¡si Ã©s garanciÃ¡lis feltÃ©telek!\r\n\r\nAZ ÃR BRUTTÃ“ ÃR, VÃM-ot, ÃFA-t,stb, tartalmazza!\r\n\r\nMÅ±szaki adatok:\r\n\r\nÃltalÃ¡nos 2G HÃ¡lÃ³zat GSM 850/900/1800/1900 3G hÃ¡lÃ³zat HSDPA 900/2100 HSDPA 900/1700/2100\r\n\r\nMegjelent 2011, mÃ¡rcius', '', '0', 'HTC-Desire-S-HTC-S510e764907_1_300.jpg', '2014-04-25 09:18:27', '1', '0', '30000', '0', '1', '0', '2015-04-25 09:18:27', '1', null, null, null, null, null, '0', '76', '1');
+INSERT INTO `items` VALUES ('110', '76', 'HTC Desire S HTC S510e ', 'Ãšj HTC Desire S HTC S510e Ãºj\r\n\r\nEladÃ³ EGY HTC DESIRE S510e okostelefon  Qualcomm MSM8255 Snapdragon, 1,0 GHz,processzorral,1 hÃ©t csere vagy pÃ©nzvisszafizetÃ©si garanciÃ¡val!\r\n\r\nGYÃRILAG MAGYAR MENÃœ!!!\r\n\r\nA telefon kÃ¼lfÃ¶ldrÅ‘l Ã©rkezik, ÃGY a szÃ¡llÃ­tÃ¡si idÅ‘ 20-30 munkanap !\r\n\r\nSzÃ¡rmazÃ¡si hely: Taiwan\r\n\r\nRÃ©szletfizetÃ©s van, LÃ¡sd:SzÃ¡llÃ­tÃ¡si Ã©s garanciÃ¡lis feltÃ©telek!\r\n\r\nAZ ÃR BRUTTÃ“ ÃR, VÃM-ot, ÃFA-t,stb, tartalmazza!\r\n\r\nMÅ±szaki adatok:\r\n\r\nÃltalÃ¡nos 2G HÃ¡lÃ³zat GSM 850/900/1800/1900 3G hÃ¡lÃ³zat HSDPA 900/2100 HSDPA 900/1700/2100\r\n\r\nMegjelent 2011, mÃ¡rcius', '', '0', 'HTC-Desire-S-HTC-S510e764907_1_300.jpg', '2014-04-25 09:18:27', '1', '0', '30000', '0', '1', '0', '2015-04-25 09:18:27', '1', null, null, null, null, null, '1', null, '1');
 INSERT INTO `items` VALUES ('111', '76', 'HTC Touch HD mini T5555', 'HTC Touch HD mini T5555\r\n\r\nEladÃ³ EGY HTC  Touch HD mini T5555 okostelefon  Qualcomm MSM7227 600 MHz,processzorral,1 hÃ³nap csere vagy pÃ©nzvisszafizetÃ©si garanciÃ¡val!\r\n\r\nCsak Angol nyelv!\r\n\r\nA telefon kÃ¼lfÃ¶ldrÅ‘l Ã©rkezik, ÃGY a szÃ¡llÃ­tÃ¡si idÅ‘ 20-30 munkanap!\r\n\r\nSzÃ¡rmazÃ¡si hely: Taiwan\r\n\r\nRÃ©szletfizetÃ©s van, LÃ¡sd:SzÃ¡llÃ­tÃ¡si Ã©s garanciÃ¡lis feltÃ©telek!\r\n\r\nAZ ÃR BRUTTÃ“ ÃR, VÃM-ot, ÃFA-t,stb, tartalmazza!\r\n\r\nINGYEN POSTA!', '', '9', 'HTC-Touch-HD-mini-T5555768207_1_big.jpg', '2014-04-25 09:19:30', '1', '0', '50000', '0', '1', '0', '2015-04-25 09:19:30', '1', null, null, null, null, null, '1', null, '0');
 INSERT INTO `items` VALUES ('112', '76', 'HP Envy 17-j010el', 'HP Envy 17-j010el ÃšJ High-End 17,3\" FullHD laptop\r\n\r\n- Intel Core i7-4700MQ QuadCore CPU (4x 2,4 / 3,4 GHz Turbo, 6MB cache)\r\n- 16GB RAM\r\n- 2TB HDD (2db 1TB-os meghajtÃ³)\r\n- nVidia GeForce GT 740M VGA 2GB dedikÃ¡lt RAM-mal\r\n- bluetooth\r\n- vilÃ¡gÃ­tÃ³ billentyÅ±zet\r\n- ujjlenyomat-olvasÃ³\r\n\r\n\r\nMagnÃ©zium-AlumÃ­nium burkolat. ElegÃ¡ns felsÅ‘ kategÃ³riÃ¡s gÃ©p, Ã©lÅ‘ben nagyon jÃ³l nÃ©z ki.\r\n', '', '13', 'HP-Envy-17-j010el76c707_2_300.jpg', '2014-04-25 09:20:50', '1', '0', '300000', '0', '1', '0', '2015-04-25 09:20:50', '1', null, null, null, null, null, '1', null, '0');
 INSERT INTO `items` VALUES ('113', '76', 'Sony Vaio Tap 11 (laptop + tablet)', 'KihasznÃ¡latlansÃ¡g miatt eladÃ³ egy Sony Vaio Tap 11 SVT1121B2E tÃ­pusÃº hibrid gÃ©p (tablet + laptop egyben).\r\n2013 decemberÃ©ben vÃ¡sÃ¡rolt, kifogÃ¡stalan ÃºjszerÅ± Ã¡llapotban, dobozÃ¡ban, minden gyÃ¡ri tartozÃ©kÃ¡val.\r\nMÃ©g 2015 decemberÃ©ig Ã©rvÃ©nyes Sony garanciÃ¡val.\r\nAjÃ¡ndÃ©kba adok hozzÃ¡:\r\n- 64GB-os microSD kÃ¡rtyÃ¡t;\r\n- microHDMI-HDMI Ã¡talakÃ­tÃ³t, HDMI kÃ¡belt;\r\n- tÃ¡ska (Hama).\r\nÃšj Ã¡ra: 255e Ft-tÃ³l.\r\nCsere, beszÃ¡mÃ­tÃ¡s: csak IPad Air, IPad Mini Retina, vagy MacBook-ra Ã©rdekel.', '', '2', 'Sony-Vaio-Tap-11-(laptop-+-tablet)766607_1_300.jpg', '2014-04-25 09:21:36', '1', '0', '170000', '0', '1', '0', '2015-04-25 09:21:36', '1', null, null, null, null, null, '1', null, '0');
-INSERT INTO `items` VALUES ('114', '76', 'i5 LENOVO LAPTOP (LEZÃRT AUKCIÃ“, ELADVA)', 'LENOVO T-410 i5 LAPTOP KivÃ¡lÃ³ esztÃ©tikai, Ã©s hibÃ¡tlan mÅ±szaki Ã¡llapotban. OrszÃ¡gosan ingyenes hÃ¡zhoz szÃ¡llÃ­tÃ¡s, utÃ¡nvÃ©tes futÃ¡rszolgÃ¡lattal akÃ¡r 1 munkanapon belÃ¼l. 6 hÃ³nap teljeskÃ¶rÅ± garancia. A termÃ©krÅ‘l minden esteben bruttÃ³ magyar szÃ¡mlÃ¡t adunk.\r\n \r\nAJÃNDÃ‰K KINGSTON 8 GB MICRO PENDRIVE + OPTIKAI EGÃ‰R !!!\r\n \r\nKonfigurÃ¡ciÃ³: Processzor: Intel Core i5 520M / 2.40 GHz 3M Cache\r\nMemÃ³ria: 4 GB DDR3\r\nMerevlemez: 160 GB SATA\r\nKijelzÅ‘: 14,1 LED Blacklight - 1280 x 800 (WXGA)\r\nVGA: Mobile Intel QM57 Express\r\nOptikai meghajtÃ³: DVD-RW Chipset:\r\nMobile Intel GM45 Express\r\nAkku: 9 cellÃ¡s Lithium Ion 4x USB 2.0, eSATA, WLAN, LAN,VGA, TÃ¶bb formÃ¡tumÃº kÃ¡rtyaolvasÃ³, billentyÅ±zet vilÃ¡gÃ­tÃ¡s.\r\nÃllapot: SzÃ©p Ã¡llapotÃº, hasznÃ¡lt\r\nAkkumulÃ¡tor kapacitÃ¡s: JÃ³, Kb. 1-1,5 Ã³rÃ¡s, hÃ¡lÃ³zati tÃ¶ltÅ‘\r\nGarancia: 6 hÃ³nap', '', '16', 'i5-LENOVO-LAPTOP764138127397.jpg', '2014-04-25 09:23:13', '1', '0', '90000', '0', '1', '0', '2015-04-25 09:23:13', '1', null, null, null, null, null, '1', null, '0');
+INSERT INTO `items` VALUES ('114', '76', 'i5 LENOVO LAPTOP', 'LENOVO T-410 i5 LAPTOP KivÃ¡lÃ³ esztÃ©tikai, Ã©s hibÃ¡tlan mÅ±szaki Ã¡llapotban. OrszÃ¡gosan ingyenes hÃ¡zhoz szÃ¡llÃ­tÃ¡s, utÃ¡nvÃ©tes futÃ¡rszolgÃ¡lattal akÃ¡r 1 munkanapon belÃ¼l. 6 hÃ³nap teljeskÃ¶rÅ± garancia. A termÃ©krÅ‘l minden esteben bruttÃ³ magyar szÃ¡mlÃ¡t adunk.\r\n \r\nAJÃNDÃ‰K KINGSTON 8 GB MICRO PENDRIVE + OPTIKAI EGÃ‰R !!!\r\n \r\nKonfigurÃ¡ciÃ³: Processzor: Intel Core i5 520M / 2.40 GHz 3M Cache\r\nMemÃ³ria: 4 GB DDR3\r\nMerevlemez: 160 GB SATA\r\nKijelzÅ‘: 14,1 LED Blacklight - 1280 x 800 (WXGA)\r\nVGA: Mobile Intel QM57 Express\r\nOptikai meghajtÃ³: DVD-RW Chipset:\r\nMobile Intel GM45 Express\r\nAkku: 9 cellÃ¡s Lithium Ion 4x USB 2.0, eSATA, WLAN, LAN,VGA, TÃ¶bb formÃ¡tumÃº kÃ¡rtyaolvasÃ³, billentyÅ±zet vilÃ¡gÃ­tÃ¡s.\r\nÃllapot: SzÃ©p Ã¡llapotÃº, hasznÃ¡lt\r\nAkkumulÃ¡tor kapacitÃ¡s: JÃ³, Kb. 1-1,5 Ã³rÃ¡s, hÃ¡lÃ³zati tÃ¶ltÅ‘\r\nGarancia: 6 hÃ³nap', '', '16', 'i5-LENOVO-LAPTOP764138127397.jpg', '2014-04-25 09:23:13', '1', '0', '90000', '0', '1', '0', '2015-04-25 09:23:13', '1', null, null, null, null, null, '1', null, '0');
 
 -- ----------------------------
 -- Table structure for `linkdb`
@@ -2288,7 +2288,7 @@ CREATE TABLE `users` (
   `regdate` datetime DEFAULT NULL,
   `lastlogin` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of users
@@ -2308,6 +2308,7 @@ INSERT INTO `users` VALUES ('74', 'test2222', 'fda11200c7593928c946fac203619c69'
 INSERT INTO `users` VALUES ('75', 'test', '9c7801a346a71781fe7c5df7dfb30233', 'test@gmail.com', '2014-03-23 16:24:04', '2014-03-23 16:25:50');
 INSERT INTO `users` VALUES ('76', 'Andrew', '606f6b980d216b5948b0194601a7c3a6', 'andras2@citromail.hu', '2014-03-26 09:26:13', '2014-04-25 21:12:52');
 INSERT INTO `users` VALUES ('77', 'yodeah', '4e05ccfd4c2574b5f894194dbffb1e9d', 'yodeah@gmail.com', '2014-04-25 09:31:12', '2014-04-25 09:31:27');
+INSERT INTO `users` VALUES ('78', 'peterpeter', '4474b08c5d1bd42db77d8550c9620903', 'peter@peter.hu', '2014-04-28 23:40:30', '2014-04-28 23:40:43');
 
 -- ----------------------------
 -- Event structure for `AD100`
@@ -2315,6 +2316,7 @@ INSERT INTO `users` VALUES ('77', 'yodeah', '4e05ccfd4c2574b5f894194dbffb1e9d', 
 DROP EVENT IF EXISTS `AD100`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD100` ON SCHEDULE AT '2015-04-25 00:15:26' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 00:15:26'
+;
 ;;
 DELIMITER ;
 
@@ -2324,6 +2326,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD101`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD101` ON SCHEDULE AT '2015-04-25 00:23:27' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 00:23:27'
+;
 ;;
 DELIMITER ;
 
@@ -2333,6 +2336,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD102`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD102` ON SCHEDULE AT '2015-04-25 00:26:17' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 00:26:17'
+;
 ;;
 DELIMITER ;
 
@@ -2342,6 +2346,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD103`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD103` ON SCHEDULE AT '2015-04-25 08:22:53' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 08:22:53'
+;
 ;;
 DELIMITER ;
 
@@ -2351,6 +2356,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD104`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD104` ON SCHEDULE AT '2015-04-25 08:24:04' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 08:24:04'
+;
 ;;
 DELIMITER ;
 
@@ -2360,6 +2366,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD105`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD105` ON SCHEDULE AT '2015-04-25 08:25:05' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 08:25:05'
+;
 ;;
 DELIMITER ;
 
@@ -2369,6 +2376,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD106`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD106` ON SCHEDULE AT '2015-04-25 08:51:44' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 08:51:44'
+;
 ;;
 DELIMITER ;
 
@@ -2378,6 +2386,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD107`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD107` ON SCHEDULE AT '2015-04-25 08:54:25' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 08:54:25'
+;
 ;;
 DELIMITER ;
 
@@ -2387,6 +2396,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD108`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD108` ON SCHEDULE AT '2015-04-25 09:15:56' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:15:56'
+;
 ;;
 DELIMITER ;
 
@@ -2396,6 +2406,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD109`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD109` ON SCHEDULE AT '2015-04-25 09:17:30' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:17:30'
+;
 ;;
 DELIMITER ;
 
@@ -2405,6 +2416,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD110`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD110` ON SCHEDULE AT '2015-04-25 09:18:27' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:18:27'
+;
 ;;
 DELIMITER ;
 
@@ -2414,6 +2426,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD111`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD111` ON SCHEDULE AT '2015-04-25 09:19:30' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:19:30'
+;
 ;;
 DELIMITER ;
 
@@ -2423,6 +2436,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD112`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD112` ON SCHEDULE AT '2015-04-25 09:20:50' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:20:50'
+;
 ;;
 DELIMITER ;
 
@@ -2432,6 +2446,7 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD113`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD113` ON SCHEDULE AT '2015-04-25 09:21:36' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:21:36'
+;
 ;;
 DELIMITER ;
 
@@ -2441,6 +2456,34 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD114`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD114` ON SCHEDULE AT '2015-04-25 09:23:13' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-25 09:23:13'
+;
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD115`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD115`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD115` ON SCHEDULE AT '2015-04-28 23:42:39' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='78' AND availability='2015-04-28 23:42:39'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD116`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD116`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD116` ON SCHEDULE AT '2015-04-28 23:49:47' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='78' AND availability='2015-04-28 23:49:47'
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD117`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD117`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD117` ON SCHEDULE AT '2015-04-28 23:51:25' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='78' AND availability='2015-04-28 23:51:25'
 ;;
 DELIMITER ;
 
@@ -2460,7 +2503,6 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD87`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD87` ON SCHEDULE AT '2015-04-04 12:12:11' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-04 12:12:11'
-;
 ;;
 DELIMITER ;
 
@@ -2470,7 +2512,6 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD88`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD88` ON SCHEDULE AT '2015-04-04 12:14:36' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-04 12:14:36'
-;
 ;;
 DELIMITER ;
 
@@ -2480,7 +2521,6 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD89`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD89` ON SCHEDULE AT '2015-04-14 10:57:12' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-14 10:57:12'
-;
 ;;
 DELIMITER ;
 
@@ -2490,7 +2530,6 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD90`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD90` ON SCHEDULE AT '2034-04-19 18:33:55' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2034-04-19 18:33:55'
-;
 ;;
 DELIMITER ;
 
@@ -2500,7 +2539,6 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD91`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD91` ON SCHEDULE AT '2015-04-19 18:35:21' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-19 18:35:21'
-;
 ;;
 DELIMITER ;
 
@@ -2510,7 +2548,6 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD92`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD92` ON SCHEDULE AT '2015-04-21 20:45:22' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-21 20:45:22'
-;
 ;;
 DELIMITER ;
 
@@ -2520,7 +2557,15 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD93`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD93` ON SCHEDULE AT '2014-05-01 21:10:14' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2014-05-01 21:10:14'
-;
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `AD94`
+-- ----------------------------
+DROP EVENT IF EXISTS `AD94`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `AD94` ON SCHEDULE AT '2014-04-22 22:18:52' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2014-04-22 22:18:52'
 ;;
 DELIMITER ;
 
@@ -2530,43 +2575,6 @@ DELIMITER ;
 DROP EVENT IF EXISTS `AD95`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `AD95` ON SCHEDULE AT '2025-04-22 18:34:29' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='72' AND availability='2025-04-22 18:34:29'
-;
-;;
-DELIMITER ;
-
--- ----------------------------
--- Event structure for `AD96`
--- ----------------------------
-DROP EVENT IF EXISTS `AD96`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` EVENT `AD96` ON SCHEDULE AT '2015-04-24 23:51:59' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-24 23:51:59'
-;;
-DELIMITER ;
-
--- ----------------------------
--- Event structure for `AD97`
--- ----------------------------
-DROP EVENT IF EXISTS `AD97`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` EVENT `AD97` ON SCHEDULE AT '2025-04-24 23:53:18' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2025-04-24 23:53:18'
-;;
-DELIMITER ;
-
--- ----------------------------
--- Event structure for `AD98`
--- ----------------------------
-DROP EVENT IF EXISTS `AD98`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` EVENT `AD98` ON SCHEDULE AT '2015-04-24 23:53:55' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-24 23:53:55'
-;;
-DELIMITER ;
-
--- ----------------------------
--- Event structure for `AD99`
--- ----------------------------
-DROP EVENT IF EXISTS `AD99`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` EVENT `AD99` ON SCHEDULE AT '2015-04-24 23:56:23' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE `items` SET isopen=0 WHERE owner='76' AND availability='2015-04-24 23:56:23'
 ;;
 DELIMITER ;
 
@@ -2577,6 +2585,15 @@ DROP EVENT IF EXISTS `test_event_02`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `test_event_02` ON SCHEDULE AT '2014-03-30 22:16:24' ON COMPLETION PRESERVE DISABLE DO INSERT INTO messages2(message,created_at)
    VALUES('Test MySQL Event 2',NOW())
-;
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `test_event_03`
+-- ----------------------------
+DROP EVENT IF EXISTS `test_event_03`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `test_event_03` ON SCHEDULE EVERY 1 SECOND STARTS '2014-04-01 10:28:40' ENDS '2014-04-01 11:28:40' ON COMPLETION NOT PRESERVE ENABLE DO INSERT INTO messages2(message,created_at)
+   VALUES('Test MySQL Event 2',NOW())
 ;;
 DELIMITER ;
