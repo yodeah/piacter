@@ -38,8 +38,8 @@ $f3->route('GET /Cron1','CronController->cron1');
 $f3->route('GET /Rate/@rateid','RateController->ratesite');
 $f3->route('GET /Succesfullrate','RateController->ratesuccess');
 $f3->route('POST /Ratecheck','RateController->ratecheck');
-$f3->route('POST /Special','SpecSearchController->index');
-$f3->route('POST /Special_process','SpecSearchController->process');
+$f3->route('GET /Special','SpecSearchController->index');
+$f3->route('GET /Special_process','SpecSearchController->process');
 
 $f3->route('GET|HEAD|POST /index', function($f3) {
     $f3->reroute('/');

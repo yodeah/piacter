@@ -1,96 +1,42 @@
-<form class="form-login form-wrapper form-medium" role="form" action="special_process" method="POST" enctype="multipart/form-data">
-    <h3 class="title-divider"><span>Új hirdetés</span></h3>
-    <h5>Leírás</h5>
-    <div class="form-group">
-        <label class="sr-only" for="title">Hirdetés címe</label>
-        <input required pattern=".{5,100}" required title="5 töl 100 karakter" type="text" class="form-control" name="title" id="title" placeholder="Hirdetés címe">
-    </div>
-    <div class="form-group">
-        <label class="sr-only" for="description">Hirdetés szövege</label>
-        <textarea required pattern=".{5,500}" required title="5 töl 500 karakter" name="description" rows="12" class="form-control placeholder" id="description" placeholder="Hirdetés szövege"></textarea>
-    </div>
+<script>
+    window.addEventListener("load", checkboxcheck, false);
+    function checkboxcheck() {
+        var searchintitle = document.getElementById('searchintitle');
+        var searchindesc = document.getElementById('searchindesc');
+
+        searchintitle.addEventListener('change', changecb, false);
+        searchindesc.addEventListener('change', changecb, false);
 
 
-    <h5><input type="checkbox" name="fixpricecb" checked id="fixpricecb">Fix ár</h5><p>Ezt rögtön le tudják ütni a felhasználók és ennyiért elvinni</p>          
-    <div class="form-group">
-        <div class="row">
-            <label class="sr-only" for="title">Irányár</label>
+        function changecb() {
+            if (searchintitle.checked == false && searchindesc.checked == false) {
+                searchintitle.checked = true;
+            }
+        }
+    }
+</script>
 
-            <input class="quantity70 form-control" id="fixpriceinput" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" name="fixprice" id="price" placeholder="Fix ár">
-            <select name="fixprice ty" class="quantity30 form-control" required >
-                <option value="0">Ft</option>
-                <option value="1">Usd</option>
-                <option value="2">Eur</option>
-            </select>
-        </div>
+<form class="form-login form-wrapper form-medium" role="form" action="special_process" method="GET" enctype="multipart/form-data">
+    <h3 class="title-divider"><span>Speciális keresés</span></h3>
+    <h5>Írja be a kulcsszót</h5>
+    <div class="form-group">
+        <input required pattern=".{5,100}" required title="5 töl 100 karakter" type="text" class="form-control" name="keyword" id="keyword" placeholder="Kulcsszó">
     </div>
 
+    <h5><input type="checkbox" name="searchintitle" checked id="searchintitle">Keresés címben</h5>          
+    <h5><input type="checkbox" name="searchindesc" id="searchindesc">Keresés leírásban</h5>          
 
 
-    <h5><input type="checkbox" name="auctioncb" id="auctioncb">Licit</h5><p>Itt a minimál árról indul a licit és a felhasználóknak a minimunlicittel vagy nagyobb összeggel kell növelni a licitet </p>          
-    <div class="form-group">
-        <div class="row">
-            <label class="sr-only" for="title">Irányár</label>
-            <div class="quantity70">
-                <input class="quantity50 form-control"  id="auctioninput1" pattern=".{1,20}"  title="1 töl 20 karakter" type="number" name="auctionstart" id="price" placeholder="Minimálár">
-                <input class="quantity50 form-control"  id="auctioninput2" pattern=".{1,20}"  title="1 töl 20 karakter" type="number" name="auctionstep" id="price" placeholder="Licitlépcső">
-            </div>
-            <select name="auctionprice ty" class="quantity30 form-control" required >
-                <option value="0">Ft</option>
-                <option value="1">Usd</option>
-                <option value="2">Eur</option>
-            </select>
-        </div>
-    </div>
-
-    <h5>Mennyiség</h5>
-
-    <div class="form-group">
-        <div class="row">
-            <label class="sr-only" for="title">Mennyiség</label>
-            <input class="quantity70 form-control" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" name="quantity" id="quantity" placeholder="Mennyiség">
-            <select name="quantity ty" class="quantity30 form-control" required >
-                <option value="0">Darab</option>
-                <option value="1">Kiló</option>
-                <option value="2">Gramm</option>
-            </select>
-        </div>
-    </div>
-        <h5>Garancia időtartama</h5>
-
-    <div class="form-group">
-        <div class="row">
-            <select name="warranty ty" class="quantity30 form-control" required >
-                <option value="0">Év</option>
-                <option value="1">Hónap</option>
-                <option value="2">Hét</option>
-            </select>
-            <label class="sr-only" for="title">Garancia időtartam</label>
-            <input class="quantity70 form-control" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" name="warranty" id="title" placeholder="Garancia időtartalma">
-        </div>
-    </div>
-                <h5>Hirdetés időtartama</h5>
-    <div class="form-group">
-        <div class="row">
-            <label class="sr-only" for="title">Lejárat</label>
-            <input class="quantity70 form-control" required pattern=".{1,20}" required title="1 töl 20 karakter" type="number" name="availability" id="price" placeholder="Érvényesség">
-            <select name="availability ty" class="quantity30 form-control" required >
-                <option value="0">Év</option>
-                <option value="1">Hónap</option>
-                <option value="2">Hét</option>
-                <option value="3">Nap</option>
-            </select>
-        </div>
-    </div>
 
     <h5>Állapot</h5>
     <select name="condition" class="form-control" required>
+        <option value="0">Bármilyen</option>
         <option value="0">Használt</option>
         <option value="1">Új</option>
     </select>
     <h5>Az áru helye</h5>
     <select name="re" id="re" class="form-control" required>
-        <option value="0" id="re-0">Nincs</option>
+        <option value="0" id="re-0">Bárhol</option>
         <option value="4" id="re-1">Bács-Kiskun megye</option>
         <option value="6" id="re-2">Baranya megye</option>
         <option value="7" id="re-3">Békés megye</option>
@@ -112,7 +58,6 @@
         <option value="17" id="re-19">Vas megye</option>
         <option value="18" id="re-20">Veszprém megye</option>
         <option value="19" id="re-21">Zala megye</option>
-    </select><br/>
-    <a class="file-input-wrapper btn btn-default ">Kép kiválasztása<input type="file" name="file" id="file"></a><br/><br/>
+    </select><br/><br/>
     <button class="btn btn-primary" type="submit">Hirdetés feltöltése</button>
 </form>
