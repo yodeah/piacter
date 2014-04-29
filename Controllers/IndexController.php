@@ -146,5 +146,12 @@ class IndexController {
         echo Template::instance()->render('profile.tpl');
         echo Template::instance()->render('endofmain.tpl');
     }
+    
+    public function aboutus($f3){
+        NAVBARController::buttons($f3);
+        echo Template::instance()->render('main.tpl');
+                echo Template::instance()->render('aboutus.tpl');
+        echo Template::instance()->render('endofmain.tpl');
+    }
 
 }
