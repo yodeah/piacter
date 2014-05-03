@@ -41,6 +41,7 @@ $f3->route('POST /Ratecheck','RateController->ratecheck');
 $f3->route('GET /Special','SpecSearchController->index');
 $f3->route('GET /Special_process','SpecSearchController->process');
 $f3->route('GET /Aboutus','IndexController->Aboutus');
+$f3->route('POST /Ajax/Loadmoreitems','AjaxController->loadmoreitems');
 
 $f3->route('GET|HEAD|POST /index', function($f3) {
     $f3->reroute('/');

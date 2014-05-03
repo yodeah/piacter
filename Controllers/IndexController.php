@@ -6,7 +6,8 @@ class IndexController {
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
         //echo Template::instance()->render('slider.tpl');
-        $this->indexContent($f3, 4);
+        self::indexContent($f3, 2);
+        echo Template::instance()->render('loadmoreajax.tpl');
         echo Template::instance()->render('endofmain.tpl');
     }
 
@@ -18,33 +19,54 @@ class IndexController {
         echo Template::instance()->render('endofmain.tpl');
     }
 
-    private function indexContent($f3, $itemx4) {/// MENNYI SOR TARTALOM LEGYEN A FŐOLDALON
+    public static function indexContent($f3, $itemx4) {/// MENNYI SOR TARTALOM LEGYEN A FŐOLDALON
         $connection = new PDOConnection;
         $sor = 1; //sorok vizsgálásához hogy hova rakja az oszlopokat 
         $result = $connection->query("SELECT * FROM items WHERE isopen=1 ORDER BY date DESC LIMIT 0," . (4 * $itemx4))->fetchAll(PDO::FETCH_ASSOC) or $connection->error();
         //print_r($result); die();       
         foreach ($result as $row) {
-            if ($sor % $itemx4 == 1) {
-                echo'<div class="col-md-3">';
-            }
+            echo'<div class="col-md-3">';
             $title = (strlen($row["title"]) > 20) ? substr($row["title"], 0, 20) . "...  " : $row["title"];
             $f3->set('title', $title);
             $message = (strlen($row["descr"]) > 100) ? substr($row["descr"], 0, 100) . "...  " : $row["descr"];
             $f3->set('text', $message);
             $f3->set('id', $row['id']);
-            $this->image($f3, $row);
+            self::image($f3, $row);
             //$f3->set('img', $row["image"]);
-            $f3->set('user', $this->idtousername($row["owner"]));
+            $f3->set('user', self::idtousername($row["owner"]));
             $f3->set('date', $row["date"]);
             echo Template::instance()->render('post2.tpl');
-            if ($sor % $itemx4 == 0) {
-                echo'</div>';
-            }
-            $sor++;
+            echo'</div>';
         }
     }
 
-    private function image($f3, $row) {
+    /* public function indexContent($f3, $itemx4) {/// MENNYI SOR TARTALOM LEGYEN A FŐOLDALON
+      $connection = new PDOConnection;
+      $sor = 1; //sorok vizsgálásához hogy hova rakja az oszlopokat
+      $result = $connection->query("SELECT * FROM items WHERE isopen=1 ORDER BY date DESC LIMIT 0," . (4 * $itemx4))->fetchAll(PDO::FETCH_ASSOC) or $connection->error();
+      //print_r($result); die();
+      foreach ($result as $row) {
+      if ($sor % $itemx4 == 1) {
+      echo'<div class="col-md-3">';
+      }
+      $title = (strlen($row["title"]) > 20) ? substr($row["title"], 0, 20) . "...  " : $row["title"];
+      $f3->set('title', $title);
+      $message = (strlen($row["descr"]) > 100) ? substr($row["descr"], 0, 100) . "...  " : $row["descr"];
+      $f3->set('text', $message);
+      $f3->set('id', $row['id']);
+      $this->image($f3, $row);
+      //$f3->set('img', $row["image"]);
+      $f3->set('user', $this->idtousername($row["owner"]));
+      $f3->set('date', $row["date"]);
+      echo Template::instance()->render('post2.tpl');
+      if ($sor % $itemx4 == 0) {
+      echo'</div>';
+      }
+      $sor++;
+      }
+      } */
+
+    private static function image($f3, $row) {
         if (isset($row["image"])) {
             $f3->set('img', $row["image"]);
         } else {
@@ -52,7 +74,7 @@ class IndexController {
         }
     }
 
-    private function idtousername($userid) {
+    private static function idtousername($userid) {
         $connection = new PDOConnection;
         $username = $connection->query("SELECT username FROM users WHERE id=$userid")->fetchAll(PDO::FETCH_ASSOC);
         return $username[0]['username'];
@@ -63,7 +85,7 @@ class IndexController {
         $connection = new PDOConnection;
         $result = $connection->query("SELECT * FROM linkdb
 		WHERE title LIKE '%" . $_GET['searchbox'] . "%' LIMIT " . $page . ",50 ")->fetchAll(PDO::FETCH_ASSOC);
-        if(count($result)==0){
+        if (count($result) == 0) {
             echo 'a teszt adatbázisban csak laptopok vannak, keress valami olyanra ami egy laptop hirdetés címében lehet!';
         }
         foreach ($result as $row) {
@@ -146,11 +168,11 @@ class IndexController {
         echo Template::instance()->render('profile.tpl');
         echo Template::instance()->render('endofmain.tpl');
     }
-    
-    public function aboutus($f3){
+
+    public function aboutus($f3) {
         NAVBARController::buttons($f3);
         echo Template::instance()->render('main.tpl');
-                echo Template::instance()->render('aboutus.tpl');
+        echo Template::instance()->render('aboutus.tpl');
         echo Template::instance()->render('endofmain.tpl');
     }
 
